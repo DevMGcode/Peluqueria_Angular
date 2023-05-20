@@ -1,0 +1,65 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+
+  <div class="container-fluid pl-2 pb-1">
+    <img src="../../../../assets/img/barra2.png" width="100%" alt="">
+
+
+  <div class="container-fluid ">
+    <div class="row my-4">
+      <div class="col-8 offset-2  d-flex justify-content-between align-content-center">
+        <button class="btn btn-dark mt-3" [routerLink]="['/']" routerLinkActive="router-link-active" >volver </button>
+        <p class="fw-bold h1 "> Agenda - New Styles  </p>
+
+
+          <button class="btn btn-dark mt-3" [routerLink]="['/']" routerLinkActive="router-link-active" >Reservar cita </button>
+      </div>
+        <div class="col-8 offset-2 mt-4">
+          <table class="table table-dark table-hover text-center">
+            <thead>
+              <tr>
+
+                <th scope="col">NOMBRE</th>
+                <th scope="col">FECHA</th>
+                <th scope="col">HORA</th>
+                <th scope="col">DESCRIPCION</th>
+                <th scope="col">ACCIONES</th>
+              </tr>
+            </thead>
+            <tbody >
+              <tr *ngFor="let cita of agendadoCitas">
+                <!-- <th scope="row">1</th> -->
+
+                <td>{{cita.nombre}}</td>
+                <td>{{cita.fecha}}</td>
+                <td>{{cita.hora}}</td>
+                <td>{{cita.motivo}}</td>
+                <td><i class="fas fa-pencil-alt" [routerLink]="['/reagendarse',cita._id]" routerLinkActive="router-link-active" ></i>
+                    <i class="fas fa-trash-alt" (click)="eliminarCita(cita._id)"></i>
+
+                  </td>
+              </tr>
+
+            </tbody>
+          </table>
+
+        </div>
+    </div>
+
+
+  </div>
+</div>
+
+</body>
+</html>
+<!-- <p>agendar-citas works!</p> -->
+
+

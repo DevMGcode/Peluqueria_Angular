@@ -1,0 +1,164 @@
+
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" integrity="sha512-1ycn6IcaQQ40/MKBW2W4Rhis/DbILU74C1vSrLJxCq57o941Ym01SwNsOMqvEBFlcgUa6xLiPY/NS5R+E6ztJQ==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+
+  <title>Styles</title>
+<!--   <p>inicio works!</p>
+ -->
+</head>
+<body>
+
+
+
+  <nav class="navbar navbar-expand-lg navbar-dark bg-light">
+    <div class="container d-flex justify-content-center align-items-center ">
+      <a class="navbar-brand" href="#"> <img class="foto" src="assets/img/logo_styles.png"  alt=""> </a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+          <li class="p-3 mt-5  nav-item">
+            <a class="nav-link "  [routerLink]="['/peinados']">Peinados</a>
+          </li>
+          <li class="p-3 mt-5 nav-item">
+            <a class="nav-link" [routerLink]="['/cortes']">cortes</a>
+          </li>
+          <li class="p-3 mt-5 nav-item">
+            <a class="nav-link" [routerLink]="['/tintes']">Tintes</a>
+          </li>
+          <li class="p-3 mt-5 nav-item">
+            <a class="nav-link" [routerLink]="['/cuidados']">Cuidados</a>
+          </li>
+          <li class="p-3 mt-5 nav-item">
+            <a class="nav-link" [routerLink]="['/maquillaje']">Maquillaje</a>
+          </li>
+        </ul>
+
+        <!-- <ul class="nav justify-content-end">
+          <nav class="nav">
+            <a class="p-3 mt-5 nav-link" href="#">Link</a>
+            <a class="p-3 mt-5 nav-link" href="#">Link</a>
+          </nav>
+        </ul> -->
+
+      </div>
+    </div>
+  </nav>
+
+
+  <div id="carouselExampleControls" class="carousel slide" data-bs-ride="carousel">
+    <div class="carousel-inner">
+      <div class="carousel-item active">
+        <img src="assets/img/slide1.png" class="d-block w-100" alt="...">
+      </div>
+      <div class="carousel-item">
+        <img src="assets/img/slide2.png" class="d-block w-100" alt="...">
+      </div>
+      <div class="carousel-item">
+        <img src="assets/img/slide3.png" class="d-block w-100" alt="...">
+      </div>
+    </div>
+    <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleControls" data-bs-slide="prev">
+      <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+      <span class="visually-hidden">Previous</span>
+    </button>
+    <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleControls" data-bs-slide="next">
+      <span class="carousel-control-next-icon" aria-hidden="true"></span>
+      <span class="visually-hidden">Next</span>
+    </button>
+  </div>
+
+
+
+
+  <div class="row ">
+    <div class="col-7">
+      <div class="col-9 offset-2  d-flex justify-content between align-content-center flex-column">
+        <h1 class="fw-bold py-4 mt-5">Bienvenido a New Styles </h1>
+        <p> Somos una peluquiera de alto nivel, compromiso y calidad de mujeres colombianas emprendedoras  con sentido de inclusion de todo ambito profesional
+        <br>Ven separa tu cita y disfruta de todos nuestros servicios que tenemos para ti </p>
+      </div>
+    </div>
+
+    <!-- SEPARAR TU CITA -->
+    <div class="col-5 ">
+      <div class="cuadrado">
+      <form class=" col-8 offset-2   mt-5 d-flex justify-content between align-content-center flex-column "  [formGroup]="citaForm" (ngSubmit)="agrecita()">
+
+        <div class=" form-group text-white">
+          <div class="text-center"><i class="fas fa-address-book " [routerLink]="['/agendar-citas']"></i></div>
+          <h3 class=" titulo-periodico text-white mt-2 ">{{titulo_form}}<br><span class="text-Capitalize"> con New Styles</span></h3>
+          <label for="exampleInputEmail1 ">Nombre</label>
+          <input formControlName="citaNombre" type="text" class="form-control " id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Digita Tú Nombre">
+          <div class="alert alert-danger" role="alert" *ngIf=" citaForm.get('citaNombre')?.hasError('required') && citaForm.get('citaNombre')?.touched " > Escribe Tú Nombre es Obligatorio</div>
+        </div>
+
+      <div class="row">
+        <div class=" col-6 form-group text-white mt-2 ">
+          <label for="exampleInputPassword1">Fecha</label>
+          <input formControlName="citaFecha" type="date" class="form-control" id="exampleInputPassword1" placeholder="Password">
+          <div class="alert alert-danger" role="alert"  *ngIf=" citaForm.get('citaFecha')?.hasError('required') && citaForm.get('citaFecha')?.touched " > Ingresa la Fecha es obligatorio</div>
+        </div>
+
+        <div class=" col-6 form-group text-white mt-2  ">
+          <label for="exampleInputPassword1">Hora</label>
+          <input formControlName="citaHora" type="time" class="form-control" id="exampleInputPassword1" placeholder="Password">
+          <div class="alert alert-danger" role="alert"  *ngIf=" citaForm.get('citaHora')?.hasError('required') && citaForm.get('citaHora')?.touched " > Ingresa la Fecha es obligatorio</div>
+        </div>
+      </div>
+
+
+          <label for="exampleFormControlInput1" class="form-label text-white mt-2 mb-0">Motivo</label>
+          <input formControlName="citaMotivo" type="text" class="form-control" id="exampleFormControlInput1" placeholder="peinados,cortes,tintes,cuidados o maquillaje?">
+          <div class="alert alert-danger" role="alert"  *ngIf=" citaForm.get('citaMotivo')?.hasError('required') && citaForm.get('citaMotivo')?.touched " > por favor digita : peinados,cortes,tintes,cuidados o maquillaje</div>
+
+
+        <div class="d-flex justify-content-center align-items-center mt-3 ">
+        <button type="submit" class="btn btn-primary" [disabled]="citaForm.invalid">Reservar</button>
+
+        </div>
+
+      </form>
+    </div>
+    </div>
+  </div>
+
+
+
+<!--   <footer class="bg-azul mt-4 p-5 footer-pagina">
+    <div class="container d-flex justify-content-center align-items-center flex-column ml-2">
+        <h5>facebook @Styles   telefono: 3234698498   cooreo@correo.com</h5>
+          <h5>Todos los derechos reservados</h5>
+    </div>
+</footer> -->
+
+<footer >
+<div class="container">
+<div class="info2">
+    <p class=" text-white">Siguenos en:<p>
+</div>
+
+
+  <div class="row col-12">
+      <div class="col-6 offset-4 icon5 bg-azul mt-4 p-5 footer-pagina">
+      <a href="https://es-la.facebook.com/nike/"><img src="assets/img/whatsapp.png" alt=""></a>
+      <a href="https://twitter.com/adidasco?lang=es"><img src="asset/img/twitter.png" alt=""></a>
+      <a href="https://es-la.facebook.com/nike/"><img src="assets/img/facebook.png" alt=""></a>
+      <a href="https://twitter.com/adidasco?lang=es"><img src="assets/img/youtube.png" alt=""></a>
+      <a href="https://www.instagram.com/reebokcolombia/?hl=es-la"><img src="assets/img/instagram.png" alt=""></a>
+      <a href="videos.html"><img src="img/youtube.png" alt=""></a>
+    </div>
+  </div>
+</div>
+</footer>
+
+
+</body>
+
+</html>

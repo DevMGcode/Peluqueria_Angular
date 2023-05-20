@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+
+  <div class="container-fluid d-flex mt-4">
+    <div class="d-flex col-12 row my-4">
+      <div class="col-6">
+
+        <div class="col-8  d-flex justify-content-between align-content-center">
+          <p class="fw-bold h4 text-white "> Schwarzkopf IGORA ROYAL  </p>
+            <button class="btn btn-warning" [routerLink]="['/agregar-tinte']" routerLinkActive="router-link-active" >Agregar Tinte</button>
+        </div>
+
+        <div class="col-8 mt-4">
+          <table class="table table-info table-hover">
+            <thead>
+              <tr>
+                <th scope="col">COLOR</th>
+                <th scope="col">NUMERO</th>
+                <th scope="col">CATEGORIA</th>
+                <th scope="col">ACCIONES</th>
+              </tr>
+            </thead>
+            <tbody >
+              <tr *ngFor="let tinte of listadoTintes" >
+                <!-- <th scope="row">1</th> -->
+                <td>{{tinte.color}}</td>
+                <td>{{tinte.numero}}</td>
+                <td>{{tinte.categoria}}</td>
+
+                <td><i class="fas fa-pencil-alt" [routerLink]="['/editar-tinte',tinte._id]" routerLinkActive="router-link-active" ></i>
+                    <i class="fas fa-trash-alt"(click)="eliminarTinte(tinte._id)"></i></td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+        </div>
+        <div class="col-6 ">
+          <img src="../../../../assets/img/CartaIGORA.png" width="120%" alt="">
+        </div>
+      </div>
+
+    </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+</body>
+</html>
+
+

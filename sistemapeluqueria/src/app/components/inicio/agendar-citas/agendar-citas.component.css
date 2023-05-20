@@ -1,0 +1,22 @@
+
+body{
+  background-color: #F9629F;
+}
+
+.fas{
+
+  font-size: 1.2rem;
+  margin: 0 15px;
+  cursor: pointer;
+  transition: all .5;
+
+}
+
+.fa-pencil-alt:hover{
+  color: #145bf5 !important;
+}
+
+.fa-trash-alt:hover{
+  color: #ff0000 !important;
+}
+

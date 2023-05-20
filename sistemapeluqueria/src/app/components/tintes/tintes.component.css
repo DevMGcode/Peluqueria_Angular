@@ -1,0 +1,99 @@
+@import url('https://fonts.googleapis.com/css2?family=Ephesis&display=swap');
+
+body{
+  font-family: 'Ephesis', cursive;
+  font-size: 2rem;
+  
+}
+
+.foto{
+    height: 125px;
+    width: 300px;
+
+}
+
+.navbar{
+    background: rgb(2,0,36);
+background: radial-gradient(circle, rgba(2,0,36,1) 0%, rgba(9,9,121,1) 25%, rgba(0,212,255,1) 86%);
+}
+
+
+.nav-link{
+    font-family: 'Ephesis', cursive;
+    padding: 0px  !important;
+    padding-left: 0% !important;
+
+
+      position: relative;
+      display: block;
+      height: 40px;
+      width: 120px;
+      border-radius: 4px;
+      text-transform: capitalize;
+      background-color: transparent;
+      color: #fff;
+      font-size: 30px;
+      overflow: hidden;
+      transition: all 500ms ease;
+      /* border: 2px solid #20e2d7; */
+      margin-bottom: 0px;
+      text-align: center;
+      z-index: 0;
+      font-weight: 700;
+      cursor: pointer;
+    }
+    .nav-link::before {
+      content: "";
+      position: absolute;
+      left: 0;
+      right: 0;
+      top: 0;
+      margin: auto;
+      background-color: #20e2d7;
+      transition: all 500ms ease;
+      z-index: -1;
+    }
+
+
+
+.nav-link:hover{
+
+    color:blueviolet !important;
+
+      background-color: #20e2d7;
+      box-shadow: 0 0 10px #20e2d7, 0 0 20px #20e2d7, 0 0 20px #20e2d7;
+      color: #434343;
+
+}
+
+
+
+.icon5{
+  justify-content: center;
+  align-items: center;
+/*   margin-top: 10% ;
+  margin-left: 30%;
+  margin-top: -2%;
+  padding-bottom: 2%; */
+
+ }
+
+ .icon5 a{
+  display: inline-block;
+  margin-right: 1%;
+ }
+
+ .info2{
+
+
+  margin-left: 30%;
+  margin-bottom: -4%;
+
+ }
+
+footer{
+
+  margin-top: 3%;
+  background: rgb(2,0,36);
+background: linear-gradient(176deg, rgba(2,0,36,1) 0%, rgba(9,9,121,1) 25%, rgba(0,212,255,1) 86%);
+}

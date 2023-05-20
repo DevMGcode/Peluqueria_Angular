@@ -1,0 +1,116 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+
+  <nav class="navbar navbar-expand-lg navbar-dark bg-light">
+    <div class="container d-flex justify-content-center align-items-center ">
+      <a class="navbar-brand" href="#"> <img class="foto" src="assets/img/logo_styles.png"  alt=""> </a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+          <li class="p-3 mt-5  nav-item">
+            <a class="nav-link "  [routerLink]="['/peinados']">Peinados</a>
+          </li>
+          <li class="p-3 mt-5 nav-item">
+            <a class="nav-link" [routerLink]="['/cortes']">cortes</a>
+          </li>
+          <li class="p-3 mt-5 nav-item">
+            <a class="nav-link" [routerLink]="['/tintes']">Tintes</a>
+          </li>
+          <li class="p-3 mt-5 nav-item">
+            <a class="nav-link" [routerLink]="['/cuidados']">Cuidados</a>
+          </li>
+          <li class="p-3 mt-5 nav-item">
+            <a class="nav-link" [routerLink]="['/maquillaje']">Maquillaje</a>
+          </li>
+        </ul>
+
+        <!-- <ul class="nav justify-content-end">
+          <nav class="nav">
+            <a class="p-3 mt-5 nav-link" href="#">Link</a>
+            <a class="p-3 mt-5 nav-link" href="#">Link</a>
+          </nav>
+        </ul> -->
+
+      </div>
+    </div>
+  </nav>
+
+<div class="container-fluid justify-content-center align-items-center mt-5 flex-column ml-5">
+  <div class="row ml-5">
+
+    <div class="col-7 ml-5">
+      <div id="carouselExampleFade" class="carousel slide carousel-fade" data-bs-ride="carousel">
+        <div class="carousel-inner">
+          <div class="carousel-item active">
+            <img src="../../../assets/img/igora1.JPG" class="d-block w-100" height="500px" width="600px" alt="...">
+          </div>
+          <div class="carousel-item">
+            <img src="../../../assets/img/igora2.JPG" class="d-block w-100" height="500px" width="600px" alt="...">
+          </div>
+
+        </div>
+        <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleFade" data-bs-slide="prev">
+          <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+          <span class="visually-hidden">Previous</span>
+        </button>
+        <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleFade" data-bs-slide="next">
+          <span class="carousel-control-next-icon" aria-hidden="true"></span>
+          <span class="visually-hidden">Next</span>
+        </button>
+      </div>
+    </div>
+
+    <div class='col-4 '>
+      <iframe width="600" height="500" src="https://www.youtube.com/embed/HIUcUliOwRU"
+      title="YouTube video player" frameborder="0"
+      allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+      allowfullscreen></iframe>
+    </div>
+  </div>
+</div>
+
+
+
+
+
+
+<div class="d-flex justify-content-center align-items-center mt-5 ">
+  <img src="../../../assets/img/Anímate!.png" width="35%" height="50%" alt="">
+  <button type="button" class="btn btn-info" style="font-size: 4rem;"[routerLink]="['/listar-tinte']"> Catalogo </button>
+</div>
+
+
+
+  <footer >
+    <div class="container">
+    <div class="info2">
+        <p class=" text-white">Siguenos en:<p>
+    </div>
+
+
+      <div class="row col-12">
+          <div class="col-6 offset-4 icon5 bg-azul mt-4 p-5 footer-pagina">
+          <a href="https://es-la.facebook.com/nike/"><img src="assets/img/whatsapp.png" alt=""></a>
+          <a href="https://twitter.com/adidasco?lang=es"><img src="asset/img/twitter.png" alt=""></a>
+          <a href="https://es-la.facebook.com/nike/"><img src="assets/img/facebook.png" alt=""></a>
+          <a href="https://twitter.com/adidasco?lang=es"><img src="assets/img/youtube.png" alt=""></a>
+          <a href="https://www.instagram.com/reebokcolombia/?hl=es-la"><img src="assets/img/instagram.png" alt=""></a>
+          <a href="videos.html"><img src="img/youtube.png" alt=""></a>
+        </div>
+      </div>
+    </div>
+    </footer>
+
+
+</body>
+</html>

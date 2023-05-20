@@ -1,0 +1,20 @@
+{
+  "name": "peluqueriaapi",
+  "version": "1.0.0",
+  "description": "Api para gestionar el inventario de la peluqueria",
+  "main": "index.js",
+  "scripts": {
+    "dev": "nodemon ."
+  },
+  "author": "Janner Melissa Bonilla",
+  "license": "ISC",
+  "devDependencies": {
+    "nodemon": "^2.0.14"
+  },
+  "dependencies": {
+    "cors": "^2.8.5",
+    "dotenv": "^10.0.0",
+    "express": "^4.17.1",
+    "mongoose": "^6.0.12"
+  }
+}

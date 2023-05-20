@@ -1,0 +1,33 @@
+<!-- <p>agregar-tinte works!</p> -->
+<div class="foto ">
+<div class="container mt-5 ">
+  <div class="row">
+      <div class="col-8 offset-2">
+        <p class="h1 text-center fw-bold text-white">{{titulo_formulario}}</p>
+      </div>
+      <div class="col-6 offset-3">
+
+        <form mt-5 [formGroup]="tinteForm" (ngSubmit)="manipulacion_data_tinte()">
+          <div class="my-3">
+            <input formControlName="tinteColor" class="form-control form-control-lg" type="text" placeholder="Color del tinte" >
+            <span *ngIf=" tinteForm.get('tinteColor')?.hasError('required') && tinteForm.get('tinteColor')?.touched " class="text-danger fw-bold">Nombre del color de tinte es obligatorio</span>
+          </div>
+          <div class="my-3">
+            <input formControlName="tinteNumero" class="form-control form-control-lg" type="text" placeholder="Numero del tinte" >
+            <span  *ngIf=" tinteForm.get('tinteNumero')?.hasError('required') && tinteForm.get('tinteNumero')?.touched" class="text-danger fw-bold">El numero de referencia de color del tinte es obligatorio</span>
+          </div>
+          <div class="my-3">
+            <input formControlName="tinteCategoria" class="form-control form-control-lg" type="text" placeholder="Categoria del tinte" >
+            <span *ngIf=" tinteForm.get('tinteCategoria')?.hasError('required') && tinteForm.get('tinteCategoria')?.touched" class="text-danger fw-bold">La categoria del tinte es obligatorio</span>
+          </div>
+            <div class="col-12 d-flex justify-content-between align-content-center">
+              <button class="btn btn-danger" [routerLink]="['/listar-tinte']">Volver</button>
+              <button type="submit" class="btn btn-success" [disabled]="tinteForm.invalid">Guardar Tinte</button>
+            </div>
+        </form>
+        </div>
+
+  </div>
+</div>
+</div>
+
