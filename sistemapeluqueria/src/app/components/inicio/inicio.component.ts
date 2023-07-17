@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { UntypedFormBuilder, UntypedFormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 import Swal from 'sweetalert2';
 import { cita } from 'src/app/models/cita';
@@ -12,12 +12,12 @@ import { CitaService } from 'src/app/services/cita.service';
 })
 export class InicioComponent implements OnInit {
 
-  citaForm: FormGroup;
+  citaForm: UntypedFormGroup;
   titulo_form = 'Agenda tu cita';
   id: string | null;
 
   constructor(
-    private fb: FormBuilder,
+    private fb: UntypedFormBuilder,
     private router: Router,
     private _citaService: CitaService,
     private idRoute: ActivatedRoute

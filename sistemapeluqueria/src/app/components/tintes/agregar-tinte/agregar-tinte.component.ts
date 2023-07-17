@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { Form, FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { Form, UntypedFormBuilder, UntypedFormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 import Swal from 'sweetalert2';
 import { Tinte } from 'src/app/models/tinte';
@@ -11,12 +11,12 @@ import { TinteService } from 'src/app/services/tinte.service';
   styleUrls: ['./agregar-tinte.component.css'],
 })
 export class AgregarTinteComponent implements OnInit {
-  tinteForm: FormGroup;
+  tinteForm: UntypedFormGroup;
   titulo_formulario = 'Agregar Tinte';
   id: string | null;
 
   constructor(
-    private fb: FormBuilder,
+    private fb: UntypedFormBuilder,
     private router: Router,
     private _tinteService: TinteService,
     private idRoute: ActivatedRoute
