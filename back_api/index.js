@@ -9,7 +9,7 @@ const aplicacion = express() // incializarlos con los parametros a esa variable 
 
 
 conectarDB(); //conexion al cluster -db.js
-aplicacion.use(cors());
+aplicacion.use(cors({ origin: 'http://localhost:4200' }));
 //aplicacion.get('/',(req,res)=>{
 //
 //    res.send("hola")
