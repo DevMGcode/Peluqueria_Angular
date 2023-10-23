@@ -4,10 +4,10 @@
   "scripts": {
     "ng": "ng",
     "start": "ng serve",
-    "build": "ng build && terser -c -m -o dist/sistemapeluqueria/main.js -- dist/sistemapeluqueria/main.js",
+    "build": "ng build",
     "watch": "ng build --watch --configuration development",
     "test": "ng test",
-    "deploy": "ng build --base-href=/sistemapeluqueria/ && npx angular-cli-ghpages --dir=dist/sistemapeluqueria"
+    "deploy": "ng build"
   },
   "private": true,
   "dependencies": {

@@ -17,6 +17,11 @@
         "build": {
           "builder": "@angular-devkit/build-angular:browser",
           "options": {
+
+            "allowedCommonJsDependencies": [
+              "lodash",
+              "sweetalert2"
+           ],
             "outputPath": "dist/sistemapeluqueria",
             "index": "src/index.html",
             "main": "src/main.ts",
@@ -42,8 +47,8 @@
               "budgets": [
                 {
                   "type": "initial",
-                  "maximumWarning": "500kb",
-                  "maximumError": "1mb"
+                  "maximumWarning": "800kb",
+                  "maximumError": "2mb"
                 },
                 {
                   "type": "anyComponentStyle",

@@ -1,0 +1,27 @@
+
+@import url('https://fonts.googleapis.com/css2?family=Ephesis&display=swap');
+
+.info2 {
+  margin-left: 35%;
+  margin-bottom: -4%;
+}
+.footer-pagina{
+  margin-left: 34%;
+  justify-content: center;
+  align-items: center;
+}
+
+.footer-pagina a {
+  margin-left: 2%;
+
+}
+
+
+footer {
+  font-family: 'Ephesis', cursive;
+  font-size: 2rem;
+  margin-top: 0%;
+  background: rgb(2, 0, 36);
+  background: linear-gradient(176deg, rgba(2, 0, 36, 1) 0%, rgba(9, 9, 121, 1) 25%, rgba(0, 212, 255, 1) 86%);
+}
+

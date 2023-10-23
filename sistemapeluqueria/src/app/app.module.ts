@@ -16,6 +16,8 @@ import { Pagina404Component } from './components/pagina404/pagina404.component';
 import { AgendarCitasComponent } from './components/inicio/agendar-citas/agendar-citas.component';
 
 import{HttpClientModule }from '@angular/common/http';
+import { BarradenavegacionComponent } from './components/barradenavegacion/barradenavegacion.component';
+import { PiedepaginaComponent } from './components/piedepagina/piedepagina.component';
 
 @NgModule({
   declarations: [
@@ -29,7 +31,9 @@ import{HttpClientModule }from '@angular/common/http';
     AgregarTinteComponent,
     ListarTinteComponent,
     Pagina404Component,
-    AgendarCitasComponent
+    AgendarCitasComponent,
+    BarradenavegacionComponent,
+    PiedepaginaComponent
   ],
   imports: [
     BrowserModule,

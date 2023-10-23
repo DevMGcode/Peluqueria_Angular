@@ -1,199 +1,80 @@
 @import url('https://fonts.googleapis.com/css2?family=Ephesis&display=swap');
-body{
+body {
   font-family: 'Ephesis', cursive;
   font-size: 2rem;
   background-color: #D9AFD9;
-background-image: linear-gradient(0deg, #D9AFD9 0%, #97D9E1 100%);
-
+  background-image: linear-gradient(0deg, #D9AFD9 0%, #97D9E1 100%);
 }
 
-
-
-.foto{
-  height: 125px;
-  width: 300px;
-
-}
-
-.navbar{
-  background: rgb(2,0,36);
-background: radial-gradient(circle, rgba(2,0,36,1) 0%, rgba(9,9,121,1) 25%, rgba(0,212,255,1) 86%);
-}
-
-
-.nav-link{
-  font-family: 'Ephesis', cursive;
-  padding: 0px  !important;
-  padding-left: 0% !important;
-
-
-    position: relative;
-    display: block;
-    height: 40px;
-    width: 120px;
-    border-radius: 4px;
-    text-transform: capitalize;
-    background-color: transparent;
-    color: #fff;
-    font-size: 30px;
-    overflow: hidden;
-    transition: all 500ms ease;
-    /* border: 2px solid #20e2d7; */
-    margin-bottom: 0px;
-    text-align: center;
-    z-index: 0;
-    font-weight: 700;
-    cursor: pointer;
-  }
-  .nav-link::before {
-    content: "";
-    position: absolute;
-    left: 0;
-    right: 0;
-    top: 0;
-    margin: auto;
-    background-color: #20e2d7;
-    transition: all 500ms ease;
-    z-index: -1;
-  }
-
-
-
-.nav-link:hover{
-
-  color:blueviolet !important;
-
-    background-color: #20e2d7;
-    box-shadow: 0 0 10px #20e2d7, 0 0 20px #20e2d7, 0 0 20px #20e2d7;
-    color: #434343;
-
-}
-
-
-
-
-
-.h1{
+.h1 {
   color: #990699 !important;
   margin-left: 2%;
 }
 
-.h1:hover{
-  background-color: #D9AFD9;
-  box-shadow: 0 0 10px #20e2d7, 0 0 20px #20e2d7, 0 0 20px #20e2d7;
-  width: 34%;
-
-  transition: all 500ms ease;
-  -webkit-animation: 500ms;
-}
-
-.imagen1,.imagen2,.imagen3{
+.imagen1, .imagen2, .imagen3 {
   height: 5%;
-
+  transition: all 500ms ease;
 }
 
-.imagen1:hover{
+.imagen1:hover {
   box-shadow: 0 0 40px #20e2d7, 0 0 40px #20e2d7, 0 0 5px #20e2d7;
   transition: all 500ms ease;
   width: 30%;
   padding-right: 2%;
   position: relative;
+  transform: scale(1.1);
 }
 
-.imagen2:hover{
+.imagen2:hover {
   box-shadow: 0 0 10px #990699, 0 0 20px #990699, 0 0 20px #990699;
   transition: all 600ms ease;
   width: 32%;
   position: relative;
+  transform: scale(1.1);
 }
 
-.imagen3:hover{
+.imagen3:hover {
   box-shadow: 0 0 10px #d088ff, 0 0 20px #d088ff, 0 0 20px #d088ff;
   transition: all 600ms ease;
   position: relative;
   width: 31%;
+  transform: scale(1.1);
 }
 
-
-.texto{
-
+.texto {
   position: absolute;
   opacity: 0;
-
 }
 
-.texto:hover{
-  background-color: rgb(0, 255, 255, 0.5);
+.texto:hover {
+  background-color: rgba(0, 255, 255, 0.5);
   opacity: 1;
   transition: 500ms;
 }
 
-.texto2{
-
+.texto2 {
   position: absolute;
   opacity: 0;
-
 }
 
-.texto2:hover{
-  background-color: rgb(153, 6, 153, 0.5);
+.texto2:hover {
+  background-color: rgba(153, 6, 153, 0.5);
   opacity: 1;
   transition: 500ms;
   width: 60%;
   color: rgb(235, 233, 233);
 }
 
-.texto3{
-
+.texto3 {
   position: absolute;
   opacity: 0;
-
 }
 
-.texto3:hover{
-  background-color: rgb(208, 136, 255,0.5);
+.texto3:hover {
+  background-color: rgba(208, 136, 255, 0.5);
   opacity: 1;
   transition: 500ms;
   width: 60%;
   color: rgb(3, 3, 3);
 }
 
-
-
-
-
-
-
-
-
-
-
-.icon5{
-  justify-content: center;
-  align-items: center;
-/*   margin-top: 10% ;
-  margin-left: 30%;
-  margin-top: -2%;
-  padding-bottom: 2%; */
-
- }
-
- .icon5 a{
-  display: inline-block;
-  margin-right: 1%;
- }
-
- .info2{
-
-
-  margin-left: 30%;
-  margin-bottom: -4%;
-
- }
-
-footer{
-
-  margin-top: 3%;
-  background: rgb(2,0,36);
-background: linear-gradient(176deg, rgba(2,0,36,1) 0%, rgba(9,9,121,1) 25%, rgba(0,212,255,1) 86%);
-}
