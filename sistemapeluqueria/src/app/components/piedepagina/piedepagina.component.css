@@ -15,6 +15,16 @@
   margin-left: 2%;
 
 }
+.social-icon {
+  transition: opacity 0.3s ease; /* Agrega una transición suave para el cambio de opacidad */
+}
+
+.social-icon:hover {
+  /* opacity: 0.7; Cambia la opacidad cuando el mouse está sobre la imagen */
+  filter: brightness(80%);
+ 
+}
+
 
 
 footer {
