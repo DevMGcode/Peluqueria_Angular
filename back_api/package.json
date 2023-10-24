@@ -4,11 +4,13 @@
   "description": "Api para gestionar el inventario de la peluqueria",
   "main": "index.js",
   "scripts": {
-    "dev": "nodemon ."
+    "dev": "nodemon .",
+    "start:dev": "concurrently \"ng serve\" \"node tu-archivo-de-node.js\""
   },
   "author": "Janner Melissa Bonilla",
   "license": "ISC",
   "devDependencies": {
+    "concurrently": "^8.2.2",
     "nodemon": "^2.0.14"
   },
   "dependencies": {

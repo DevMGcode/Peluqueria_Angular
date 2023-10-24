@@ -7,9 +7,17 @@ const cors = require('cors');
 
 const aplicacion = express() // incializarlos con los parametros a esa variable - Implementa servicio en la aplicacion
 
+const corsOptions = {
+    origin: 'http://localhost:4200',  // Permitir solicitudes desde localhost:4200
+    methods: 'GET,HEAD,PUT,PATCH,POST,DELETE',
+    credentials: true,
+    optionsSuccessStatus: 204,
+    allowedHeaders: 'Content-Type, Authorization, Prefer' // Agrega Prefer a los encabezados permitidos
+  };
+
 
 conectarDB(); //conexion al cluster -db.js
-aplicacion.use(cors({ origin: 'http://localhost:4200' }));
+aplicacion.use(cors(corsOptions));
 //aplicacion.get('/',(req,res)=>{
 //
 //    res.send("hola")
