@@ -1,4 +1,6 @@
 import { Component} from '@angular/core';
+import { VentanaEmergenteComponent } from '../ventana-emergente/ventana-emergente.component';
+
 
 @Component({
   selector: 'app-cuidados',
@@ -46,5 +48,6 @@ export class CuidadosComponent {
     this.mostrarDescripcion4 = !this.mostrarDescripcion4;
   }
 
+  
 
 }

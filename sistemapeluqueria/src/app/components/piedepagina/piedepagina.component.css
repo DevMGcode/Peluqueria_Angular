@@ -22,7 +22,7 @@
 .social-icon:hover {
   /* opacity: 0.7; Cambia la opacidad cuando el mouse está sobre la imagen */
   filter: brightness(80%);
- 
+
 }
 
 
@@ -35,3 +35,18 @@ footer {
   background: linear-gradient(176deg, rgba(2, 0, 36, 1) 0%, rgba(9, 9, 121, 1) 25%, rgba(0, 212, 255, 1) 86%);
 }
 
+@media (max-width: 430px) {
+  .footer-pagina {
+      flex-direction: column;
+      align-items: center;
+  }
+
+  .social-icon {
+      transition: opacity 0.3s ease;
+      margin-bottom: 10px; /* Ajusta este valor según el espacio que desees entre los iconos */
+  }
+
+  .social-icon:hover {
+      filter: brightness(80%);
+  }
+}

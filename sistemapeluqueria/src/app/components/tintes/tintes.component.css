@@ -6,7 +6,61 @@ body{
 
 }
 
+@media (max-width: 1200px) {
+
+
+  .container-fluid {
+    margin-left: 0;
+  }
+
+  .row {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .col-7, .col-4 {
+    margin-left: 0;
+  }
+
+  .catalogo {
+    flex-direction: column;
+    align-items: center;
+
+  }
+
+  .video{
+    margin-top: 2%;
+    margin-right: 20%;
+  }
+}
 
 
 
 
+@media (max-width: 770px) {
+  .video{
+    margin-top: 2%;
+    margin-right: 20%;
+    width: 400px;
+    height: 300px;
+    margin-bottom: 30%;
+  }
+
+
+
+}
+@media (max-width: 440px) {
+.carousel {
+  position: relative;
+  height: 200px;
+  width: 300px;
+}
+
+iframe,.video{
+  margin-top: 2%;
+
+  width: 100px;
+  height: 50px;
+  margin-bottom: 30%;
+}
+}

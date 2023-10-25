@@ -79,6 +79,7 @@ background: radial-gradient(circle, rgba(2,0,36,1) 0%, rgba(9,9,121,1) 25%, rgba
 }
 
 .fondo{
+  margin-left: 8%;
   width: 85%;
   background-color: rgb(176, 17, 216);
 }
@@ -112,9 +113,55 @@ p{
 
  }
 
-footer{
-
-  margin-top: 3%;
-  background: rgb(2,0,36);
-background: linear-gradient(176deg, rgba(2,0,36,1) 0%, rgba(9,9,121,1) 25%, rgba(0,212,255,1) 86%);
+ @media (min-width: 1440px) {
+  .fondo {
+    width: 70%;
+  }
 }
+
+
+
+@media (max-width: 1200px) {
+  .container .row {
+    flex-direction: column;
+    align-items: center; /* Centrar el contenido horizontalmente */
+  }
+
+  .fondo {
+
+   margin-left: 20%;
+  }
+}
+
+/* Consulta de medios para pantallas de 430px o menos */
+@media (max-width: 430px) {
+
+  .container .row {
+    flex-direction: column;
+    align-items: center; /* Centrar el contenido horizontalmente */
+  }
+
+  .fondo,img {
+    margin-left: 3rem;
+    width: 100%; /* Hacer que el fondo ocupe el 100% del ancho */
+    text-align: center; /* Centrar el contenido de la clase .fondo */
+  }
+
+  iframe {
+    width: 200px; /* Hacer que los iframes ocupen el 100% del ancho */
+    height: 200px; /* Altura automática para mantener la proporción */
+
+  }
+
+  body {
+    font-size: 1.4rem;
+  }
+
+  .col-4 img {
+    width: 100%;
+    height: auto;
+  }
+
+
+}
+

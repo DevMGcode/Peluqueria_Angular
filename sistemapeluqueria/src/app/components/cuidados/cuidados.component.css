@@ -12,13 +12,16 @@ body, html {
   padding: 0;
 }
 
-.container {
 
-}
 
 .table {
+  display: flex;
+  flex-wrap: wrap;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
   height: 100%;
-  margin-left: 10%;
+  /* margin-left: 10%; */
 }
 
 .card-body {
@@ -75,3 +78,7 @@ body, html {
 .table tr:last-child .card {
   margin-bottom: 0;
 }
+
+
+
+

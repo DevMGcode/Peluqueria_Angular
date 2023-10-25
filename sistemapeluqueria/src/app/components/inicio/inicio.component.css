@@ -1,38 +1,54 @@
 @import url('https://fonts.googleapis.com/css2?family=Ephesis&display=swap');
 
-
-h1{
-   /*  margin-top: 5%; */
-    font-family: 'Ephesis', cursive;
-    /* font-weight: bold; */
+h1 {
+  font-family: 'Ephesis', cursive;
 }
 
-p{
+p {
   font-family: 'Ephesis', cursive;
-  font-size: 2rem;}
+  font-size: 2rem;
+}
+
+.fas {
+  font-size: 2rem;
+  margin: 0 15px;
+  cursor: pointer;
+  transition: all .5s;
+}
+
+.cuadrado {
+  margin-top: 2rem;
+  text-align: center;
+  width: 95%;
+  max-width: 500px; /* Ajusta este valor según tus necesidades */
+  border: 3px solid #555;
+  background: rgb(2, 0, 36);
+  background: linear-gradient(158deg, rgba(2, 0, 36, 1) 0%, rgba(9, 9, 121, 1) 25%, rgba(0, 212, 255, 1) 86%);
+  border-radius: 5%;
+}
+
+@media (max-width: 768px) {
+  .cuadrado {
+      max-width: 100%;
+      /* Ajusta cualquier otro estilo para pantallas más pequeñas si es necesario */
+  }
+}
 
 
-  .fas {
-
-    font-size: 2rem;
-    margin: 0 15px;
-    cursor: pointer;
-    transition: all .5;
-
+/* Estilos para pantallas con un ancho menor de 430px */
+@media (max-width: 430px) {
+  .contenedor1 {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
   }
 
-  .cuadrado{
-    margin-top: 2rem;
-    text-align: center;
-    width: 95%;
-    height: 95%;
-    border: 3px solid #555;
-    background: rgb(2,0,36);
-    background: linear-gradient(158deg, rgba(2,0,36,1) 0%, rgba(9,9,121,1) 25%, rgba(0,212,255,1) 86%);
-    border-radius: 5%;
+  .contenedor1 .col-7,
+  .contenedor1 .col-5 {
+      width: 100%; /* Asegura que los elementos ocupen todo el ancho disponible */
   }
-
-
-
+}
 
 

@@ -18,6 +18,7 @@ import { AgendarCitasComponent } from './components/inicio/agendar-citas/agendar
 import{HttpClientModule }from '@angular/common/http';
 import { BarradenavegacionComponent } from './components/barradenavegacion/barradenavegacion.component';
 import { PiedepaginaComponent } from './components/piedepagina/piedepagina.component';
+import { VentanaEmergenteComponent } from './components/ventana-emergente/ventana-emergente.component';
 
 @NgModule({
   declarations: [
@@ -33,7 +34,8 @@ import { PiedepaginaComponent } from './components/piedepagina/piedepagina.compo
     Pagina404Component,
     AgendarCitasComponent,
     BarradenavegacionComponent,
-    PiedepaginaComponent
+    PiedepaginaComponent,
+    VentanaEmergenteComponent
   ],
   imports: [
     BrowserModule,

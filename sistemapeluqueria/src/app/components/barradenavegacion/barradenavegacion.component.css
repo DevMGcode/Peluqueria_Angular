@@ -8,6 +8,7 @@
   background: rgb(2, 0, 36);
   background: radial-gradient(circle, rgba(2, 0, 36, 1) 0%, rgba(9, 9, 121, 1) 25%, rgba(0, 212, 255, 1) 86%);
 }
+
 .nav-link {
   font-family: 'Ephesis', cursive;
   padding: 0px !important;
@@ -28,6 +29,7 @@
   z-index: 0;
   font-weight: 700;
   cursor: pointer;
+
 }
 
 .nav-link::before {
@@ -47,4 +49,17 @@
   background-color: #20e2d7;
   box-shadow: 0 0 10px #20e2d7, 0 0 20px #20e2d7, 0 0 20px #20e2d7;
   color: #434343;
+}
+
+@media (max-width: 1000px) {
+  .navbar-nav {
+      margin-left: 40%;
+
+  }
+}
+
+@media (max-width: 430px) {
+  .navbar-nav {
+  margin-left: 30%;
+}
 }
