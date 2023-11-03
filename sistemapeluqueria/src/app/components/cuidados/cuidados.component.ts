@@ -1,53 +1,43 @@
-import { Component} from '@angular/core';
-import { VentanaEmergenteComponent } from '../ventana-emergente/ventana-emergente.component';
+import { Component, OnInit } from '@angular/core';
+import { HttpClient } from '@angular/common/http';
 
+interface Producto {
+  id: number;
+  nombre: string;
+  precio: number;
+  descripcion: string;
+  mostrarDescripcion: boolean;
+}
 
 @Component({
   selector: 'app-cuidados',
   templateUrl: './cuidados.component.html',
   styleUrls: ['./cuidados.component.css']
 })
-export class CuidadosComponent {
+export class CuidadosComponent implements OnInit {
+  productos: Producto[] = [];
 
-  mostrarDescripcion1: boolean = false;
-  mostrarDescripcion2: boolean = false;
-  mostrarDescripcion3: boolean = false;
-  mostrarDescripcion4: boolean = false;
-  precio1: number = 35000; // Precio en pesos colombianos
-  precio2: number = 29000; // Precio en pesos colombianos
-  precio3: number = 40000;
-  precio4: number = 35000;
-  // Propiedades para precios formateados
-  precioFormateado1: string ='';
-  precioFormateado2: string ='';
-  precioFormateado3: string ='';
-  precioFormateado4: string ='';
+  constructor(private http: HttpClient) { }
 
-  // Función para formatear el precio con un punto como separador de miles
-  formatearPrecio(precio: number): string {
-    return precio.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ".");
-  }
-
-  // Función para inicializar los precios formateados
-  inicializarPreciosFormateados(): void {
-    this.precioFormateado1 = this.formatearPrecio(this.precio1);
-    this.precioFormateado2 = this.formatearPrecio(this.precio2);
-    this.precioFormateado3 = this.formatearPrecio(this.precio3);
-    this.precioFormateado4 = this.formatearPrecio(this.precio4);
-  }
-
-  // Método ngOnInit para inicializar los precios formateados al cargar el componente
   ngOnInit(): void {
-    this.inicializarPreciosFormateados();
+    this.http.get<Producto[]>('assets/productos.json').subscribe(data => {
+      this.productos = data.map(producto => ({ ...producto, mostrarDescripcion: false }));
+    });
   }
 
-  toggleDescripcion() {
-    this.mostrarDescripcion1 = !this.mostrarDescripcion1;
-    this.mostrarDescripcion2 = !this.mostrarDescripcion2;
-    this.mostrarDescripcion3 = !this.mostrarDescripcion3;
-    this.mostrarDescripcion4 = !this.mostrarDescripcion4;
+  toggleDescripcion(index: number, mostrar: boolean): void {
+    this.productos[index].mostrarDescripcion = mostrar;
   }
 
-  
+  // Función para formatear el precio
+  formatearPrecio(precio: number): string {
+    const precioRedondeado = precio.toFixed(0);
+    return '$ ' + precioRedondeado.replace(/(\d)(?=(\d{3})+(?!\d))/g, '$1.');
+  }
 
+  agregarAlCarrito(nombre: string, precio: number): void {
+    // Lógica para agregar el producto al carrito
+  }
 }
+
+

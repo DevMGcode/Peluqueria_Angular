@@ -12,6 +12,11 @@ body, html {
   padding: 0;
 }
 
+.imagen-tamaño {
+  max-width: 70%; /* Tamaño máximo de la imagen */
+  max-height: 70%; /* Tamaño máximo de la imagen */
+
+}
 
 
 .table {
@@ -32,6 +37,7 @@ body, html {
 }
 
 .container {
+  z-index: 1;
   min-height: 100vh;
   background: linear-gradient(rgba(179, 215, 226, 0.9), rgba(255, 255, 255, 0.9)); /* Fondo blanco semitransparente */
   padding: 10px;
