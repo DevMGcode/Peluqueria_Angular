@@ -1,18 +1,18 @@
 <app-barradenavegacion></app-barradenavegacion>
-
+<app-ventana-emergente *ngIf="mostrarVentanaEmergente" [carrito]="carrito" (cerrarVentana)="cerrarVentanaEmergente()"></app-ventana-emergente>
 <div class="container my-5 py-4">
   <div class="row">
     <div class="col-md-6 mb-4" *ngFor="let producto of productos; let i = index">
       <div class="card d-flex flex-column align-items-center">
-        <img [src]="'assets/img/' + (i + 1) + '.png'" class="card-img-top  imagen-tamaño" alt="...">
+        <img [src]="'assets/img/' + (i + 1) + '.png'" class="card-img-top imagen-tamaño" alt="...">
         <div class="card-body">
           <h5 class="card-title"
               (mouseover)="toggleDescripcion(i, true)"
               (mouseout)="toggleDescripcion(i, false)"
           >{{ producto.nombre }}</h5>
-          <h4>  {{  formatearPrecio(producto.precio) }}</h4>
+          <h4>{{ formatearPrecio(producto.precio) }}</h4>
           <p class="card-text" *ngIf="producto.mostrarDescripcion">{{ producto.descripcion }}</p>
-          <a href="#" class="btn btn-primary mx-auto">Añadir al carrito</a>
+          <button (click)="agregarAlCarrito(producto)" class="btn btn-primary mx-auto">Añadir al carrito</button>
         </div>
       </div>
     </div>
@@ -20,5 +20,3 @@
 </div>
 
 <app-piedepagina></app-piedepagina>
-
-

@@ -1,13 +1,14 @@
 import { Component, OnInit } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 
-interface Producto {
+export interface Producto {
   id: number;
   nombre: string;
   precio: number;
   descripcion: string;
   mostrarDescripcion: boolean;
 }
+
 
 @Component({
   selector: 'app-cuidados',
@@ -16,6 +17,18 @@ interface Producto {
 })
 export class CuidadosComponent implements OnInit {
   productos: Producto[] = [];
+  carrito: Producto[] = []; // Lista para almacenar productos en el carrito
+  mostrarVentanaEmergente: boolean = false; // Propiedad para controlar la visibilidad de la ventana emergente
+
+    // Función para abrir la ventana emergente
+    abrirVentanaEmergente(): void {
+      this.mostrarVentanaEmergente = true;
+    }
+
+    // Función para cerrar la ventana emergente
+    cerrarVentanaEmergente(): void {
+      this.mostrarVentanaEmergente = false;
+    }
 
   constructor(private http: HttpClient) { }
 
@@ -31,13 +44,24 @@ export class CuidadosComponent implements OnInit {
 
   // Función para formatear el precio
   formatearPrecio(precio: number): string {
-    const precioRedondeado = precio.toFixed(0);
-    return '$ ' + precioRedondeado.replace(/(\d)(?=(\d{3})+(?!\d))/g, '$1.');
+    const precioFormateado = precio.toFixed(0).replace(/\B(?=(\d{3})+(?!\d))/g, '.');
+    return `$ ${precioFormateado}`;
   }
 
-  agregarAlCarrito(nombre: string, precio: number): void {
-    // Lógica para agregar el producto al carrito
+
+
+
+
+  // Función para añadir productos al carrito
+  // agregarAlCarrito(producto: Producto): void {
+  //   this.carrito.push(producto);
+  // }
+
+  // Función para añadir productos al carrito
+  agregarAlCarrito(producto: Producto): void {
+    this.carrito.push(producto);
+    this.mostrarVentanaEmergente = true; // Mostrar la ventana emergente después de agregar al carrito
   }
+
+
 }
-
-

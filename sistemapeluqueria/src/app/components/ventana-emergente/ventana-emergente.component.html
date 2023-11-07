@@ -1,1 +1,20 @@
-<p>ventana-emergente works!</p>
+<div class="ventana-emergente">
+  <div class="btn-cerrar" (click)="cerrar()">X</div>
+
+  <h3>Carrito de compras</h3>
+  <ul>
+    <li *ngFor="let producto of carrito">
+      <div>
+        {{ producto.nombre }}
+      </div>
+      <div>
+        $ {{ formatearPrecioProducto(producto.precio) }}
+      </div>
+    </li>
+  </ul>
+  <p>Total: $ {{ calcularTotal() | number: '1.0-0' }}</p>
+
+ 
+  <button>Pagar</button>
+  <button (click)="cerrar()">Cancelar</button>
+</div>
