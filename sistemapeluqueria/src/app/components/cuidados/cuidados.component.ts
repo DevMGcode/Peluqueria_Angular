@@ -63,5 +63,9 @@ export class CuidadosComponent implements OnInit {
     this.mostrarVentanaEmergente = true; // Mostrar la ventana emergente después de agregar al carrito
   }
 
+  reiniciarCarrito(): void {
+    this.carrito = []; // Reiniciar el carrito al recibir el evento
+  }
+
 
 }
