@@ -1,4 +1,4 @@
-import { Component, Input , Output, EventEmitter} from '@angular/core';
+import { Component, Input, Output, EventEmitter } from '@angular/core';
 import { Producto } from '../cuidados/cuidados.component';
 
 @Component({
@@ -7,15 +7,15 @@ import { Producto } from '../cuidados/cuidados.component';
   styleUrls: ['./ventana-emergente.component.css']
 })
 export class VentanaEmergenteComponent {
+  compraRealizada: boolean = false;
   @Input() carrito: Producto[] = [];
-  @Output() cerrarVentana: EventEmitter<void> = new EventEmitter<void>(); // Evento para cerrar la ventana
-  @Output() reiniciarCarrito: EventEmitter<void> = new EventEmitter<void>(); // Nuevo evento para reiniciar el carrito
-  // Función para calcular el total del carrito
+  @Output() cerrarVentana: EventEmitter<void> = new EventEmitter<void>();
+  @Output() reiniciarCarrito: EventEmitter<void> = new EventEmitter<void>();
+
   calcularTotal(): number {
     return this.carrito.reduce((sum, producto) => sum + producto.precio, 0);
   }
 
-  // Función para formatear el precio individual de cada producto
   formatearPrecioProducto(precio: number): string {
     return precio.toLocaleString('es-CO', {
       minimumFractionDigits: 0,
@@ -23,14 +23,37 @@ export class VentanaEmergenteComponent {
     });
   }
 
-    // Función para Vaciar el carrito
-    cerrar(): void {
-      this.carrito = []; // Vaciar el carrito al hacer clic en Cancelar
-      this.reiniciarCarrito.emit(); // Emitir evento para reiniciar el carrito
-    }
-    // Función para cerrar la ventana emergente
-    close():void{
-      this.cerrarVentana.emit(); // Emite el evento para indicar que se debe cerrar la ventana
-    }
-}
+  cerrar(): void {
+    this.reiniciarCarrito.emit();
+    this.cerrarVentana.emit();
+  }
 
+  close(): void {
+    this.cerrarVentana.emit();
+  }
+
+  realizarCompra(): void {
+    // Lógica de compra
+    this.simularProcesoDeCompra();
+  }
+
+  simularProcesoDeCompra(): void {
+    // Simulación de la lógica de compra con una demora ficticia de 2 segundos
+    setTimeout(() => {
+      // Vaciar el carrito
+      this.carrito = [];
+
+      // Mostrar mensaje de compra realizada
+      this.mostrarMensajeCompra();
+
+      // Cerrar la ventana después de la compra (puedes ajustar según tu flujo)
+      setTimeout(() => {
+        this.cerrar();
+      }, 3000); // Ocultar el mensaje después de 3 segundos (puedes ajustar el tiempo)
+    }, 2000); // Demora ficticia de 2 segundos (puedes ajustar el tiempo)
+  }
+
+  mostrarMensajeCompra(): void {
+    this.compraRealizada = true;
+  }
+}

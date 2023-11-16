@@ -14,7 +14,14 @@
   </ul>
   <p>Total: $ {{ calcularTotal() | number: '1.0-0' }}</p>
 
-
-  <button>Pagar</button>
+  <!-- Botón para realizar la compra -->
+  <button (click)="realizarCompra()">Pagar</button>
   <button (click)="cerrar()">Cancelar</button>
+
+  <!-- Mensaje de compra realizada -->
+  <br><br>
+  <div *ngIf="compraRealizada" class="mensaje-compra">
+    <img src="assets/img/cheque.png" alt="Chulito"> Compra realizada
+  </div>
 </div>
+
