@@ -1,0 +1,27 @@
+[
+  {
+    "id": 1,
+    "nombre": "mascarilla capilar ancestral la pocion 350 ml",
+    "precio": 35000,
+    "descripcion": "La crema Ancestral La Poción es una mascarilla nutritiva de fórmula magistral que nutre, protege y repara la estructura capilar. Su fórmula está diseñada para todo tipo de cabello, úsalo como tratamiento nutritivo repolarizador."
+  },
+  {
+    "id": 2,
+    "nombre": "crema para peinar dual control la pocion 440 ml",
+    "precio": 29000,
+    "descripcion": "La crema para peinar La Poción cuenta con una fórmula doble propósito: control y nutrición del cabello. Está dirigido a cabellos con frizz, poco movimiento o secos. Es ideal para aportar hidratación, brillo y suavidad a los peinados cotidianos."
+  },
+  {
+    "id": 3,
+    "nombre": "shampoo cannabis argan la receta 500 ml",
+    "precio": 40000,
+    "descripcion": "Es un shampoo cosmético con propiedades fortalecedoras y anticaspa. Su fórmula con extracto de cannabis y argán aporta la humectación necesaria para equilibrar el Ph del cuero cabelludo. Úsalo como complemento de tu rutina de higiene personal para prevenir la aparición de caspa, disminuir la caída del cabello y estimular crecimiento del mismo."
+  },
+  {
+    "id": 4,
+    "nombre": "aceite reparador puntas cannabis la receta 30 ml",
+    "precio": 35000,
+    "descripcion": "El aceite reparador de puntas de cannabis La Receta CBD es un óleo ligero de consistencia no grasa. Sella las cutículas, proporciona brillo, vitalidad, protección contra la resequedad y control de frizz. Úsalo en todo momento, es ideal para todo tipo de cabello. No interfiere con otros tratamientos capilares como coloración o alisados."
+  }
+]
+
