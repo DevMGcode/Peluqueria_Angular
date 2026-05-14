@@ -114,8 +114,7 @@
         "deploy": {
           "builder": "angular-cli-ghpages:deploy",
           "options": {
-            "baseHref": "/Peluqueria_Angular/",
-            "cname": false
+            "baseHref": "/Peluqueria_Angular/"
           }
         }
       }

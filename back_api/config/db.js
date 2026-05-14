@@ -16,9 +16,8 @@ const conectarDB = async()=>{
         console.log("BD conectada");
         
     } catch (error) {
-        console.log(error);
-        process.exit(1);//detener aplicacion
-
+        console.log('⚠️  MongoDB no disponible:', error.message);
+        console.log('👉  Revisa que el cluster de Atlas esté activo en cloud.mongodb.com');
     }
 }
 
