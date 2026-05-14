@@ -1,0 +1,11 @@
+// ============================================================================
+// Custom Material Theme - Simplified
+// ============================================================================
+
+// Importar Material Core (sin tema, solo funcionalidad)
+@import '@angular/material/prebuilt-themes/indigo-pink.css';
+
+// Nota: El tema visual lo proporciona Tailwind + nuestro design system
+// Material se usa solo para componentes complejos (Dialog, Datepicker, etc.)
+// Los estilos visuales (colores, sombras) vienen de Tailwind
+

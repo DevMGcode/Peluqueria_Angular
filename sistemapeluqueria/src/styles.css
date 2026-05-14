@@ -1,1 +1,57 @@
-/* You can add global styles to this file, and also import other style files */
+/* Fuentes: cuerpo legible + display elegante */
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700;800&family=Playfair+Display:wght@400;600;700&display=swap');
+
+/* ========== TAILWIND CSS - DEBE SER PRIMERO ==========*/
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Variables globales para tema azul-premium y tipografía accesible */
+:root {
+	--primary: #4361ee; /* electric sapphire / azul-premium */
+	--primary-600: #3f37c9;
+	--accent: #4cc9f0;
+	--text-color: #1f2937;
+	--muted: #6b7280;
+	--bg-paper: #ffffff;
+	--font-body: 'Inter', system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', Arial;
+	--font-heading: 'Playfair Display', serif;
+	--font-size-base: 18px; /* accesibilidad: 18px por defecto */
+	--line-height-base: 1.6;
+	--radius-md: 0.75rem;
+}
+
+@layer base {
+	html { font-size: 100%; -webkit-font-smoothing:antialiased; -moz-osx-font-smoothing:grayscale; }
+	body {
+		font-family: var(--font-body);
+		font-size: var(--font-size-base);
+		line-height: var(--line-height-base);
+		color: var(--text-color);
+		background-color: var(--bg-paper);
+	}
+	h1,h2,h3,h4,h5,h6 {
+		font-family: var(--font-heading);
+		color: var(--primary);
+		margin-top: 0;
+		margin-bottom: 0.5rem;
+		-webkit-font-smoothing:antialiased;
+	}
+	p {
+		font-size: 1.125rem; /* 18px */
+		color: var(--muted);
+		margin-bottom: 1rem;
+	}
+	a { color: var(--primary); text-decoration: none; }
+	a:hover { text-decoration: underline; }
+	/* Botones y tarjetas con acento azul-premium */
+	.btn-primary {
+		background: linear-gradient(90deg, var(--primary), var(--primary-600));
+		color: #fff;
+		border-radius: var(--radius-md);
+	}
+	.card {
+		border-radius: var(--radius-md);
+		box-shadow: 0 12px 30px rgba(67,97,238,0.08);
+	}
+}

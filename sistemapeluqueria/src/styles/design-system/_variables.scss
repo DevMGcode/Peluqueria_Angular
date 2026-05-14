@@ -1,0 +1,178 @@
+// ============================================================================
+// Design System Variables
+// Paleta PREMIUM FASHIONISTA - AZUL PREDOMINANTE con complementarios
+// ============================================================================
+
+// COLORES PRIMARIOS - NEON GLAMOUR PALETTE
+$neon-pink: #f72585;
+$raspberry-plum: #b5179e;
+$indigo-bloom: #7209b7;
+$ultrasonic-blue: #560bad;
+$true-azure: #480ca8;
+$vivid-royal: #3a0ca3;
+$bright-indigo: #3f37c9;
+$electric-sapphire: #4361ee;
+$blue-energy: #4895ef;
+$sky-aqua: #4cc9f0;
+
+// ALIASES PARA COMPATIBILIDAD CON CÓDIGO EXISTENTE
+$color-navy-deep: $ultrasonic-blue;
+$color-sapphire-dark: $vivid-royal;
+$color-sapphire-royal: $bright-indigo;
+$color-sapphire-electric: $electric-sapphire;
+$color-sapphire-bright: $sky-aqua;
+$color-gold-champagne: #f7e98e;
+$color-gold-deep: #d4af37;
+$color-platinum: #e8e8e8;
+$color-ruby-magenta: $neon-pink;
+$color-emerald: #50c878;
+
+// ALIASES PARA COMPATIBILIDAD
+$color-powder-petal: $color-ruby-magenta;
+$color-linen: $color-platinum;
+$color-soft-blush: $color-ruby-magenta;
+$color-petal-frost: $color-ruby-magenta;
+$color-light-cyan: $color-sapphire-royal;
+$color-mint-cream: $color-emerald;
+$color-parchment: $color-platinum;
+$color-alice-blue: $color-sapphire-royal;
+$color-pale-sky: $color-sapphire-electric;
+$color-powder-blue: $color-sapphire-bright;
+
+// GRADIENTES - NEON GLAMOUR
+$gradient-luxury: linear-gradient(135deg, #560bad 0%, #3a0ca3 25%, #3f37c9 50%, #4361ee 75%, #4cc9f0 100%);
+$gradient-luxury-dark: linear-gradient(135deg, #560bad 0%, #3f37c9 40%, #f72585 100%);
+$gradient-rose-to-mint: linear-gradient(135deg, #f72585 0%, #3f37c9 50%, #4cc9f0 100%);
+$gradient-powder-to-sky: linear-gradient(135deg, #560bad 0%, #3f37c9 50%, #4cc9f0 100%);
+
+// COLORES SECUNDARIOS
+$color-neutral-900: #171717;
+$color-neutral-800: #262626;
+$color-neutral-700: #404040;
+$color-neutral-600: #525252;
+$color-neutral-500: #737373;
+$color-neutral-400: #a3a3a3;
+$color-neutral-300: #d4d4d4;
+$color-neutral-200: #e5e5e5;
+$color-neutral-100: #f5f5f5;
+$color-neutral-50: #fafafa;
+
+// ACCESO (usar módulo)
+$color-success: #81c6ad;
+$color-warning: #f0b8c8;
+$color-error: #ef4444;
+$color-info: #99c1de;
+
+// ESPACIADO
+$space-xs: 0.25rem;
+$space-sm: 0.5rem;
+$space-md: 1rem;
+$space-lg: 1.5rem;
+$space-xl: 2rem;
+$space-2xl: 2.5rem;
+$space-3xl: 3rem;
+$space-4xl: 4rem;
+$space-5xl: 5rem;
+
+// BORDES
+$border-radius-sm: 0.5rem;
+$border-radius-md: 0.75rem;
+$border-radius-lg: 1rem;
+$border-radius-xl: 1.5rem;
+$border-radius-2xl: 2rem;
+$border-radius-3xl: 3rem;
+$border-radius-full: 9999px;
+
+// TIPOGRAFÍA
+$font-family-sans: 'Inter', system-ui, sans-serif;
+$font-family-display: 'Manrope', system-ui, sans-serif;
+$font-family-playfair: 'Playfair Display', serif;
+$font-family-cursive: 'Ephesis', cursive;
+
+// TAMAÑOS DE TIPOGRAFÍA
+$font-size-xs: 0.75rem;
+$font-size-sm: 0.875rem;
+$font-size-base: 1.125rem; // aumentamos a 18px para mejor legibilidad
+$font-size-lg: 1.25rem;   // 20px
+$font-size-xl: 1.375rem;  // 22px
+// Altura de línea base para mayor legibilidad (miopía / accesibilidad)
+$line-height-base: 1.6;
+$font-size-2xl: 1.5rem;
+$font-size-3xl: 1.875rem;
+$font-size-4xl: 2.25rem;
+$font-size-5xl: 3rem;
+$font-size-6xl: 3.75rem;
+$font-size-7xl: 4.5rem;
+
+// PESOS DE FUENTE
+$font-weight-thin: 100;
+$font-weight-extralight: 200;
+$font-weight-light: 300;
+$font-weight-normal: 400;
+$font-weight-medium: 500;
+$font-weight-semibold: 600;
+$font-weight-bold: 700;
+$font-weight-extrabold: 800;
+$font-weight-black: 900;
+
+// SOMBRAS
+$shadow-sm: 0 1px 3px 0 rgba(0, 0, 0, 0.1);
+$shadow-md: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+$shadow-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
+$shadow-xl: 0 20px 25px -5px rgba(0, 0, 0, 0.1);
+$shadow-2xl: 0 25px 50px -12px rgba(0, 0, 0, 0.25);
+
+// SOMBRAS DE LUJO - NEON GLAMOUR
+$shadow-luxury-sm: 0 4px 20px 0 rgba(67, 97, 238, 0.4);
+$shadow-luxury-md: 0 12px 40px 0 rgba(67, 97, 238, 0.5);
+$shadow-luxury-lg: 0 20px 60px 0 rgba(86, 10, 173, 0.5);
+$shadow-glow-pink: 0 0 30px rgba(247, 37, 133, 0.8);
+$shadow-glow-neon: 0 0 40px rgba(247, 37, 133, 0.6);
+
+// Z-INDEX
+$z-dropdown: 1000;
+$z-sticky: 1020;
+$z-fixed: 1030;
+$z-modal-backdrop: 1040;
+$z-modal: 1050;
+$z-popover: 1060;
+$z-tooltip: 1070;
+
+// TRANSICIONES
+$transition-fast: 150ms ease-in-out;
+$transition-base: 200ms ease-in-out;
+$transition-slow: 300ms ease-in-out;
+$transition-slowest: 500ms ease-in-out;
+
+// BREAKPOINTS
+$breakpoint-xs: 0px;
+$breakpoint-sm: 576px;
+$breakpoint-md: 768px;
+$breakpoint-lg: 992px;
+$breakpoint-xl: 1200px;
+$breakpoint-2xl: 1400px;
+
+// MIXIN PARA BREAKPOINTS
+@mixin respond-to($breakpoint) {
+  @if $breakpoint == 'sm' {
+    @media (min-width: $breakpoint-sm) {
+      @content;
+    }
+  } @else if $breakpoint == 'md' {
+    @media (min-width: $breakpoint-md) {
+      @content;
+    }
+  } @else if $breakpoint == 'lg' {
+    @media (min-width: $breakpoint-lg) {
+      @content;
+    }
+  } @else if $breakpoint == 'xl' {
+    @media (min-width: $breakpoint-xl) {
+      @content;
+    }
+  } @else if $breakpoint == 'xxl' {
+    @media (min-width: $breakpoint-2xl) {
+      @content;
+    }
+  }
+}

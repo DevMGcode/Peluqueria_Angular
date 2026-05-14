@@ -1,0 +1,289 @@
+// ============================================================================
+// Design System - Animations
+// Animaciones premium para el salón de belleza
+// ============================================================================
+
+@import './variables';
+
+// FADE IN
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+// FADE IN UP
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+// FADE IN DOWN
+@keyframes fadeInDown {
+  from {
+    opacity: 0;
+    transform: translateY(-20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+// FADE IN LEFT
+@keyframes fadeInLeft {
+  from {
+    opacity: 0;
+    transform: translateX(-20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+// FADE IN RIGHT
+@keyframes fadeInRight {
+  from {
+    opacity: 0;
+    transform: translateX(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+// SCALE IN
+@keyframes scaleIn {
+  from {
+    opacity: 0;
+    transform: scale(0.9);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+// SLIDE UP
+@keyframes slideUp {
+  from {
+    transform: translateY(40px);
+  }
+  to {
+    transform: translateY(0);
+  }
+}
+
+// SLIDE DOWN
+@keyframes slideDown {
+  from {
+    transform: translateY(-40px);
+  }
+  to {
+    transform: translateY(0);
+  }
+}
+
+// PULSE LUXURY
+@keyframes pulseLuxury {
+  0%, 100% {
+    box-shadow: 0 0 0 0 rgba($indigo-bloom, 0.7);
+  }
+  50% {
+    box-shadow: 0 0 0 10px rgba($indigo-bloom, 0);
+  }
+}
+
+// SHIMMER
+@keyframes shimmer {
+  0% {
+    background-position: -1200px 0;
+  }
+  100% {
+    background-position: 1200px 0;
+  }
+}
+
+// GLOW
+@keyframes glow {
+  0%, 100% {
+    opacity: 0.8;
+  }
+  50% {
+    opacity: 1;
+  }
+}
+
+// BOUNCE
+@keyframes bounce {
+  0%, 100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-10px);
+  }
+}
+
+// FLOAT
+@keyframes float {
+  0%, 100% {
+    transform: translateY(0px);
+  }
+  50% {
+    transform: translateY(-10px);
+  }
+}
+
+// ROTATE SLOW
+@keyframes rotateSlow {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+// SPIN
+@keyframes spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+// GRADIENT SHIFT
+@keyframes gradientShift {
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
+}
+
+// BLUR IN
+@keyframes blurIn {
+  from {
+    opacity: 0;
+    filter: blur(10px);
+  }
+  to {
+    opacity: 1;
+    filter: blur(0);
+  }
+}
+
+// POP IN
+@keyframes popIn {
+  0% {
+    opacity: 0;
+    transform: scale(0.5);
+  }
+  70% {
+    opacity: 1;
+    transform: scale(1.1);
+  }
+  100% {
+    transform: scale(1);
+  }
+}
+
+// CLASES DE UTILIDAD DE ANIMACIÓN
+.animate-fade-in {
+  animation: fadeIn $transition-slow;
+}
+
+.animate-fade-in-up {
+  animation: fadeInUp $transition-slow;
+}
+
+.animate-fade-in-down {
+  animation: fadeInDown $transition-slow;
+}
+
+.animate-fade-in-left {
+  animation: fadeInLeft $transition-slow;
+}
+
+.animate-fade-in-right {
+  animation: fadeInRight $transition-slow;
+}
+
+.animate-scale-in {
+  animation: scaleIn $transition-slow;
+}
+
+.animate-slide-up {
+  animation: slideUp $transition-slow;
+}
+
+.animate-slide-down {
+  animation: slideDown $transition-slow;
+}
+
+.animate-pulse {
+  animation: pulseLuxury 2s ease-in-out infinite;
+}
+
+.animate-shimmer {
+  background-size: 1200px 100%;
+  animation: shimmer 2s infinite;
+}
+
+.animate-glow {
+  animation: glow 2s ease-in-out infinite;
+}
+
+.animate-bounce {
+  animation: bounce 1s ease-in-out infinite;
+}
+
+.animate-float {
+  animation: float 3s ease-in-out infinite;
+}
+
+.animate-spin-slow {
+  animation: rotateSlow 3s linear infinite;
+}
+
+.animate-spin {
+  animation: spin 1s linear infinite;
+}
+
+// DELAYS PARA STAGGER
+.animate-delay-100 {
+  animation-delay: 100ms;
+}
+
+.animate-delay-200 {
+  animation-delay: 200ms;
+}
+
+.animate-delay-300 {
+  animation-delay: 300ms;
+}
+
+.animate-delay-400 {
+  animation-delay: 400ms;
+}
+
+.animate-delay-500 {
+  animation-delay: 500ms;
+}

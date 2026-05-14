@@ -7,20 +7,23 @@ import { Producto } from '../cuidados/cuidados.component';
   styleUrls: ['./ventana-emergente.component.css']
 })
 export class VentanaEmergenteComponent {
-  compraRealizada: boolean = false;
-  @Input() carrito: Producto[] = [];
-  @Output() cerrarVentana: EventEmitter<void> = new EventEmitter<void>();
-  @Output() reiniciarCarrito: EventEmitter<void> = new EventEmitter<void>();
+  compraRealizada = false;
+  isLoading = false;
+
+  @Input()  carrito: Producto[] = [];
+  @Output() cerrarVentana   = new EventEmitter<void>();
+  @Output() reiniciarCarrito = new EventEmitter<void>();
 
   calcularTotal(): number {
-    return this.carrito.reduce((sum, producto) => sum + producto.precio, 0);
+    return this.carrito.reduce((sum, p) => sum + p.precio, 0);
   }
 
   formatearPrecioProducto(precio: number): string {
-    return precio.toLocaleString('es-CO', {
-      minimumFractionDigits: 0,
-      maximumFractionDigits: 0
-    });
+    return precio.toLocaleString('es-CO', { minimumFractionDigits: 0, maximumFractionDigits: 0 });
+  }
+
+  close(): void {
+    this.cerrarVentana.emit();
   }
 
   cerrar(): void {
@@ -28,32 +31,13 @@ export class VentanaEmergenteComponent {
     this.cerrarVentana.emit();
   }
 
-  close(): void {
-    this.cerrarVentana.emit();
-  }
-
   realizarCompra(): void {
-    // Lógica de compra
-    this.simularProcesoDeCompra();
-  }
-
-  simularProcesoDeCompra(): void {
-    // Simulación de la lógica de compra con una demora ficticia de 2 segundos
+    this.isLoading = true;
     setTimeout(() => {
-      // Vaciar el carrito
+      this.isLoading = false;
       this.carrito = [];
-
-      // Mostrar mensaje de compra realizada
-      this.mostrarMensajeCompra();
-
-      // Cerrar la ventana después de la compra (puedes ajustar según tu flujo)
-      setTimeout(() => {
-        this.cerrar();
-      }, 3000); // Ocultar el mensaje después de 3 segundos (puedes ajustar el tiempo)
-    }, 2000); // Demora ficticia de 2 segundos (puedes ajustar el tiempo)
-  }
-
-  mostrarMensajeCompra(): void {
-    this.compraRealizada = true;
+      this.compraRealizada = true;
+      setTimeout(() => this.cerrar(), 3200);
+    }, 2000);
   }
 }

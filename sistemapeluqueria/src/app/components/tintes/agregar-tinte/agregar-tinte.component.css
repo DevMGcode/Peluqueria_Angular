@@ -1,7 +1,245 @@
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700;900&family=Poppins:wght@400;500;600;700&display=swap');
 
-.foto{
-  padding-top: 10%;
-  padding-bottom: 20%;
-  background-image: url(../../../../assets/img/fondo3.png);
-  background-image: cover;
+:host {
+  --gold:         #d4af37;
+  --gold-lt:      #f0d878;
+  --rose:         #c9748f;
+  --grad-glamour: linear-gradient(135deg, #f0d878 0%, #d4af37 40%, #c9748f 100%);
+  --bg:           #080604;
+  --border:       rgba(212,175,55,0.15);
+  --white:        #faf8f6;
+  display: block;
+  background: var(--bg);
+  min-height: 100vh;
+}
+
+/* ── Página ── */
+.at-page {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 3rem 1rem 4rem;
+  position: relative;
+  overflow: hidden;
+}
+
+/* ── Partículas decorativas ── */
+.at-particle {
+  position: absolute;
+  border-radius: 50%;
+  pointer-events: none;
+  animation: atFloat linear infinite;
+}
+.at-particle--1 {
+  width: 320px; height: 320px;
+  top: -80px; left: -80px;
+  background: radial-gradient(circle, rgba(212,175,55,0.07) 0%, transparent 70%);
+  animation-duration: 18s;
+}
+.at-particle--2 {
+  width: 250px; height: 250px;
+  bottom: -60px; right: -60px;
+  background: radial-gradient(circle, rgba(201,116,143,0.08) 0%, transparent 70%);
+  animation-duration: 14s;
+  animation-direction: reverse;
+}
+.at-particle--3 {
+  width: 180px; height: 180px;
+  top: 50%; left: 10%;
+  background: radial-gradient(circle, rgba(212,175,55,0.05) 0%, transparent 70%);
+  animation-duration: 22s;
+}
+@keyframes atFloat {
+  0%, 100% { transform: translateY(0) scale(1); }
+  50%       { transform: translateY(-20px) scale(1.05); }
+}
+
+/* ── Card ── */
+.at-card {
+  position: relative;
+  width: 100%;
+  max-width: 520px;
+  background: linear-gradient(160deg, rgba(255,255,255,0.06) 0%, rgba(255,255,255,0.02) 100%);
+  border: 1px solid var(--border);
+  border-radius: 24px;
+  padding: 2.8rem 2.4rem;
+  box-shadow: 0 30px 80px rgba(0,0,0,0.5), 0 0 0 1px rgba(212,175,55,0.06);
+  z-index: 1;
+}
+.at-card__glow {
+  position: absolute;
+  top: -80px; left: 50%; transform: translateX(-50%);
+  width: 300px; height: 300px;
+  border-radius: 50%;
+  background: radial-gradient(circle, rgba(212,175,55,0.1) 0%, transparent 65%);
+  pointer-events: none;
+}
+
+/* ── Header ── */
+.at-card__header {
+  text-align: center;
+  margin-bottom: 1.6rem;
+}
+.at-card__icon {
+  width: 60px; height: 60px;
+  border-radius: 16px;
+  background: var(--grad-glamour);
+  display: inline-flex; align-items: center; justify-content: center;
+  font-size: 1.4rem;
+  color: #15100a;
+  margin-bottom: 1rem;
+  box-shadow: 0 8px 24px rgba(212,175,55,0.35);
+}
+.at-card__title {
+  font-family: 'Playfair Display', serif;
+  font-size: clamp(1.5rem, 4vw, 2rem);
+  font-weight: 900;
+  background: var(--grad-glamour);
+  -webkit-background-clip: text; -webkit-text-fill-color: transparent;
+  background-clip: text;
+  margin: 0 0 5px;
+}
+.at-card__sub {
+  font-family: 'Poppins', sans-serif;
+  font-size: 0.72rem; font-weight: 500; letter-spacing: 1.5px;
+  color: rgba(250,248,246,0.3);
+  text-transform: uppercase;
+  margin: 0;
+}
+
+/* ── Divisor ── */
+.at-divider {
+  display: flex; align-items: center; gap: 10px;
+  margin-bottom: 1.8rem;
+}
+.at-divider__line {
+  flex: 1;
+  height: 1px;
+  background: var(--border);
+}
+.at-divider__icon {
+  font-size: 0.7rem;
+  background: var(--grad-glamour);
+  -webkit-background-clip: text; -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+/* ── Campos ── */
+.at-form {
+  display: flex;
+  flex-direction: column;
+  gap: 1.2rem;
+}
+.at-field {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+.at-label {
+  font-family: 'Poppins', sans-serif;
+  font-size: 0.72rem; font-weight: 700; letter-spacing: 1.5px;
+  text-transform: uppercase;
+  color: rgba(212,175,55,0.75);
+  display: flex; align-items: center; gap: 6px;
+}
+.at-label i { font-size: 0.65rem; }
+
+.at-input {
+  width: 100%;
+  background: rgba(255,255,255,0.04);
+  border: 1px solid rgba(212,175,55,0.18);
+  border-radius: 12px;
+  padding: 13px 16px;
+  font-family: 'Poppins', sans-serif;
+  font-size: 0.88rem;
+  color: var(--white);
+  outline: none;
+  transition: border-color .25s, box-shadow .25s, background .25s;
+  box-sizing: border-box;
+}
+.at-input::placeholder {
+  color: rgba(250,248,246,0.2);
+}
+.at-input:focus {
+  border-color: var(--gold);
+  background: rgba(212,175,55,0.06);
+  box-shadow: 0 0 0 3px rgba(212,175,55,0.1);
+}
+.at-input--error {
+  border-color: var(--rose) !important;
+  box-shadow: 0 0 0 3px rgba(201,116,143,0.12) !important;
+}
+
+.at-error {
+  font-family: 'Poppins', sans-serif;
+  font-size: 0.7rem; font-weight: 600;
+  color: var(--rose);
+  display: flex; align-items: center; gap: 5px;
+  letter-spacing: 0.3px;
+}
+.at-error i { font-size: 0.65rem; }
+
+/* ── Botones ── */
+.at-actions {
+  display: flex;
+  justify-content: space-between;
+  gap: 1rem;
+  margin-top: 0.6rem;
+}
+.at-btn {
+  display: inline-flex; align-items: center; gap: 8px;
+  font-family: 'Poppins', sans-serif;
+  font-size: 0.82rem; font-weight: 700;
+  padding: 12px 26px; border-radius: 999px;
+  border: none; cursor: pointer;
+  transition: transform .3s cubic-bezier(0.34,1.4,0.64,1), box-shadow .3s, background .25s;
+  white-space: nowrap;
+}
+.at-btn--back {
+  background: rgba(255,255,255,0.06);
+  border: 1px solid var(--border);
+  color: rgba(250,248,246,0.6);
+}
+.at-btn--back:hover {
+  background: rgba(255,255,255,0.1);
+  color: var(--white);
+  transform: translateX(-3px);
+}
+.at-btn--save {
+  flex: 1;
+  background: var(--grad-glamour);
+  color: #15100a;
+  box-shadow: 0 6px 20px rgba(212,175,55,0.3);
+  justify-content: center;
+}
+.at-btn--save:hover:not(:disabled) {
+  transform: translateY(-2px) scale(1.03);
+  box-shadow: 0 12px 28px rgba(212,175,55,0.45);
+}
+.at-btn--save:disabled {
+  opacity: 0.4;
+  cursor: not-allowed;
+  transform: none !important;
+  box-shadow: none !important;
+}
+
+/* ── Footer ── */
+.at-footer {
+  font-family: 'Poppins', sans-serif;
+  font-size: 0.62rem; font-weight: 500; letter-spacing: 1.5px;
+  text-transform: uppercase;
+  color: rgba(250,248,246,0.15);
+  text-align: center;
+  margin-top: 2rem;
+  display: flex; align-items: center; gap: 7px;
+}
+.at-footer i { color: var(--gold); font-size: 0.58rem; }
+
+/* ── Responsive ── */
+@media (max-width: 580px) {
+  .at-card { padding: 2rem 1.4rem; }
+  .at-actions { flex-direction: column; }
+  .at-btn--back { justify-content: center; }
 }

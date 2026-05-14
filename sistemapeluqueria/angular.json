@@ -33,6 +33,7 @@
             ],
             "styles": [
               "src/styles.css",
+              "src/styles.scss",
               "node_modules/bootstrap/dist/css/bootstrap.min.css",
               "node_modules/sweetalert2/dist/sweetalert2.min.css"
             ],
@@ -52,8 +53,8 @@
                 },
                 {
                   "type": "anyComponentStyle",
-                  "maximumWarning": "2kb",
-                  "maximumError": "4kb"
+                  "maximumWarning": "16kb",
+                  "maximumError": "32kb"
                 }
               ],
               "fileReplacements": [
@@ -111,9 +112,16 @@
           }
         },
         "deploy": {
-          "builder": "angular-cli-ghpages:deploy"
+          "builder": "angular-cli-ghpages:deploy",
+          "options": {
+            "baseHref": "/Peluqueria_Angular/",
+            "cname": false
+          }
         }
       }
     }
+  },
+  "cli": {
+    "analytics": false
   }
 }

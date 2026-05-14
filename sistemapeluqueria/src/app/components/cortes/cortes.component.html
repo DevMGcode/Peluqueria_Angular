@@ -1,62 +1,110 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Document</title>
-</head>
-<body>
-
-<!-- cortes.component.html -->
+<!-- ══════════════════════════════════════════════════════════════
+     CORTES PAGE — mismo contenido, paleta glamour
+══════════════════════════════════════════════════════════════ -->
+<div class="ns-cursor-dot"></div>
 <app-barradenavegacion></app-barradenavegacion>
 
+<!-- ── Header ── -->
+<section class="ct-header">
+  <div class="ct-header__bg" aria-hidden="true"></div>
+  <div class="ct-header__glow ct-header__glow--1" aria-hidden="true"></div>
+  <div class="ct-header__glow ct-header__glow--2" aria-hidden="true"></div>
 
+  <div class="ct-header__inner">
+    <span class="ct-header__eyebrow"><i class="fas fa-cut"></i> Servicios de Corte</span>
+    <h1 class="ct-header__title">Para Un <span class="ct-header__accent">Cambio De Look</span></h1>
+    <p class="ct-header__sub">
+      Déjanos conocer tu esencia y así saber qué estilo situamos en tu nueva versión.<br>
+      Te presentamos nuestros <strong>3 looks más solicitados</strong>
+    </p>
+  </div>
+</section>
 
-<div class="container d-flex justify-content-center align-items-center flex-column mt-5 ">
-
-    <div class="h1 fw-bold" style="font-size: 3rem;"> Para Un Cambio De Look </div>
-  <p> Dejanos conocer tu esencia y asi saber que estilo situamos en tu nueva version a la que deseas llegar <br>
-      te presentamos nuestros 3 looks mas solicitados </p>
-
-    <div class="row  ">
-      <div class=" imagen1 col-4 d-flex justify-content-center align-items-center flex-column " >
-        <img src="assets/img/corto.jpg" alt="">
-        <div class="texto text-center"><p> sencillo,rebelde pero elegante</p>
-        <p>  Corte Corto </p></div>
-      </div>
-
-      <div class="imagen2 col-4 d-flex justify-content-center align-items-center flex-column ">
-        <img src="assets/img/mediano.jpg" alt="">
-        <div class="texto2 text-center"><p> con clase y juvenil</p>
-        <p>  Corte Mediano </p></div>
-      </div>
-
-      <div class="imagen3 col-4 d-flex justify-content-center align-items-center flex-column ">
-        <img src="assets/img/puntas.jpg" alt="">
-        <div class="texto3 text-center"><p> cuidado y renovacion</p>
-        <p>  Corte Puntas </p></div>
-      </div>
-
-
-
-    </div>
-
-
+<!-- ── Ticker ── -->
+<div class="ct-ticker" aria-hidden="true">
+  <div class="ct-ticker__track">
+    <span class="ct-ticker__item"><i class="fas fa-star"></i> Corte Corto</span>
+    <span class="ct-ticker__item"><i class="fas fa-star"></i> Corte Mediano</span>
+    <span class="ct-ticker__item"><i class="fas fa-star"></i> Corte Puntas</span>
+    <span class="ct-ticker__item"><i class="fas fa-star"></i> Estilo Premium</span>
+    <span class="ct-ticker__item"><i class="fas fa-star"></i> Cambio de Look</span>
+    <span class="ct-ticker__item"><i class="fas fa-star"></i> Tijeras Maestras</span>
+    <span class="ct-ticker__item"><i class="fas fa-star"></i> Arte Capilar</span>
+    <span class="ct-ticker__item"><i class="fas fa-star"></i> Corte Corto</span>
+    <span class="ct-ticker__item"><i class="fas fa-star"></i> Corte Mediano</span>
+    <span class="ct-ticker__item"><i class="fas fa-star"></i> Corte Puntas</span>
+    <span class="ct-ticker__item"><i class="fas fa-star"></i> Estilo Premium</span>
+    <span class="ct-ticker__item"><i class="fas fa-star"></i> Cambio de Look</span>
+    <span class="ct-ticker__item"><i class="fas fa-star"></i> Tijeras Maestras</span>
+    <span class="ct-ticker__item"><i class="fas fa-star"></i> Arte Capilar</span>
+    <span class="ct-ticker__item"><i class="fas fa-star"></i> Corte Corto</span>
+    <span class="ct-ticker__item"><i class="fas fa-star"></i> Corte Mediano</span>
+    <span class="ct-ticker__item"><i class="fas fa-star"></i> Corte Puntas</span>
+    <span class="ct-ticker__item"><i class="fas fa-star"></i> Estilo Premium</span>
+    <span class="ct-ticker__item"><i class="fas fa-star"></i> Cambio de Look</span>
+    <span class="ct-ticker__item"><i class="fas fa-star"></i> Tijeras Maestras</span>
+    <span class="ct-ticker__item"><i class="fas fa-star"></i> Arte Capilar</span>
+    <span class="ct-ticker__item"><i class="fas fa-star"></i> Corte Corto</span>
+    <span class="ct-ticker__item"><i class="fas fa-star"></i> Corte Mediano</span>
+    <span class="ct-ticker__item"><i class="fas fa-star"></i> Corte Puntas</span>
+    <span class="ct-ticker__item"><i class="fas fa-star"></i> Estilo Premium</span>
+    <span class="ct-ticker__item"><i class="fas fa-star"></i> Cambio de Look</span>
+    <span class="ct-ticker__item"><i class="fas fa-star"></i> Tijeras Maestras</span>
+    <span class="ct-ticker__item"><i class="fas fa-star"></i> Arte Capilar</span>
+  </div>
 </div>
 
+<!-- ── Cards de cortes ── -->
+<section class="ct-cards">
+  <div class="ct-cards__inner">
 
+    <!-- Corte Corto -->
+    <div class="ct-card ns-reveal">
+      <div class="ct-card__img-wrap">
+        <img src="assets/img/corto.jpg" alt="Corte Corto">
+        <div class="ct-card__num" aria-hidden="true">01</div>
+      </div>
+      <div class="ct-card__info">
+        <h3 class="ct-card__name">Corte Corto</h3>
+        <p class="ct-card__desc">Sencillo, rebelde pero elegante</p>
+      </div>
+    </div>
 
-<br>
-<br>
+    <!-- Corte Mediano -->
+    <div class="ct-card ns-reveal" style="transition-delay:.12s">
+      <div class="ct-card__img-wrap">
+        <img src="assets/img/mediano.jpg" alt="Corte Mediano">
+        <div class="ct-card__num" aria-hidden="true">02</div>
+      </div>
+      <div class="ct-card__info">
+        <h3 class="ct-card__name">Corte Mediano</h3>
+        <p class="ct-card__desc">Con clase y juvenil</p>
+      </div>
+    </div>
 
+    <!-- Corte Puntas -->
+    <div class="ct-card ns-reveal" style="transition-delay:.24s">
+      <div class="ct-card__img-wrap">
+        <img src="assets/img/puntas.jpg" alt="Corte Puntas">
+        <div class="ct-card__num" aria-hidden="true">03</div>
+      </div>
+      <div class="ct-card__info">
+        <h3 class="ct-card__name">Corte Puntas</h3>
+        <p class="ct-card__desc">Cuidado y renovación</p>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- ── CTA ── -->
+<section class="ct-cta ns-reveal">
+  <div class="ct-cta__glow" aria-hidden="true"></div>
+  <h2 class="ct-cta__title">¿Lista para tu cambio?</h2>
+  <p class="ct-cta__sub">Agenda tu cita y déjanos transformar tu look</p>
+  <a [routerLink]="['/']" fragment="booking" class="ct-cta__btn">
+    <i class="fas fa-calendar-check"></i> Reservar Mi Cita
+  </a>
+</section>
 
 <app-piedepagina></app-piedepagina>
-
-
-
-
-
-
-</body>
-</html>

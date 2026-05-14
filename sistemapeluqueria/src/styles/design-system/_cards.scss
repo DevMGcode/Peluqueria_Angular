@@ -1,0 +1,211 @@
+// ============================================================================
+// Design System - Cards
+// Estilos para tarjetas y contenedores premium
+// ============================================================================
+
+@import './variables';
+
+// CARD BASE
+.card-luxury {
+  background: white;
+  border-radius: $border-radius-2xl;
+  padding: $space-2xl;
+  
+  border: 1px solid rgba($color-soft-blush, 0.3);
+  box-shadow: $shadow-md;
+  
+  transition: all $transition-base;
+  
+  &:hover {
+    box-shadow: $shadow-luxury-md;
+    transform: translateY(-4px);
+    border-color: rgba($color-soft-blush, 0.6);
+  }
+}
+
+// CARD GRADIENT
+.card-gradient {
+  @extend .card-luxury;
+  
+  background: $gradient-luxury;
+  color: #ffffff;
+  border: none;
+  box-shadow: $shadow-luxury-lg;
+  
+  &:hover {
+    box-shadow: $shadow-luxury-lg;
+    transform: translateY(-4px);
+  }
+}
+
+// CARD GLASS (Glassmorphism)
+.card-glass {
+  background: rgba(255, 255, 255, 0.7);
+  backdrop-filter: blur(10px);
+  border-radius: $border-radius-2xl;
+  padding: $space-2xl;
+  
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+  
+  transition: all $transition-base;
+  
+  &:hover {
+    background: rgba(255, 255, 255, 0.9);
+    box-shadow: 0 8px 40px rgba(0, 0, 0, 0.15);
+  }
+}
+
+// CARD DARK
+.card-dark {
+  background: $color-neutral-900;
+  color: white;
+  border-radius: $border-radius-2xl;
+  padding: $space-2xl;
+  
+  border: 1px solid rgba($indigo-bloom, 0.2);
+  box-shadow: 0 20px 50px rgba(0, 0, 0, 0.5);
+  
+  transition: all $transition-base;
+  
+  &:hover {
+    border-color: rgba($indigo-bloom, 0.4);
+    box-shadow: 0 20px 60px rgba($indigo-bloom, 0.3);
+  }
+}
+
+// FEATURE CARD
+.feature-card {
+  text-align: center;
+  padding: $space-2xl $space-xl;
+  
+  .feature-icon {
+    width: 3rem;
+    height: 3rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0 auto $space-lg;
+    
+    background: linear-gradient(135deg, rgba($color-soft-blush, 0.3), rgba($color-mint-cream, 0.3));
+    border-radius: $border-radius-full;
+    
+    svg {
+      width: 1.5rem;
+      height: 1.5rem;
+      color: $color-powder-petal;
+    }
+  }
+  
+  .feature-title {
+    font-family: $font-family-display;
+    font-size: $font-size-lg;
+    font-weight: $font-weight-bold;
+    margin-bottom: $space-md;
+    color: $color-neutral-900;
+  }
+  
+  .feature-description {
+    font-size: $font-size-sm;
+    color: $color-neutral-600;
+    line-height: 1.6;
+  }
+}
+
+// PRICE CARD (Para servicios)
+.price-card {
+  @extend .card-luxury;
+  
+  text-align: center;
+  position: relative;
+  overflow: hidden;
+  
+  &::before {
+    content: '';
+    position: absolute;
+    top: -50%;
+    right: -50%;
+    width: 200%;
+    height: 200%;
+    background: radial-gradient(circle, rgba($indigo-bloom, 0.1) 0%, transparent 70%);
+    pointer-events: none;
+  }
+  
+  .badge {
+    display: inline-block;
+    background: $gradient-luxury;
+    color: white;
+    padding: $space-sm $space-lg;
+    border-radius: $border-radius-full;
+    font-size: $font-size-xs;
+    font-weight: $font-weight-bold;
+    text-transform: uppercase;
+    margin-bottom: $space-lg;
+  }
+  
+  .price-amount {
+    font-family: $font-family-display;
+    font-size: $font-size-5xl;
+    font-weight: $font-weight-bold;
+    background: $gradient-luxury;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    margin-bottom: $space-md;
+  }
+  
+  .price-period {
+    font-size: $font-size-sm;
+    color: $color-neutral-600;
+    margin-bottom: $space-2xl;
+  }
+  
+  .price-features {
+    list-style: none;
+    padding: 0;
+    margin: $space-2xl 0;
+    text-align: left;
+    
+    li {
+      padding: $space-md 0;
+      padding-left: $space-2xl;
+      color: $color-neutral-700;
+      position: relative;
+      font-size: $font-size-sm;
+      
+      &::before {
+        content: '✓';
+        position: absolute;
+        left: 0;
+        color: $indigo-bloom;
+        font-weight: bold;
+      }
+    }
+  }
+}
+
+// STATUS BADGE (Dentro de cards)
+.badge-status {
+  display: inline-flex;
+  align-items: center;
+  gap: $space-sm;
+  padding: $space-sm $space-lg;
+  border-radius: $border-radius-full;
+  font-size: $font-size-xs;
+  font-weight: $font-weight-semibold;
+  
+  &.status-active {
+    background: rgba($color-success, 0.1);
+    color: $color-success;
+  }
+  
+  &.status-pending {
+    background: rgba($color-warning, 0.1);
+    color: $color-warning;
+  }
+  
+  &.status-inactive {
+    background: rgba($color-error, 0.1);
+    color: $color-error;
+  }
+}

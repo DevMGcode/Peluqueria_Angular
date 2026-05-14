@@ -1,17 +1,147 @@
-<footer>
-<div class="info2">
-  <p class=" text-white">Siguenos en:<p>
-</div>
+<!-- ══════════════════════════════════════════════════════════════
+     FOOTER PREMIUM — NEW STYLES LUXURY SALON
+══════════════════════════════════════════════════════════════ -->
+<footer class="ft">
 
+  <!-- Glows de fondo -->
+  <div class="ft__glow ft__glow--1" aria-hidden="true"></div>
+  <div class="ft__glow ft__glow--2" aria-hidden="true"></div>
 
-<div class="row col-12 mt-0">
-  <div class="col-6 offset-4 icon5 bg-azul mt-4 p-5 footer-pagina">
-  <a href="https://es-la.facebook.com/nike/"><img class="social-icon"src="assets/img/whatsapp.png" alt=""></a>
+  <!-- Shimmer superior -->
+  <div class="ft__shimmer-top" aria-hidden="true"></div>
 
-  <a href="https://es-la.facebook.com/nike/"><img class="social-icon" src="assets/img/facebook.png" alt=""></a>
-  <a href="https://twitter.com/adidasco?lang=es"><img class="social-icon" src="assets/img/youtube.png" alt=""></a>
-  <a href="https://www.instagram.com/reebokcolombia/?hl=es-la"><img class="social-icon" src="assets/img/instagram.png" alt=""></a>
-  <a href="videos.html"><img src="img/youtube.png" alt=""></a>
-</div>
-</div>
+  <div class="ft__inner">
+
+    <!-- ══ FILA PRINCIPAL ══ -->
+    <div class="ft__grid">
+
+      <!-- Col 1: Marca -->
+      <div class="ft__brand">
+        <a routerLink="/" class="ft__logo-wrap">
+          <img src="assets/img/logo_styles.png" alt="New Styles" class="ft__logo-img">
+          <div class="ft__logo-text">
+            <span class="ft__logo-name">New Styles</span>
+            <span class="ft__logo-sub">Luxury Salon</span>
+          </div>
+        </a>
+        <p class="ft__brand-desc">
+          Tu salón de belleza premium en Bogotá. Donde el lujo, la elegancia y el profesionalismo se convierten en arte.
+        </p>
+        <!-- Horario -->
+        <div class="ft__schedule">
+          <span class="ft__schedule-dot"></span>
+          <span>Lun – Sáb &nbsp;|&nbsp; 9:00 am – 7:00 pm</span>
+        </div>
+        <!-- Redes -->
+        <div class="ft__socials">
+          <a href="https://facebook.com" target="_blank" rel="noopener" class="ft__social" aria-label="Facebook">
+            <i class="fab fa-facebook-f"></i>
+          </a>
+          <a href="https://instagram.com" target="_blank" rel="noopener" class="ft__social" aria-label="Instagram">
+            <i class="fab fa-instagram"></i>
+          </a>
+          <a href="https://wa.me/573001234567" target="_blank" rel="noopener" class="ft__social" aria-label="WhatsApp">
+            <i class="fab fa-whatsapp"></i>
+          </a>
+          <a href="https://youtube.com" target="_blank" rel="noopener" class="ft__social" aria-label="YouTube">
+            <i class="fab fa-youtube"></i>
+          </a>
+          <a href="https://tiktok.com" target="_blank" rel="noopener" class="ft__social" aria-label="TikTok">
+            <i class="fab fa-tiktok"></i>
+          </a>
+        </div>
+      </div>
+
+      <!-- Col 2: Servicios -->
+      <div class="ft__col">
+        <h4 class="ft__col-title">Servicios</h4>
+        <ul class="ft__links">
+          <li><a routerLink="/peinados" class="ft__link"><i class="fas fa-wind"></i> Peinados</a></li>
+          <li><a routerLink="/cortes"   class="ft__link"><i class="fas fa-cut"></i> Cortes</a></li>
+          <li><a routerLink="/tintes"   class="ft__link"><i class="fas fa-palette"></i> Tintes & Color</a></li>
+          <li><a routerLink="/cuidados" class="ft__link"><i class="fas fa-spa"></i> Tratamientos</a></li>
+          <li><a routerLink="/maquillaje" class="ft__link"><i class="fas fa-eye"></i> Maquillaje</a></li>
+        </ul>
+      </div>
+
+      <!-- Col 3: Contacto -->
+      <div class="ft__col">
+        <h4 class="ft__col-title">Contacto</h4>
+        <ul class="ft__contact-list">
+          <li class="ft__contact-item">
+            <span class="ft__contact-icon"><i class="fas fa-map-marker-alt"></i></span>
+            <span>Bogotá, Colombia</span>
+          </li>
+          <li class="ft__contact-item">
+            <span class="ft__contact-icon"><i class="fas fa-phone"></i></span>
+            <a href="tel:+573001234567" class="ft__contact-link">+57 (300) 123-4567</a>
+          </li>
+          <li class="ft__contact-item">
+            <span class="ft__contact-icon"><i class="fas fa-envelope"></i></span>
+            <a href="mailto:info@newstyles.com" class="ft__contact-link">info@newstyles.com</a>
+          </li>
+          <li class="ft__contact-item">
+            <span class="ft__contact-icon"><i class="fas fa-clock"></i></span>
+            <span>Lun – Sáb, 9am – 7pm</span>
+          </li>
+        </ul>
+      </div>
+
+      <!-- Col 4: Newsletter -->
+      <div class="ft__col ft__col--news">
+        <h4 class="ft__col-title">Newsletter</h4>
+        <p class="ft__news-desc">Recibe tendencias y promociones exclusivas directo en tu correo.</p>
+
+        <!-- Formulario activo -->
+        <div class="ft__news-form" *ngIf="!newsSuccess">
+          <input
+            class="ft__news-input"
+            [class.ft__news-input--shake]="newsShake"
+            type="email"
+            placeholder="Tu correo electrónico"
+            [(ngModel)]="newsEmail"
+            (keyup.enter)="suscribirse()" />
+          <button class="ft__news-btn" type="button" (click)="suscribirse()" [disabled]="newsLoading" aria-label="Suscribirse">
+            <i class="fas fa-spinner fa-spin" *ngIf="newsLoading"></i>
+            <i class="fas fa-paper-plane"    *ngIf="!newsLoading"></i>
+          </button>
+        </div>
+
+        <!-- Estado de éxito -->
+        <div class="ft__news-success" *ngIf="newsSuccess">
+          <div class="ft__news-success__icon"><i class="fas fa-check"></i></div>
+          <p class="ft__news-success__title">¡Ya eres parte de New Styles!</p>
+          <p class="ft__news-success__sub">Pronto recibirás ofertas exclusivas en tu correo.</p>
+        </div>
+
+        <!-- Badge premium -->
+        <div class="ft__badge">
+          <i class="fas fa-crown"></i>
+          <span>Experiencia Premium desde 2015</span>
+        </div>
+      </div>
+
+    </div>
+
+    <!-- ══ DIVISOR ══ -->
+    <div class="ft__divider" aria-hidden="true"></div>
+
+    <!-- ══ BARRA INFERIOR ══ -->
+    <div class="ft__bottom">
+      <p class="ft__copy">
+        <i class="fas fa-copyright"></i> 2026 New Styles Luxury Salon. Todos los derechos reservados.
+      </p>
+      <div class="ft__bottom-links">
+        <a href="#" class="ft__bottom-link">Términos</a>
+        <span class="ft__dot" aria-hidden="true">·</span>
+        <a href="#" class="ft__bottom-link">Privacidad</a>
+        <span class="ft__dot" aria-hidden="true">·</span>
+        <a href="#" class="ft__bottom-link">Cookies</a>
+      </div>
+      <p class="ft__made">
+        Diseñado con <i class="fas fa-heart"></i> para tu belleza
+      </p>
+    </div>
+
+  </div>
 </footer>

@@ -36,44 +36,47 @@ export class AgregarTinteComponent implements OnInit {
 
   /* metodo de agregar */
   manipulacion_data_tinte() {
-    console.log(this.tinteForm);
-    /* console.log(this.tinteForm.get('tinteColor')?.value); */
-
     const TINTE: Tinte = {
-      color: this.tinteForm.get('tinteColor')?.value,
-      numero: this.tinteForm.get('tinteNumero')?.value,
+      color:     this.tinteForm.get('tinteColor')?.value,
+      numero:    this.tinteForm.get('tinteNumero')?.value,
       categoria: this.tinteForm.get('tinteCategoria')?.value,
     };
 
-    console.log(TINTE);
-
     if (this.id != null) {
-      //editar tinte
       this._tinteService.putTinte(this.id, TINTE).subscribe(
-        (data) => {
-          this.router.navigate(['listar-tinte']);
+        () => {
           Swal.fire({
             icon: 'success',
-            title: 'tinte ha sido actualizado!',
-          });
+            title: '¡Tinte actualizado!',
+            html: `<span style="font-family:'Poppins',sans-serif;font-size:0.88rem;color:rgba(250,248,246,0.65)">Los cambios han sido guardados correctamente</span>`,
+            background: '#0e0b08',
+            color: '#faf8f6',
+            iconColor: '#d4af37',
+            confirmButtonColor: '#d4af37',
+            timer: 2400,
+            showConfirmButton: false,
+            timerProgressBar: true
+          }).then(() => this.router.navigate(['listar-tinte']));
         },
-        (error) => {
-          console.log(error);
-        }
+        error => console.log(error)
       );
     } else {
-      // creamos tinte
       this._tinteService.postTintes(TINTE).subscribe(
-        (data) => {
-          this.router.navigate(['listar-tinte']);
+        () => {
           Swal.fire({
             icon: 'success',
-            title: 'tinte agregado!',
-          });
+            title: '¡Tinte agregado!',
+            html: `<span style="font-family:'Poppins',sans-serif;font-size:0.88rem;color:rgba(250,248,246,0.65)">El tinte ha sido registrado en el catálogo</span>`,
+            background: '#0e0b08',
+            color: '#faf8f6',
+            iconColor: '#d4af37',
+            confirmButtonColor: '#d4af37',
+            timer: 2400,
+            showConfirmButton: false,
+            timerProgressBar: true
+          }).then(() => this.router.navigate(['listar-tinte']));
         },
-        (error) => {
-          console.log(error);
-        }
+        error => console.log(error)
       );
     }
   }

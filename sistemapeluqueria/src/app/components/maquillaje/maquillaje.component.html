@@ -1,36 +1,107 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Document</title>
-</head>
-<body>
- <!-- cortes.component.html -->
+<div class="ns-cursor-dot"></div>
 <app-barradenavegacion></app-barradenavegacion>
 
+<!-- Header -->
+<section class="mq-header">
+  <div class="mq-header__bg" aria-hidden="true"></div>
+  <div class="mq-header__glow mq-header__glow--1" aria-hidden="true"></div>
+  <div class="mq-header__glow mq-header__glow--2" aria-hidden="true"></div>
+  <div class="mq-header__inner">
+    <span class="mq-header__eyebrow"><i class="fas fa-magic"></i> Arte & Belleza</span>
+    <h1 class="mq-header__title">
+      Arte en<br><span class="mq-header__accent">Maquillaje</span>
+    </h1>
+    <p class="mq-header__sub">Cada mirada, una obra maestra. Nuestros estilos están diseñados para resaltar tu belleza única en cada ocasión especial.</p>
+  </div>
+</section>
 
+<!-- Ticker -->
+<div class="mq-ticker" aria-hidden="true">
+  <div class="mq-ticker__track">
+    <span class="mq-ticker__item"><i class="fas fa-star"></i> Glamour</span>
+    <span class="mq-ticker__item"><i class="fas fa-star"></i> Natural</span>
+    <span class="mq-ticker__item"><i class="fas fa-star"></i> Fiesta</span>
+    <span class="mq-ticker__item"><i class="fas fa-star"></i> Boda</span>
+    <span class="mq-ticker__item"><i class="fas fa-star"></i> Arte</span>
+    <span class="mq-ticker__item"><i class="fas fa-star"></i> Premium</span>
+    <span class="mq-ticker__item"><i class="fas fa-star"></i> Elegancia</span>
+    <span class="mq-ticker__item"><i class="fas fa-star"></i> Glamour</span>
+    <span class="mq-ticker__item"><i class="fas fa-star"></i> Natural</span>
+    <span class="mq-ticker__item"><i class="fas fa-star"></i> Fiesta</span>
+    <span class="mq-ticker__item"><i class="fas fa-star"></i> Boda</span>
+    <span class="mq-ticker__item"><i class="fas fa-star"></i> Arte</span>
+    <span class="mq-ticker__item"><i class="fas fa-star"></i> Premium</span>
+    <span class="mq-ticker__item"><i class="fas fa-star"></i> Elegancia</span>
+    <span class="mq-ticker__item"><i class="fas fa-star"></i> Glamour</span>
+    <span class="mq-ticker__item"><i class="fas fa-star"></i> Natural</span>
+    <span class="mq-ticker__item"><i class="fas fa-star"></i> Fiesta</span>
+    <span class="mq-ticker__item"><i class="fas fa-star"></i> Boda</span>
+    <span class="mq-ticker__item"><i class="fas fa-star"></i> Arte</span>
+    <span class="mq-ticker__item"><i class="fas fa-star"></i> Premium</span>
+    <span class="mq-ticker__item"><i class="fas fa-star"></i> Elegancia</span>
+    <span class="mq-ticker__item"><i class="fas fa-star"></i> Glamour</span>
+    <span class="mq-ticker__item"><i class="fas fa-star"></i> Natural</span>
+    <span class="mq-ticker__item"><i class="fas fa-star"></i> Fiesta</span>
+    <span class="mq-ticker__item"><i class="fas fa-star"></i> Boda</span>
+    <span class="mq-ticker__item"><i class="fas fa-star"></i> Arte</span>
+    <span class="mq-ticker__item"><i class="fas fa-star"></i> Premium</span>
+    <span class="mq-ticker__item"><i class="fas fa-star"></i> Elegancia</span>
+  </div>
+</div>
 
-  <div class="container-fluid d-flex text-center justify-content-between">
-    <div class="row">
-      <div class="col-4 "><img src="assets/img/fiestero.png" width="80%" alt=""></div>
-      <div class="img2 col-4 offset-4 align-right"> <img src="assets/img/natural.jpg" width="80%" alt=""></div>
-      <div class="col-4 "><img src="assets/img/Angel.jpg" width="80%" alt=""></div>
-      <div class="img2 col-4 offset-4 align-self-end"> <img src="assets/img/boda.jpg" width="80%" alt=""></div>
+<!-- Mosaico: técnica original conservada — fondo4.jpg visible en el centro -->
+<div class="mq-mosaic">
 
-
+  <!-- Columna izquierda: fiestero + Angel -->
+  <div class="mq-mosaic__col">
+    <div class="mq-mosaic__item ns-reveal">
+      <img src="assets/img/fiestero.png" alt="Look Fiestero">
+      <div class="mq-mosaic__overlay">
+        <span class="mq-mosaic__badge">Noche</span>
+        <h3 class="mq-mosaic__name">Look Fiestero</h3>
+        <p class="mq-mosaic__sub">Drama · Color · Intensidad</p>
+      </div>
     </div>
-
+    <div class="mq-mosaic__item ns-reveal" style="transition-delay:.12s">
+      <img src="assets/img/Angel.jpg" alt="Look Ángel">
+      <div class="mq-mosaic__overlay">
+        <span class="mq-mosaic__badge">Editorial</span>
+        <h3 class="mq-mosaic__name">Look Ángel</h3>
+        <p class="mq-mosaic__sub">Luminoso · Etéreo · Mágico</p>
+      </div>
+    </div>
   </div>
 
+  <!-- Centro: fondo4.jpg como fondo se muestra aquí -->
+  <div class="mq-mosaic__center">
+    <div class="mq-mosaic__center-veil"></div>
+    <div class="mq-mosaic__center-content">
+      <span class="mq-mosaic__center-line"></span>
+      <p class="mq-mosaic__center-label">Arte en Maquillaje</p>
+      <span class="mq-mosaic__center-line"></span>
+    </div>
+  </div>
 
+  <!-- Columna derecha: natural + boda -->
+  <div class="mq-mosaic__col">
+    <div class="mq-mosaic__item ns-reveal" style="transition-delay:.08s">
+      <img src="assets/img/natural.jpg" alt="Look Natural">
+      <div class="mq-mosaic__overlay">
+        <span class="mq-mosaic__badge">Día</span>
+        <h3 class="mq-mosaic__name">Look Natural</h3>
+        <p class="mq-mosaic__sub">Frescura · Sencillez · Elegancia</p>
+      </div>
+    </div>
+    <div class="mq-mosaic__item ns-reveal" style="transition-delay:.2s">
+      <img src="assets/img/boda.jpg" alt="Look de Boda">
+      <div class="mq-mosaic__overlay">
+        <span class="mq-mosaic__badge">Nupcial</span>
+        <h3 class="mq-mosaic__name">Look de Boda</h3>
+        <p class="mq-mosaic__sub">Romance · Sofisticación · Duración</p>
+      </div>
+    </div>
+  </div>
 
-  <footer >
-    <app-piedepagina></app-piedepagina>
-  </footer>
+</div>
 
-
-
-</body>
-</html>
+<app-piedepagina></app-piedepagina>

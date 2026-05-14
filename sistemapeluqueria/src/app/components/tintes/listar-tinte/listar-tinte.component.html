@@ -1,66 +1,149 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Document</title>
-</head>
-<body>
+<!-- Wrapper principal -->
+<div class="lt-page">
 
-  <div class="container-fluid d-flex mt-4">
-    <div class="d-flex col-12 row my-4">
-      <div class="col-6">
-
-        <div class="col-8  d-flex justify-content-between align-content-center">
-          <p class="fw-bold h4 text-white "> Schwarzkopf IGORA ROYAL  </p>
-            <button class="btn btn-warning" [routerLink]="['/agregar-tinte']" routerLinkActive="router-link-active" >Agregar Tinte</button>
-        </div>
-
-        <div class="col-8 mt-4">
-          <table class="table table-info table-hover">
-            <thead>
-              <tr>
-                <th scope="col">COLOR</th>
-                <th scope="col">NUMERO</th>
-                <th scope="col">CATEGORIA</th>
-                <th scope="col">ACCIONES</th>
-              </tr>
-            </thead>
-            <tbody >
-              <tr *ngFor="let tinte of listadoTintes" >
-                <!-- <th scope="row">1</th> -->
-                <td>{{tinte.color}}</td>
-                <td>{{tinte.numero}}</td>
-                <td>{{tinte.categoria}}</td>
-
-                <td><i class="fas fa-pencil-alt" [routerLink]="['/editar-tinte',tinte._id]" routerLinkActive="router-link-active" ></i>
-                    <i class="fas fa-trash-alt"(click)="eliminarTinte(tinte._id)"></i></td>
-              </tr>
-            </tbody>
-          </table>
-        </div>
-        </div>
-        <div class="col-6 ">
-          <img src="../../../../assets/img/CartaIGORA.png" width="120%" alt="">
-        </div>
-      </div>
-
+  <!-- ── Header ── -->
+  <div class="lt-header">
+    <div class="lt-header__left">
+      <button class="lt-btn lt-btn--back" routerLink="/tintes">
+        <i class="fas fa-arrow-left"></i> Tintes
+      </button>
     </div>
 
+    <div class="lt-header__center">
+      <span class="lt-eyebrow"><i class="fas fa-palette"></i> Gestión de Inventario</span>
+      <h1 class="lt-title">Schwarzkopf <span class="lt-title__accent">IGORA Royal</span></h1>
+      <p class="lt-subtitle">Catálogo de tintes profesionales</p>
+    </div>
 
+    <div class="lt-header__right">
+      <button class="lt-btn lt-btn--add" [routerLink]="['/agregar-tinte']">
+        <i class="fas fa-plus"></i> Agregar Tinte
+      </button>
+    </div>
+  </div>
 
+  <!-- ── Stats ── -->
+  <div class="lt-stats">
+    <div class="lt-stat">
+      <span class="lt-stat__num">{{ listadoTintes.length }}</span>
+      <span class="lt-stat__label">Tintes Registrados</span>
+    </div>
+    <div class="lt-stat-sep"></div>
+    <div class="lt-stat">
+      <i class="fas fa-palette lt-stat__icon"></i>
+      <span class="lt-stat__label">Línea Profesional</span>
+    </div>
+    <div class="lt-stat-sep"></div>
+    <div class="lt-stat">
+      <i class="fas fa-award lt-stat__icon"></i>
+      <span class="lt-stat__label">Alta Cobertura</span>
+    </div>
+  </div>
 
+  <!-- ── Contenido ── -->
+  <div class="lt-content">
 
+    <!-- Tabla -->
+    <div class="lt-table-col">
+      <div class="lt-table-wrap">
 
+        <!-- Estado vacío -->
+        <div class="lt-empty" *ngIf="listadoTintes.length === 0">
+          <i class="fas fa-palette lt-empty__icon"></i>
+          <p class="lt-empty__text">Sin tintes registrados</p>
+          <span class="lt-empty__sub">Agrega tu primer tinte IGORA</span>
+        </div>
 
+        <table class="lt-table" *ngIf="listadoTintes.length > 0">
+          <thead>
+            <tr>
+              <th class="lt-th lt-th--num">#</th>
+              <th class="lt-th">Color</th>
+              <th class="lt-th">Número</th>
+              <th class="lt-th">Categoría</th>
+              <th class="lt-th lt-th--actions">Acciones</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr class="lt-row" *ngFor="let tinte of listadoTintes; let i = index">
+              <td class="lt-td lt-td--num">{{ (i + 1) < 10 ? '0' + (i + 1) : (i + 1) }}</td>
+              <td class="lt-td">
+                <div class="lt-color-cell">
+                  <span class="lt-color-dot"></span>
+                  <span class="lt-color-name">{{ tinte.color }}</span>
+                </div>
+              </td>
+              <td class="lt-td">
+                <span class="lt-num-badge">{{ tinte.numero }}</span>
+              </td>
+              <td class="lt-td">
+                <span class="lt-categoria">
+                  <i class="fas fa-tag"></i> {{ tinte.categoria }}
+                </span>
+              </td>
+              <td class="lt-td lt-td--actions">
+                <button class="lt-action lt-action--edit"
+                        [routerLink]="['/editar-tinte', tinte._id]"
+                        title="Editar tinte">
+                  <i class="fas fa-pencil-alt"></i>
+                </button>
+                <button class="lt-action lt-action--delete"
+                        (click)="eliminarTinte(tinte._id)"
+                        title="Eliminar tinte">
+                  <i class="fas fa-trash-alt"></i>
+                </button>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
 
+      <!-- Footer note -->
+      <p class="lt-footer-note">
+        <i class="fas fa-lock"></i> Inventario confidencial · New Styles Luxury Salon
+      </p>
+    </div>
 
+    <!-- Imagen IGORA -->
+    <div class="lt-img-col">
+      <div class="lt-img-card">
+        <div class="lt-img-card__glow"></div>
+        <div class="lt-img-card__badge">
+          <i class="fas fa-star"></i> Línea Premium
+        </div>
+        <div class="lt-igora-wrap" (click)="openLightbox()">
+          <img src="../../../../assets/img/CartaIGORA.png" alt="Carta IGORA Royal" class="lt-igora-img">
+          <div class="lt-igora-hint">
+            <i class="fas fa-search-plus"></i>
+            <span>Clic para ampliar</span>
+          </div>
+        </div>
+        <div class="lt-img-card__caption">
+          <span class="lt-img-card__brand">IGORA<span> Royal</span></span>
+          <span class="lt-img-card__sub">Schwarzkopf Professional</span>
+        </div>
+      </div>
+    </div>
 
+  </div>
+</div>
 
-
-
-</body>
-</html>
-
-
+<!-- ── Lightbox IGORA ── -->
+<div class="lt-lb" *ngIf="lightboxOpen" (click)="closeLightbox()">
+  <div class="lt-lb__panel" (click)="$event.stopPropagation()">
+    <button class="lt-lb__close" (click)="closeLightbox()">
+      <i class="fas fa-times"></i>
+    </button>
+    <div class="lt-lb__badge">
+      <i class="fas fa-search-plus"></i> Pasa el cursor sobre la imagen para hacer zoom
+    </div>
+    <div class="lt-lb__zoom-wrap" #zoomWrap (mousemove)="onZoomMove($event, zoomWrap)" (mouseleave)="onZoomLeave()">
+      <img src="../../../../assets/img/CartaIGORA.png" alt="Carta IGORA Royal" class="lt-lb__img" #zoomImg>
+      <div class="lt-lb__lens" [ngStyle]="lensStyle" *ngIf="lensVisible"></div>
+    </div>
+    <div class="lt-lb__caption">
+      <span class="lt-lb__brand">IGORA<em> Royal</em></span>
+      <span class="lt-lb__sub">Schwarzkopf Professional · Carta de colores completa</span>
+    </div>
+  </div>
+</div>

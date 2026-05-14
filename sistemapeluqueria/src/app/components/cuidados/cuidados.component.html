@@ -1,20 +1,87 @@
+<div class="ns-cursor-dot"></div>
 <app-barradenavegacion></app-barradenavegacion>
-<app-ventana-emergente *ngIf="mostrarVentanaEmergente" [carrito]="carrito" (cerrarVentana)="cerrarVentanaEmergente()" (reiniciarCarrito)="reiniciarCarrito()"></app-ventana-emergente>
-<div class="container my-5 py-4">
-  <div class="row">
-    <div class="col-md-6 mb-4" *ngFor="let producto of productos; let i = index">
-      <div class="card d-flex flex-column align-items-center">
-        <img [src]="'assets/img/' + (i + 1) + '.png'" class="card-img-top imagen-tamaño" alt="...">
-        <div class="card-body">
-          <h5 class="card-title"
-              (mouseover)="toggleDescripcion(i, true)"
-              (mouseout)="toggleDescripcion(i, false)"
-          >{{ producto.nombre }}</h5>
-          <h4>{{ formatearPrecio(producto.precio) }}</h4>
-          <p class="card-text" *ngIf="producto.mostrarDescripcion">{{ producto.descripcion }}</p>
-          <button (click)="agregarAlCarrito(producto)" class="btn btn-primary mx-auto">Añadir al carrito</button>
+<app-ventana-emergente *ngIf="mostrarVentanaEmergente" [carrito]="carrito"
+  (cerrarVentana)="cerrarVentanaEmergente()"
+  (reiniciarCarrito)="reiniciarCarrito()">
+</app-ventana-emergente>
+
+<!-- Header -->
+<section class="cd-header">
+  <div class="cd-header__bg" aria-hidden="true"></div>
+  <div class="cd-header__glow cd-header__glow--1" aria-hidden="true"></div>
+  <div class="cd-header__glow cd-header__glow--2" aria-hidden="true"></div>
+  <div class="cd-header__inner">
+    <span class="cd-header__eyebrow"><i class="fas fa-spa"></i> Tienda Premium</span>
+    <h1 class="cd-header__title">
+      Cuidados &<br><span class="cd-header__accent">Tratamientos</span>
+    </h1>
+    <p class="cd-header__sub">Productos exclusivos para el cuidado de tu cabello. Calidad profesional para resultados extraordinarios.</p>
+  </div>
+</section>
+
+<!-- Ticker -->
+<div class="cd-ticker" aria-hidden="true">
+  <div class="cd-ticker__track">
+    <span class="cd-ticker__item"><i class="fas fa-star"></i> Hidratación</span>
+    <span class="cd-ticker__item"><i class="fas fa-star"></i> Nutrición</span>
+    <span class="cd-ticker__item"><i class="fas fa-star"></i> Reparación</span>
+    <span class="cd-ticker__item"><i class="fas fa-star"></i> Brillo</span>
+    <span class="cd-ticker__item"><i class="fas fa-star"></i> Keratina</span>
+    <span class="cd-ticker__item"><i class="fas fa-star"></i> Anti-frizz</span>
+    <span class="cd-ticker__item"><i class="fas fa-star"></i> Premium</span>
+    <span class="cd-ticker__item"><i class="fas fa-star"></i> Hidratación</span>
+    <span class="cd-ticker__item"><i class="fas fa-star"></i> Nutrición</span>
+    <span class="cd-ticker__item"><i class="fas fa-star"></i> Reparación</span>
+    <span class="cd-ticker__item"><i class="fas fa-star"></i> Brillo</span>
+    <span class="cd-ticker__item"><i class="fas fa-star"></i> Keratina</span>
+    <span class="cd-ticker__item"><i class="fas fa-star"></i> Anti-frizz</span>
+    <span class="cd-ticker__item"><i class="fas fa-star"></i> Premium</span>
+    <span class="cd-ticker__item"><i class="fas fa-star"></i> Hidratación</span>
+    <span class="cd-ticker__item"><i class="fas fa-star"></i> Nutrición</span>
+    <span class="cd-ticker__item"><i class="fas fa-star"></i> Reparación</span>
+    <span class="cd-ticker__item"><i class="fas fa-star"></i> Brillo</span>
+    <span class="cd-ticker__item"><i class="fas fa-star"></i> Keratina</span>
+    <span class="cd-ticker__item"><i class="fas fa-star"></i> Anti-frizz</span>
+    <span class="cd-ticker__item"><i class="fas fa-star"></i> Premium</span>
+    <span class="cd-ticker__item"><i class="fas fa-star"></i> Hidratación</span>
+    <span class="cd-ticker__item"><i class="fas fa-star"></i> Nutrición</span>
+    <span class="cd-ticker__item"><i class="fas fa-star"></i> Reparación</span>
+    <span class="cd-ticker__item"><i class="fas fa-star"></i> Brillo</span>
+    <span class="cd-ticker__item"><i class="fas fa-star"></i> Keratina</span>
+    <span class="cd-ticker__item"><i class="fas fa-star"></i> Anti-frizz</span>
+    <span class="cd-ticker__item"><i class="fas fa-star"></i> Premium</span>
+  </div>
+</div>
+
+<!-- Grid de productos -->
+<div class="cd-grid">
+  <div class="cd-grid__inner">
+    <div class="cd-card ns-reveal"
+         *ngFor="let producto of productos; let i = index"
+         [style.transition-delay]="(i * 0.1) + 's'">
+
+      <!-- Imagen -->
+      <div class="cd-card__img-wrap">
+        <span class="cd-card__num">{{ (i + 1) < 10 ? '0' + (i + 1) : (i + 1) }}</span>
+        <div class="cd-card__img-glow"></div>
+        <img [src]="'assets/img/' + (i + 1) + '.png'" alt="{{ producto.nombre }}">
+        <div class="cd-card__img-shine"></div>
+      </div>
+
+      <!-- Contenido -->
+      <div class="cd-card__body">
+        <div class="cd-card__category"><i class="fas fa-spa"></i> Cuidado Capilar</div>
+        <h5 class="cd-card__name">{{ producto.nombre }}</h5>
+        <div class="cd-card__divider"></div>
+        <p class="cd-card__desc">{{ producto.descripcion }}</p>
+        <div class="cd-card__footer">
+          <p class="cd-card__price">{{ formatearPrecio(producto.precio) }}</p>
+          <button class="cd-card__btn" (click)="agregarAlCarrito(producto)">
+            <i class="fas fa-shopping-bag"></i> Añadir
+          </button>
         </div>
       </div>
+
     </div>
   </div>
 </div>

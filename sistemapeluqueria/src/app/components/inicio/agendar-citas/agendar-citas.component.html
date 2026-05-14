@@ -1,65 +1,105 @@
-
-<!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Document</title>
-</head>
-<body>
-
-  <div class="container-fluid pl-2 pb-1">
-    <img src="../../../../assets/img/barra2.png" width="100%" alt="">
-
-
-  <div class="container-fluid ">
-    <div class="row my-4">
-      <div class="col-8 offset-2  d-flex justify-content-between align-content-center">
-        <button class="btn btn-dark mt-3" [routerLink]="['/']" routerLinkActive="router-link-active" >volver </button>
-        <p class="fw-bold h1 "> Agenda - New Styles  </p>
-
-
-          <button class="btn btn-dark mt-3" [routerLink]="['/']" routerLinkActive="router-link-active" >Reservar cita </button>
-      </div>
-        <div class="col-8 offset-2 mt-4">
-          <table class="table table-dark table-hover text-center">
-            <thead>
-              <tr>
-
-                <th scope="col">NOMBRE</th>
-                <th scope="col">FECHA</th>
-                <th scope="col">HORA</th>
-                <th scope="col">DESCRIPCION</th>
-                <th scope="col">ACCIONES</th>
-              </tr>
-            </thead>
-            <tbody >
-              <tr *ngFor="let cita of agendadoCitas">
-                <!-- <th scope="row">1</th> -->
-
-                <td>{{cita.nombre}}</td>
-                <td>{{cita.fecha}}</td>
-                <td>{{cita.hora}}</td>
-                <td>{{cita.motivo}}</td>
-                <td><i class="fas fa-pencil-alt" [routerLink]="['/reagendarse',cita._id]" routerLinkActive="router-link-active" ></i>
-                    <i class="fas fa-trash-alt" (click)="eliminarCita(cita._id)"></i>
-
-                  </td>
-              </tr>
-
-            </tbody>
-          </table>
-
-        </div>
-    </div>
-
-
-  </div>
+<!-- Banner superior — se conserva -->
+<div class="ag-banner">
+  <img src="../../../../assets/img/barra2.png" width="100%" alt="New Styles Banner">
+  <div class="ag-banner__overlay"></div>
 </div>
 
-</body>
-</html>
-<!-- <p>agendar-citas works!</p> -->
+<!-- Sección principal -->
+<div class="ag-page">
 
+  <!-- Header -->
+  <div class="ag-header">
+    <button class="ag-btn ag-btn--back" routerLink="/">
+      <i class="fas fa-arrow-left"></i> Volver
+    </button>
 
+    <div class="ag-header__center">
+      <span class="ag-header__eyebrow"><i class="fas fa-calendar-check"></i> Panel de Citas</span>
+      <h1 class="ag-header__title">Agenda <span class="ag-header__accent">New Styles</span></h1>
+    </div>
+
+    <button class="ag-btn ag-btn--new" [routerLink]="['/']" fragment="booking">
+      <i class="fas fa-plus"></i> Nueva Cita
+    </button>
+  </div>
+
+  <!-- Stats -->
+  <div class="ag-stats">
+    <div class="ag-stat">
+      <span class="ag-stat__num">{{ agendadoCitas.length }}</span>
+      <span class="ag-stat__label">Citas Activas</span>
+    </div>
+    <div class="ag-stat-sep"></div>
+    <div class="ag-stat">
+      <i class="fas fa-spa ag-stat__icon"></i>
+      <span class="ag-stat__label">New Styles · Luxury Salon</span>
+    </div>
+  </div>
+
+  <!-- Tabla -->
+  <div class="ag-table-wrap">
+
+    <!-- Estado vacío -->
+    <div class="ag-empty" *ngIf="agendadoCitas.length === 0">
+      <i class="fas fa-calendar-times ag-empty__icon"></i>
+      <p class="ag-empty__text">No hay citas agendadas</p>
+      <span class="ag-empty__sub">Presiona "Nueva Cita" para comenzar</span>
+    </div>
+
+    <table class="ag-table" *ngIf="agendadoCitas.length > 0">
+      <thead>
+        <tr>
+          <th class="ag-th ag-th--num">#</th>
+          <th class="ag-th">Cliente</th>
+          <th class="ag-th">Fecha</th>
+          <th class="ag-th">Hora</th>
+          <th class="ag-th">Servicio</th>
+          <th class="ag-th ag-th--actions">Acciones</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr class="ag-row" *ngFor="let cita of agendadoCitas; let i = index">
+          <td class="ag-td ag-td--num">{{ (i + 1) < 10 ? '0' + (i + 1) : (i + 1) }}</td>
+          <td class="ag-td">
+            <div class="ag-cliente">
+              <div class="ag-cliente__avatar">{{ cita.nombre?.charAt(0)?.toUpperCase() }}</div>
+              <span class="ag-cliente__nombre">{{ cita.nombre }}</span>
+            </div>
+          </td>
+          <td class="ag-td">
+            <span class="ag-fecha">
+              <i class="fas fa-calendar-alt"></i> {{ formatearFecha(cita.fecha) }}
+            </span>
+          </td>
+          <td class="ag-td">
+            <span class="ag-hora">{{ formatearHora(cita.hora) }}</span>
+          </td>
+          <td class="ag-td">
+            <span class="ag-servicio">
+              <i [class]="getIconoServicio(cita.motivo)"></i>
+              {{ cita.motivo }}
+            </span>
+          </td>
+          <td class="ag-td ag-td--actions">
+            <button class="ag-action ag-action--edit"
+                    [routerLink]="['/reagendarse', cita._id]"
+                    title="Editar cita">
+              <i class="fas fa-pencil-alt"></i>
+            </button>
+            <button class="ag-action ag-action--delete"
+                    (click)="eliminarCita(cita._id)"
+                    title="Eliminar cita">
+              <i class="fas fa-trash-alt"></i>
+            </button>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <!-- Footer -->
+  <p class="ag-footer-note">
+    <i class="fas fa-lock"></i> Información confidencial · New Styles Luxury Salon
+  </p>
+
+</div>

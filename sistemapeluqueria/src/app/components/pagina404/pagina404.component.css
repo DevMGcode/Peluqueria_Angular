@@ -1,9 +1,231 @@
-.ancho-vista
-{
-  height: 100vh;
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700;900&family=Poppins:wght@400;500;600;700&display=swap');
+
+:host {
+  --gold:         #d4af37;
+  --gold-lt:      #f0d878;
+  --rose:         #c9748f;
+  --grad-glamour: linear-gradient(135deg, #f0d878 0%, #d4af37 40%, #c9748f 100%);
+  --bg:           #080604;
+  --white:        #faf8f6;
+  --muted:        rgba(250,248,246,0.55);
+  --border:       rgba(212,175,55,0.18);
+  display: block;
 }
 
-.texto-404
-{
-  font-size: 16rem;
+/* ── Página ── */
+.p4-page {
+  position: relative;
+  min-height: 100vh;
+  background: linear-gradient(170deg, #0d0a06 0%, #080604 60%, #100709 100%);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+  padding: 2rem;
+}
+
+/* ── Glows ── */
+.p4-glow {
+  position: absolute;
+  border-radius: 50%;
+  pointer-events: none;
+  filter: blur(110px);
+}
+.p4-glow--1 {
+  width: 700px; height: 500px;
+  background: radial-gradient(circle, rgba(212,175,55,0.11), transparent);
+  top: -180px; left: -180px;
+}
+.p4-glow--2 {
+  width: 600px; height: 500px;
+  background: radial-gradient(circle, rgba(201,116,143,0.1), transparent);
+  bottom: -120px; right: -120px;
+}
+
+/* ── Partículas ── */
+.p4-particles { position: absolute; inset: 0; pointer-events: none; }
+.p4-particles span {
+  position: absolute;
+  width: 3px; height: 3px;
+  border-radius: 50%;
+  background: var(--gold);
+  opacity: 0;
+  animation: p4Float 6s ease-in-out infinite;
+}
+.p4-particles span:nth-child(1) { left: 12%; top: 18%; animation-delay: 0s;   animation-duration: 7s; }
+.p4-particles span:nth-child(2) { left: 78%; top: 14%; animation-delay: 1.2s; animation-duration: 6s; }
+.p4-particles span:nth-child(3) { left: 38%; top: 72%; animation-delay: 2.4s; animation-duration: 8s; }
+.p4-particles span:nth-child(4) { left: 88%; top: 58%; animation-delay: 0.8s; animation-duration: 5s; }
+.p4-particles span:nth-child(5) { left: 22%; top: 76%; animation-delay: 3s;   animation-duration: 7s; }
+.p4-particles span:nth-child(6) { left: 62%; top: 28%; animation-delay: 1.8s; animation-duration: 6s; }
+@keyframes p4Float {
+  0%,100% { opacity: 0; transform: translateY(0) scale(1); }
+  30%      { opacity: 0.7; }
+  50%      { opacity: 1;   transform: translateY(-22px) scale(1.5); }
+  70%      { opacity: 0.4; }
+}
+
+/* ── Inner ── */
+.p4-inner {
+  position: relative; z-index: 2;
+  text-align: center;
+  max-width: 600px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0;
+}
+
+/* ── Número 404 ── */
+.p4-number {
+  font-family: 'Playfair Display', serif;
+  font-size: clamp(6rem, 18vw, 12rem);
+  font-weight: 900;
+  line-height: 1;
+  color: transparent;
+  -webkit-text-stroke: 2px rgba(212,175,55,0.2);
+  user-select: none;
+  margin-bottom: 1.8rem;
+  letter-spacing: -4px;
+}
+
+/* ── Ícono ── */
+.p4-icon {
+  width: 68px; height: 68px;
+  border-radius: 18px;
+  background: rgba(212,175,55,0.07);
+  border: 1px solid rgba(212,175,55,0.28);
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.7rem;
+  margin-bottom: 1.4rem;
+  animation: p4Pulse 3s ease-in-out infinite;
+}
+.p4-icon i {
+  background: var(--grad-glamour);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+@keyframes p4Pulse {
+  0%, 100% { box-shadow: 0 0 18px rgba(212,175,55,0.14); }
+  50%       { box-shadow: 0 0 40px rgba(212,175,55,0.36), 0 0 80px rgba(212,175,55,0.1); }
+}
+
+/* ── Eyebrow ── */
+.p4-eyebrow {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  font-family: 'Poppins', sans-serif;
+  font-size: 0.68rem;
+  font-weight: 700;
+  letter-spacing: 2.5px;
+  text-transform: uppercase;
+  color: var(--rose);
+  background: rgba(201,116,143,0.08);
+  border: 1px solid rgba(201,116,143,0.22);
+  padding: 6px 18px;
+  border-radius: 999px;
+  margin-bottom: 1.2rem;
+}
+.p4-eyebrow i { font-size: 0.6rem; }
+
+/* ── Título ── */
+.p4-title {
+  font-family: 'Playfair Display', serif;
+  font-size: clamp(1.9rem, 5vw, 3rem);
+  font-weight: 900;
+  color: var(--white);
+  margin: 0 0 1rem;
+  line-height: 1.2;
+}
+.p4-accent {
+  background: var(--grad-glamour);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+/* ── Subtítulo ── */
+.p4-sub {
+  font-family: 'Poppins', sans-serif;
+  font-size: 0.95rem;
+  line-height: 1.8;
+  color: var(--muted);
+  margin-bottom: 2.2rem;
+}
+
+/* ── Botones ── */
+.p4-actions {
+  display: flex;
+  gap: 14px;
+  justify-content: center;
+  flex-wrap: wrap;
+  margin-bottom: 2rem;
+}
+.p4-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 9px;
+  padding: 13px 32px;
+  border-radius: 999px;
+  font-family: 'Poppins', sans-serif;
+  font-size: 0.88rem;
+  font-weight: 700;
+  text-decoration: none;
+  transition: transform 0.35s cubic-bezier(0.34,1.4,0.64,1), box-shadow 0.3s;
+}
+.p4-btn--gold {
+  background: var(--grad-glamour);
+  color: #15100a;
+  box-shadow: 0 8px 28px rgba(212,175,55,0.35);
+}
+.p4-btn--gold:hover {
+  transform: translateY(-3px) scale(1.04);
+  box-shadow: 0 16px 40px rgba(212,175,55,0.5);
+  color: #15100a;
+}
+.p4-btn--ghost {
+  background: rgba(255,255,255,0.05);
+  border: 1.5px solid var(--border);
+  color: var(--muted);
+}
+.p4-btn--ghost:hover {
+  border-color: rgba(212,175,55,0.45);
+  color: var(--gold-lt);
+  transform: translateY(-3px);
+}
+
+/* ── Links rápidos ── */
+.p4-links {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+.p4-link {
+  font-family: 'Poppins', sans-serif;
+  font-size: 0.78rem;
+  font-weight: 500;
+  color: rgba(250,248,246,0.4);
+  text-decoration: none;
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  transition: color 0.3s;
+}
+.p4-link i { color: rgba(212,175,55,0.4); font-size: 0.65rem; transition: color 0.3s; }
+.p4-link:hover { color: var(--gold-lt); }
+.p4-link:hover i { color: var(--gold); }
+.p4-sep { color: rgba(212,175,55,0.25); font-size: 1rem; line-height: 1; }
+
+/* ── Shimmer inferior ── */
+.p4-shimmer {
+  position: absolute; bottom: 0; left: 0; right: 0; height: 1px;
+  background: linear-gradient(90deg,
+    transparent 0%, rgba(212,175,55,0.5) 35%,
+    rgba(201,116,143,0.4) 65%, transparent 100%);
 }

@@ -1,0 +1,255 @@
+// ============================================================================
+// GLOBAL STYLES - SCSS
+// Punto de entrada para todos los estilos SCSS
+// ============================================================================
+
+// Importar Material Theme primero (debe estar antes de Tailwind)
+@import './styles/material-theme.scss';
+
+// Importar Design System
+@import './styles/design-system/index.scss';
+
+// ============================================================================
+// GOOGLE FONTS
+// ============================================================================
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@100;200;300;400;500;600;700;800;900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Manrope:wght@200;300;400;500;600;700;800&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700;800;900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Ephesis:wght@400;700&display=swap');
+
+// ============================================================================
+// RESET Y BASE
+// ============================================================================
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  overflow-x: hidden;
+  width: 100%;
+}
+
+body {
+  background: #fafafa;
+  color: #171717;
+  overflow-x: hidden;
+  width: 100%;
+  font-family: 'Inter', system-ui, sans-serif;
+  transition: background-color 200ms ease-in-out, color 200ms ease-in-out;
+  
+  &.dark {
+    background: #171717;
+    color: #fafafa;
+  }
+}
+
+app-root {
+  display: block;
+  width: 100%;
+  overflow-x: clip;
+}
+
+// ============================================================================
+// SCROLLBAR MODERNA
+// ============================================================================
+::-webkit-scrollbar {
+  width: 10px;
+  height: 10px;
+}
+
+::-webkit-scrollbar-track {
+  background: #f5f5f5;
+}
+
+::-webkit-scrollbar-thumb {
+  background: linear-gradient(135deg, #fde2e4 0%, #fad2e1 25%, #dbe7e4 50%, #c5dedd 75%, #99c1de 100%);
+  border-radius: 5px;
+  
+  &:hover {
+    background: linear-gradient(135deg, #eddcd2 0%, #fad2e1 33%, #c5dedd 66%, #bcd4e6 100%);
+  }
+}
+
+body.dark {
+  ::-webkit-scrollbar-track {
+    background: #262626;
+  }
+}
+
+// ============================================================================
+// TIPOGRAFÍA BASE
+// ============================================================================
+body {
+  font-family: 'Inter', system-ui, sans-serif;
+  font-size: 1rem;
+  line-height: 1.5;
+  color: #171717;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  font-family: 'Playfair Display', serif;
+  font-weight: 700;
+  line-height: 1.2;
+}
+
+h1 {
+  font-size: 2.25rem;
+}
+
+h2 {
+  font-size: 1.875rem;
+}
+
+h3 {
+  font-size: 1.5rem;
+}
+
+p {
+  line-height: 1.6;
+}
+
+// ============================================================================
+// SELECCIÓN
+// ============================================================================
+::selection {
+  background: linear-gradient(135deg, #fde2e4 0%, #fad2e1 50%, #dbe7e4 100%);
+  color: #171717;
+}
+
+::-moz-selection {
+  background: linear-gradient(135deg, #fde2e4 0%, #fad2e1 50%, #dbe7e4 100%);
+  color: #171717;
+}
+
+// ============================================================================
+// LINKS
+// ============================================================================
+a {
+  color: inherit;
+  text-decoration: none;
+  transition: all 200ms ease-in-out;
+  
+  &:hover {
+    opacity: 0.8;
+  }
+}
+
+// ============================================================================
+// IMÁGENES
+// ============================================================================
+img {
+  max-width: 100%;
+  height: auto;
+  display: block;
+}
+
+// ============================================================================
+// TABLAS
+// ============================================================================
+table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+th, td {
+  padding: 0.75rem;
+  text-align: left;
+  border-bottom: 1px solid #e5e5e5;
+}
+
+th {
+  background: #f5f5f5;
+  font-weight: 600;
+}
+
+// ============================================================================
+// INPUTS Y CONTROLES
+// ============================================================================
+input,
+textarea,
+select,
+button {
+  font-family: inherit;
+  font-size: inherit;
+}
+
+input,
+textarea,
+select {
+  width: 100%;
+  padding: 0.75rem;
+  border: 1px solid #e5e5e5;
+  border-radius: 0.5rem;
+  transition: all 200ms ease-in-out;
+  
+  &:focus {
+    outline: none;
+    border-color: #fde2e4;
+    box-shadow: 0 0 0 3px rgba(253, 226, 228, 0.1);
+  }
+  
+  &:disabled {
+    background: #f5f5f5;
+    color: #a3a3a3;
+    cursor: not-allowed;
+  }
+}
+
+// ============================================================================
+// BOTONES
+// ============================================================================
+button {
+  cursor: pointer;
+  border: none;
+  background: none;
+  
+  &:disabled {
+    cursor: not-allowed;
+    opacity: 0.6;
+  }
+}
+
+// ============================================================================
+// LISTAS
+// ============================================================================
+ul, ol {
+  margin-left: 1.5rem;
+}
+
+li {
+  margin-bottom: 0.5rem;
+}
+
+// ============================================================================
+// COMPONENTES ANGULAR MATERIAL
+// ============================================================================
+.mat-mdc-button,
+.mat-mdc-raised-button {
+  font-weight: 500;
+}
+
+.mat-mdc-form-field-label {
+  font-family: 'Inter', system-ui, sans-serif !important;
+}
+
+// ============================================================================
+// RESPONSIVE
+// ============================================================================
+@media (max-width: 768px) {
+  h1 {
+    font-size: 1.875rem;
+  }
+  
+  h2 {
+    font-size: 1.5rem;
+  }
+  
+  h3 {
+    font-size: 1.25rem;
+  }
+}

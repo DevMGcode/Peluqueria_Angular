@@ -1,33 +1,91 @@
-<!-- <p>agregar-tinte works!</p> -->
-<div class="foto ">
-<div class="container mt-5 ">
-  <div class="row">
-      <div class="col-8 offset-2">
-        <p class="h1 text-center fw-bold text-white">{{titulo_formulario}}</p>
+<div class="at-page">
+
+  <!-- Partículas decorativas -->
+  <div class="at-particle at-particle--1"></div>
+  <div class="at-particle at-particle--2"></div>
+  <div class="at-particle at-particle--3"></div>
+
+  <!-- Card central -->
+  <div class="at-card">
+    <div class="at-card__glow"></div>
+
+    <!-- Icono + título -->
+    <div class="at-card__header">
+      <div class="at-card__icon">
+        <i class="fas fa-palette"></i>
       </div>
-      <div class="col-6 offset-3">
+      <h1 class="at-card__title">{{ titulo_formulario }}</h1>
+      <p class="at-card__sub">Schwarzkopf IGORA Royal · New Styles</p>
+    </div>
 
-        <form mt-5 [formGroup]="tinteForm" (ngSubmit)="manipulacion_data_tinte()">
-          <div class="my-3">
-            <input formControlName="tinteColor" class="form-control form-control-lg" type="text" placeholder="Color del tinte" >
-            <span *ngIf=" tinteForm.get('tinteColor')?.hasError('required') && tinteForm.get('tinteColor')?.touched " class="text-danger fw-bold">Nombre del color de tinte es obligatorio</span>
-          </div>
-          <div class="my-3">
-            <input formControlName="tinteNumero" class="form-control form-control-lg" type="text" placeholder="Numero del tinte" >
-            <span  *ngIf=" tinteForm.get('tinteNumero')?.hasError('required') && tinteForm.get('tinteNumero')?.touched" class="text-danger fw-bold">El numero de referencia de color del tinte es obligatorio</span>
-          </div>
-          <div class="my-3">
-            <input formControlName="tinteCategoria" class="form-control form-control-lg" type="text" placeholder="Categoria del tinte" >
-            <span *ngIf=" tinteForm.get('tinteCategoria')?.hasError('required') && tinteForm.get('tinteCategoria')?.touched" class="text-danger fw-bold">La categoria del tinte es obligatorio</span>
-          </div>
-            <div class="col-12 d-flex justify-content-between align-content-center">
-              <button class="btn btn-danger" [routerLink]="['/listar-tinte']">Volver</button>
-              <button type="submit" class="btn btn-success" [disabled]="tinteForm.invalid">Guardar Tinte</button>
-            </div>
-        </form>
-        </div>
+    <!-- Divisor -->
+    <div class="at-divider">
+      <span class="at-divider__line"></span>
+      <i class="fas fa-spa at-divider__icon"></i>
+      <span class="at-divider__line"></span>
+    </div>
 
+    <!-- Formulario -->
+    <form [formGroup]="tinteForm" (ngSubmit)="manipulacion_data_tinte()" class="at-form">
+
+      <!-- Color -->
+      <div class="at-field">
+        <label class="at-label"><i class="fas fa-circle"></i> Color del tinte</label>
+        <input
+          formControlName="tinteColor"
+          type="text"
+          class="at-input"
+          [class.at-input--error]="tinteForm.get('tinteColor')?.hasError('required') && tinteForm.get('tinteColor')?.touched"
+          placeholder="Ej: Rubio oscuro, Castaño medio...">
+        <span class="at-error" *ngIf="tinteForm.get('tinteColor')?.hasError('required') && tinteForm.get('tinteColor')?.touched">
+          <i class="fas fa-exclamation-circle"></i> El color es obligatorio
+        </span>
+      </div>
+
+      <!-- Número -->
+      <div class="at-field">
+        <label class="at-label"><i class="fas fa-hashtag"></i> Número de referencia</label>
+        <input
+          formControlName="tinteNumero"
+          type="text"
+          class="at-input"
+          [class.at-input--error]="tinteForm.get('tinteNumero')?.hasError('required') && tinteForm.get('tinteNumero')?.touched"
+          placeholder="Ej: 6-0, 7-77, 4-88...">
+        <span class="at-error" *ngIf="tinteForm.get('tinteNumero')?.hasError('required') && tinteForm.get('tinteNumero')?.touched">
+          <i class="fas fa-exclamation-circle"></i> El número es obligatorio
+        </span>
+      </div>
+
+      <!-- Categoría -->
+      <div class="at-field">
+        <label class="at-label"><i class="fas fa-tag"></i> Categoría</label>
+        <input
+          formControlName="tinteCategoria"
+          type="text"
+          class="at-input"
+          [class.at-input--error]="tinteForm.get('tinteCategoria')?.hasError('required') && tinteForm.get('tinteCategoria')?.touched"
+          placeholder="Ej: Natural, Ceniza, Cobrizo...">
+        <span class="at-error" *ngIf="tinteForm.get('tinteCategoria')?.hasError('required') && tinteForm.get('tinteCategoria')?.touched">
+          <i class="fas fa-exclamation-circle"></i> La categoría es obligatoria
+        </span>
+      </div>
+
+      <!-- Botones -->
+      <div class="at-actions">
+        <button type="button" class="at-btn at-btn--back" [routerLink]="['/listar-tinte']">
+          <i class="fas fa-arrow-left"></i> Volver
+        </button>
+        <button type="submit" class="at-btn at-btn--save" [disabled]="tinteForm.invalid">
+          <i class="fas fa-check"></i> {{ id ? 'Guardar Cambios' : 'Agregar Tinte' }}
+        </button>
+      </div>
+
+    </form>
   </div>
-</div>
-</div>
 
+  <!-- Footer note -->
+  <p class="at-footer">
+    <i class="fas fa-lock"></i> Panel de administración · New Styles Luxury Salon
+  </p>
+
+</div>

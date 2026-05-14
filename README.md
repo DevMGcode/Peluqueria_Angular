@@ -1,56 +1,104 @@
-# 💇‍♀️ Peluqueria_Angular: Sistema de Gestión de Peluquería basado en Angular (MEAN STACK) 💇‍♂️
+# Peluqueria_Angular — Sistema de Gestión para Salón de Belleza
 
-Este proyecto, **Peluqueria_Angular**, aún se encuentra en fase de desarrollo activo. Es una aplicación web desarrollada en el entorno MEAN STACK (MongoDB, Express.js, Angular y Node.js) que se centra en la gestión de agendamiento e inventario para salones de peluquería. Permite a los usuarios llevar un registro organizado de las citas agendadas y gestionar el inventario de productos del salón de manera eficiente.
+Aplicación web full-stack (MEAN Stack) para la gestión de citas e inventario de una peluquería. El frontend está desplegado en GitHub Pages y el backend en Render conectado a MongoDB Atlas.
 
-## Funcionalidades Principales
-
-- **Agendamiento de Citas:** Los usuarios pueden programar y gestionar citas para clientes, estableciendo fechas y horas convenientes. 🗓️
-- **Inventario de Productos:** Permite llevar un control detallado del inventario de productos utilizados en el salón, gestionando su cantidad y disponibilidad. 📦
-- **Interfaz Intuitiva:** La interfaz de usuario desarrollada en Angular proporciona una experiencia fácil y amigable para los usuarios, facilitando la navegación y el acceso a las funciones clave. 🌐
-
-## Tecnologías Utilizadas
-
-- **MongoDB:** Base de datos NoSQL utilizada para almacenar y gestionar los datos de clientes, citas y productos del inventario. 🏢
-- **Express.js:** Framework de Node.js utilizado para crear la API RESTful que conecta el backend con el frontend de la aplicación. 🚀
-- **Angular:** Framework de desarrollo frontend que ofrece una interfaz de usuario dinámica y atractiva para los usuarios finales. 🅰️
-- **Node.js:** Entorno de ejecución de JavaScript del lado del servidor utilizado para desarrollar el backend de la aplicación. 🚶‍♂️
-
-## Cómo Ejecutar el Proyecto
-
-Para ejecutar localmente el proyecto, sigue estos pasos:
-
-1. **Clonar el Repositorio:** Clona este repositorio en tu máquina local utilizando el comando git clone.
-
-    ```
-    git clone https://github.com/tu-usuario/Peluqueria_Angular.git
-    ```
-
-2. **Instalar Dependencias:** Accede al directorio del proyecto y ejecuta npm install para instalar todas las dependencias necesarias.
-
-    ```
-    cd Peluqueria_Angular
-    npm install
-    ```
-
-3. **Configurar Variables de Entorno:** Crea un archivo .env para configurar las variables de entorno necesarias, como la conexión a la base de datos MongoDB.
-
-    ```
-    MONGODB_URI=tu-url-de-conexion-a-mongodb
-    ```
-
-4. **Ejecutar la Aplicación:** Una vez configuradas las variables de entorno, puedes iniciar la aplicación utilizando el comando npm start.
-
-    ```
-    npm start
-    ```
-
-La aplicación estará disponible en http://localhost:3000, donde podrás acceder a todas las funcionalidades implementadas.
-
-## Contribuciones
-
-Este proyecto fue creado por **Melii G (Melissa Garcia)** y se mantiene como un proyecto de código abierto. Si estás interesado en contribuir, por favor, sigue las pautas de contribución y crea un pull request con tus mejoras. 🤝
+**Demo:** https://devmgcode.github.io/Peluqueria_Angular/  
+**API:** https://peluqueria-angular.onrender.com
 
 ---
 
-**Peluqueria_Angular** es una solución completa para la gestión eficiente de salones de peluquería, proporcionando a los propietarios y empleados las herramientas necesarias para organizar citas y mantener un inventario preciso de productos. ¡Esperamos que encuentres útil esta aplicación y te invitamos a contribuir para hacerla aún mejor!✨
+## Tecnologías
 
+| Capa | Tecnología |
+|------|-----------|
+| Frontend | Angular 14, Tailwind CSS, Bootstrap 5, Angular Material |
+| Backend | Node.js, Express.js |
+| Base de datos | MongoDB Atlas (cloud) |
+| Deploy frontend | GitHub Pages (`angular-cli-ghpages`) |
+| Deploy backend | Render (Web Service, free tier) |
+
+---
+
+## Funcionalidades
+
+- **Inicio** — Landing page con galería y presentación del salón
+- **Agendar citas** — Formulario para registrar, editar y eliminar citas (nombre, fecha, hora, motivo)
+- **Inventario de tintes** — CRUD completo de productos (color, número, categoría)
+- **Secciones informativas** — Cortes, Peinados, Cuidados, Maquillaje
+- **Página 404** — Ruta no encontrada con redirección
+
+---
+
+## Estructura del proyecto
+
+```
+Peluqueria_Angular/
+├── back_api/               # API REST con Express.js
+│   ├── config/
+│   │   └── db.js           # Conexión a MongoDB Atlas
+│   ├── models/             # Schemas Mongoose (Cita, Tinte)
+│   ├── routes/             # Rutas /api/cita y /api/tinte
+│   └── index.js            # Servidor Express
+└── sistemapeluqueria/      # App Angular 14
+    └── src/
+        ├── app/
+        │   ├── components/ # Todos los componentes de la app
+        │   └── services/   # CitaService, TinteService
+        └── environments/
+            ├── environment.ts       # URL: localhost:4000
+            └── environment.prod.ts  # URL: Render
+```
+
+---
+
+## Ejecutar localmente
+
+### Backend
+```bash
+cd back_api
+npm install
+# Crear archivo config.env con:
+# MONGO_DB=mongodb+srv://...
+node index.js
+# Servidor en http://localhost:4000
+```
+
+### Frontend
+```bash
+cd sistemapeluqueria
+npm install
+ng serve
+# App en http://localhost:4200
+```
+
+---
+
+## Endpoints de la API
+
+| Método | Ruta | Descripción |
+|--------|------|-------------|
+| GET | `/api/cita` | Listar citas |
+| POST | `/api/cita` | Crear cita |
+| PUT | `/api/cita/:id` | Actualizar cita |
+| DELETE | `/api/cita/:id` | Eliminar cita |
+| GET | `/api/tinte` | Listar tintes |
+| POST | `/api/tinte` | Crear tinte |
+| PUT | `/api/tinte/:id` | Actualizar tinte |
+| DELETE | `/api/tinte/:id` | Eliminar tinte |
+
+---
+
+## Deploy
+
+### Frontend → GitHub Pages
+```bash
+cd sistemapeluqueria
+npm run deploy
+```
+
+### Backend → Render
+Configurado con auto-deploy desde la rama `main`. Variable de entorno requerida: `MONGO_DB`.
+
+---
+
+**Autora:** DevMGcode | Melissa García

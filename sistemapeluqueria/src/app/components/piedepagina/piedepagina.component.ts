@@ -7,9 +7,25 @@ import { Component, OnInit } from '@angular/core';
 })
 export class PiedepaginaComponent implements OnInit {
 
-  constructor() { }
+  newsEmail   = '';
+  newsLoading = false;
+  newsSuccess = false;
+  newsShake   = false;
 
-  ngOnInit(): void {
+  constructor() {}
+  ngOnInit(): void {}
+
+  suscribirse(): void {
+    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    if (!emailRegex.test(this.newsEmail)) {
+      this.newsShake = true;
+      setTimeout(() => { this.newsShake = false; }, 600);
+      return;
+    }
+    this.newsLoading = true;
+    setTimeout(() => {
+      this.newsLoading = false;
+      this.newsSuccess = true;
+    }, 1800);
   }
-
 }

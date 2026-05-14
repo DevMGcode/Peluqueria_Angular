@@ -1,28 +1,101 @@
-<nav class="navbar navbar-expand-lg navbar-dark bg-light">
-  <div class="container">
-    <a class="navbar-brand" href="#"> <img class="foto" src="assets/img/logo_styles.png"  alt=""> </a>
-    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-      <span class="navbar-toggler-icon"></span>
-    </button>
-    <div class="collapse navbar-collapse" id="navbarSupportedContent">
-      <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-        <li class="p-3 mt-5  nav-item">
-          <a class="nav-link "  [routerLink]="['/peinados']">Peinados</a>
-        </li>
-        <li class="p-3 mt-5 nav-item">
-          <a class="nav-link" [routerLink]="['/cortes']">cortes</a>
-        </li>
-        <li class="p-3 mt-5 nav-item">
-          <a class="nav-link" [routerLink]="['/tintes']">Tintes</a>
-        </li>
-        <li class="p-3 mt-5 nav-item">
-          <a class="nav-link" [routerLink]="['/cuidados']">Cuidados</a>
-        </li>
-        <li class="p-3 mt-5 nav-item">
-          <a class="nav-link" [routerLink]="['/maquillaje']">Maquillaje</a>
-        </li>
-      </ul>
+<!-- ══════════════════════════════════════════════════════════════
+     NAVBAR FASHIONISTA — FIXED + GLASSMORPHISM ON SCROLL
+══════════════════════════════════════════════════════════════ -->
+<nav class="ns-nav"
+     [class.ns-nav--scrolled]="scrolled">
 
-      </div>
+  <div class="ns-nav__inner">
+
+    <!-- ── Logo ── -->
+    <a routerLink="/" class="ns-nav__logo" (click)="closeMenu()">
+      <img src="assets/img/logo_styles.png" alt="New Styles">
+      <span class="ns-nav__brand">
+        <span class="ns-nav__brand-name">New Styles</span>
+        <span class="ns-nav__brand-sub">Luxury Salon</span>
+      </span>
+    </a>
+
+    <!-- ── Links desktop ── -->
+    <ul class="ns-nav__links">
+      <li *ngFor="let link of navLinks">
+        <a [routerLink]="link.path"
+           class="ns-nav__link"
+           [class.ns-nav__link--active]="isActive(link.path)">
+          <i [class]="link.icon"></i>
+          <span>{{ link.label }}</span>
+          <em class="ns-nav__underline"></em>
+        </a>
+      </li>
+    </ul>
+
+    <!-- ── CTA + Burger ── -->
+    <div class="ns-nav__right">
+      <a [routerLink]="['/']" fragment="booking" class="ns-nav__cta d-none d-lg-flex">
+        <i class="fas fa-calendar-check"></i>
+        Reservar
+      </a>
+
+      <button class="ns-nav__burger"
+              [class.ns-nav__burger--open]="menuOpen"
+              (click)="toggleMenu()"
+              aria-label="Abrir menú">
+        <span></span>
+        <span></span>
+        <span></span>
+      </button>
+    </div>
+
   </div>
+
+  <!-- Línea shimmer inferior (solo cuando scrolled) -->
+  <div class="ns-nav__shimmer" aria-hidden="true"></div>
 </nav>
+
+<!-- ══════════════════════════════════════════════════════════════
+     MENÚ MÓVIL — PANTALLA COMPLETA
+══════════════════════════════════════════════════════════════ -->
+<div class="ns-nav__overlay"
+     [class.ns-nav__overlay--open]="menuOpen"
+     (click)="closeMenu()">
+
+  <div class="ns-nav__overlay-panel" (click)="$event.stopPropagation()">
+
+    <!-- Glow decorativo -->
+    <div class="ns-overlay-glow ns-overlay-glow--1" aria-hidden="true"></div>
+    <div class="ns-overlay-glow ns-overlay-glow--2" aria-hidden="true"></div>
+
+    <!-- Logo en overlay -->
+    <div class="ns-overlay-logo">
+      <img src="assets/img/logo_styles.png" alt="New Styles">
+    </div>
+
+    <!-- Links -->
+    <ul class="ns-overlay-links">
+      <li *ngFor="let link of navLinks; let i = index"
+          [style.transition-delay]="menuOpen ? (i * 0.065 + 0.12) + 's' : '0s'">
+        <a [routerLink]="link.path"
+           class="ns-overlay-link"
+           [class.ns-overlay-link--active]="isActive(link.path)"
+           (click)="closeMenu()">
+          <i [class]="link.icon"></i>
+          <span>{{ link.label }}</span>
+        </a>
+      </li>
+    </ul>
+
+    <!-- CTA móvil -->
+    <a routerLink="/"
+       class="ns-overlay-cta"
+       [style.transition-delay]="menuOpen ? '0.55s' : '0s'"
+       (click)="closeMenu()">
+      <i class="fas fa-calendar-check"></i>
+      Reservar Mi Cita
+    </a>
+
+    <!-- Cierre -->
+    <button class="ns-overlay-close" (click)="closeMenu()" aria-label="Cerrar">
+      <i class="fas fa-times"></i>
+    </button>
+
+  </div>
+</div>

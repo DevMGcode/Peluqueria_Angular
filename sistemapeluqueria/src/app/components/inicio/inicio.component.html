@@ -1,109 +1,569 @@
 
-<!DOCTYPE html>
-<html lang="es">
-<head>
-  <meta charset="UTF-8">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" integrity="sha512-1ycn6IcaQQ40/MKBW2W4Rhis/DbILU74C1vSrLJxCq57o941Ym01SwNsOMqvEBFlcgUa6xLiPY/NS5R+E6ztJQ==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+<!-- Barra de progreso de scroll -->
+<div class="ns-scroll-progress" [ngStyle]="{'width': scrollProgress + '%'}" aria-hidden="true"></div>
 
-  <title>Styles</title>
-<!--   <p>inicio works!</p>
- -->
-</head>
-<body>
+<!-- Cursor personalizado -->
+<div class="ns-cursor-dot" aria-hidden="true"></div>
 
+<!-- Lightbox galería -->
+<div class="ns-lightbox" [class.ns-lightbox--open]="lightboxSrc" (click)="closeLightbox()" aria-hidden="true">
+  <div class="ns-lightbox__close">✕</div>
+  <img [src]="lightboxSrc" alt="Foto ampliada">
+</div>
 
-<!-- cortes.component.html -->
 <app-barradenavegacion></app-barradenavegacion>
 
+<!-- ══════════════════════════════════════════════════════════════
+     HERO — SPLIT DRAMÁTICO DORADO + ROSA
+══════════════════════════════════════════════════════════════ -->
+<section class="ns-hero"
+  (mouseenter)="onHeroEnter()"
+  (mouseleave)="onHeroLeave()">
 
-  <div id="carouselExampleControls" class="carousel slide" data-bs-ride="carousel">
-    <div class="carousel-inner">
-      <div class="carousel-item active">
-        <img src="assets/img/slide1.png" class="d-block w-100" alt="...">
-      </div>
-      <div class="carousel-item">
-        <img src="assets/img/slide2.png" class="d-block w-100" alt="...">
-      </div>
-      <div class="carousel-item">
-        <img src="assets/img/slide3.png" class="d-block w-100" alt="...">
-      </div>
-    </div>
-    <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleControls" data-bs-slide="prev">
-      <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-      <span class="visually-hidden">Previous</span>
-    </button>
-    <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleControls" data-bs-slide="next">
-      <span class="carousel-control-next-icon" aria-hidden="true"></span>
-      <span class="visually-hidden">Next</span>
-    </button>
+  <!-- Panel derecho con degradado dorado-rosa -->
+  <div class="ns-hero__panel" aria-hidden="true"></div>
+
+  <!-- Partículas de luz -->
+  <div class="ns-particles" aria-hidden="true">
+    <span></span><span></span><span></span>
+    <span></span><span></span><span></span><span></span><span></span>
   </div>
 
+  <!-- Wordmark decorativo -->
+  <span class="ns-hero__wordmark" aria-hidden="true">BELLEZA</span>
 
+  <div class="container ns-hero__container">
+    <div class="row align-items-center g-0 ns-hero__row">
 
+      <!-- ── CONTENIDO IZQUIERDA ── -->
+      <div class="col-lg-6 ns-hero__content">
 
-  <div class="row contenedor1">
-    <div class="col-7">
-      <div class="col-9 offset-2  d-flex justify-content between align-content-center flex-column">
-        <h1 class="fw-bold py-4 mt-5">Bienvenido a New Styles </h1>
-        <p> Somos una peluquiera de alto nivel, compromiso y calidad de mujeres colombianas emprendedoras  con sentido de inclusion de todo ambito profesional
-        <br>Ven separa tu cita y disfruta de todos nuestros servicios que tenemos para ti </p>
+        <div class="ns-badge">
+          <span class="ns-badge__dot"></span>
+          {{ badgeText }}<span class="ns-badge__cursor">|</span>
+          <span class="ns-badge__dot"></span>
+        </div>
+
+        <h1 class="ns-hero__title">
+          El Arte<br>
+          de la <em class="ns-gold-text">Belleza</em><br>
+          <span class="ns-hero__title-sub">Redefinida.</span>
+        </h1>
+
+        <p class="ns-hero__desc">
+          Transformamos tu imagen con elegancia, sofisticación y
+          una experiencia premium diseñada para destacar tu esencia única.
+        </p>
+
+        <div class="ns-hero__actions">
+          <button class="ns-btn ns-btn--gold" (click)="scrollTo('booking')">
+            <i class="fas fa-calendar-check"></i>
+            Reservar Cita
+          </button>
+          <button class="ns-btn ns-btn--ghost" (click)="scrollTo('services')">
+            Ver Servicios
+            <i class="fas fa-arrow-right"></i>
+          </button>
+        </div>
+
+        <!-- Estadísticas animadas -->
+        <div class="ns-hero__stats">
+          <div class="ns-stat">
+            <strong>{{ statClientes }}<span>+</span></strong>
+            <span>Clientas felices</span>
+          </div>
+          <div class="ns-stat-sep" aria-hidden="true"></div>
+          <div class="ns-stat">
+            <strong>{{ statAnios }}<span>+</span></strong>
+            <span>Años de experiencia</span>
+          </div>
+          <div class="ns-stat-sep" aria-hidden="true"></div>
+          <div class="ns-stat">
+            <strong>5.0<span>★</span></strong>
+            <span>Calificación promedio</span>
+          </div>
+        </div>
+
       </div>
-    </div>
 
-    <!-- SEPARAR TU CITA -->
-    <div class="col-5 ">
-      <div class="cuadrado">
-      <form class=" col-8 offset-2   mt-5 d-flex justify-content between align-content-center flex-column "  [formGroup]="citaForm" (ngSubmit)="agrecita()">
+      <!-- ── MOSAICO DERECHA ── -->
+      <div class="col-lg-6 ns-hero__visual">
+        <div class="ns-hero__mosaic" [ngStyle]="mosaicStyle">
 
-        <div class=" form-group text-white">
-          <div class="text-center"><i class="fas fa-address-book " [routerLink]="['/agendar-citas']"></i></div>
-          <h3 class=" titulo-periodico text-white mt-2 ">{{titulo_form}}<br><span class="text-Capitalize"> con New Styles</span></h3>
-          <label for="exampleInputEmail1 ">Nombre</label>
-          <input formControlName="citaNombre" type="text" class="form-control " id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Digita Tú Nombre">
-          <div class="alert alert-danger" role="alert" *ngIf=" citaForm.get('citaNombre')?.hasError('required') && citaForm.get('citaNombre')?.touched " > Escribe Tú Nombre es Obligatorio</div>
-        </div>
+          <!-- Imagen principal grande -->
+          <div class="ns-mosaic__main">
+            <img src="assets/img/pei1.jpg" alt="New Styles Luxury Salon">
+            <div class="ns-mosaic__fade"></div>
+            <div class="ns-mosaic__label">
+              <i class="fas fa-star"></i> Estilistas Certificadas
+            </div>
+          </div>
 
-      <div class="row">
-        <div class=" col-6 form-group text-white mt-2 ">
-          <label for="exampleInputPassword1">Fecha</label>
-          <input formControlName="citaFecha" type="date" class="form-control" id="exampleInputPassword1" placeholder="Password">
-          <div class="alert alert-danger" role="alert"  *ngIf=" citaForm.get('citaFecha')?.hasError('required') && citaForm.get('citaFecha')?.touched " > Ingresa la Fecha es obligatorio</div>
-        </div>
+          <!-- Columna de imágenes pequeñas -->
+          <div class="ns-mosaic__col">
+            <div class="ns-mosaic__small">
+              <img src="assets/img/pei2.jpg" alt="Peinado profesional">
+              <div class="ns-mosaic__small-label">Peinados</div>
+            </div>
+            <div class="ns-mosaic__small">
+              <img src="assets/img/pei3.jpg" alt="Estilo exclusivo">
+              <div class="ns-mosaic__small-label">Estilos</div>
+            </div>
+          </div>
 
-        <div class=" col-6 form-group text-white mt-2  ">
-          <label for="exampleInputPassword1">Hora</label>
-          <input formControlName="citaHora" type="time" class="form-control" id="exampleInputPassword1" placeholder="Password">
-          <div class="alert alert-danger" role="alert"  *ngIf=" citaForm.get('citaHora')?.hasError('required') && citaForm.get('citaHora')?.touched " > Ingresa la Fecha es obligatorio</div>
+          <!-- Acentos de esquina -->
+          <div class="ns-corner-accent ns-corner-accent--tr" aria-hidden="true"></div>
+          <div class="ns-corner-accent ns-corner-accent--bl" aria-hidden="true"></div>
+
+          <!-- Tarjeta flotante -->
+          <div class="ns-float-card">
+            <div class="ns-float-card__icon">
+              <i class="fas fa-crown"></i>
+            </div>
+            <div class="ns-float-card__text">
+              <strong>Elegancia Exclusiva</strong>
+              <span>Experiencia premium internacional</span>
+            </div>
+          </div>
+
         </div>
       </div>
 
-
-          <label for="exampleFormControlInput1" class="form-label text-white mt-2 mb-0">Motivo</label>
-          <input formControlName="citaMotivo" type="text" class="form-control" id="exampleFormControlInput1" placeholder="peinados,cortes,tintes,cuidados o maquillaje?">
-          <div class="alert alert-danger" role="alert"  *ngIf=" citaForm.get('citaMotivo')?.hasError('required') && citaForm.get('citaMotivo')?.touched " > por favor digita : peinados,cortes,tintes,cuidados o maquillaje</div>
-
-
-        <div class="d-flex justify-content-center align-items-center mt-3 ">
-        <button type="submit" class="btn btn-primary" [disabled]="citaForm.invalid">Reservar</button>
-        </div>
-        <br>
-
-      </form>
-    </div>
     </div>
   </div>
 
+  <!-- Línea dorada inferior -->
+  <div class="ns-hero__line" aria-hidden="true"></div>
+</section>
 
-<br>
-<br>
+<!-- ══════════════════════════════════════════════════════════════
+     MARQUEE — TICKER DE LUJO
+══════════════════════════════════════════════════════════════ -->
+<div class="ns-ticker" aria-hidden="true">
+  <div class="ns-ticker__track">
+    <!-- Set 1 -->
+    <span>LUJO</span><span class="ns-ticker__dot">◆</span>
+    <span>BELLEZA</span><span class="ns-ticker__dot">◆</span>
+    <span>ELEGANCIA</span><span class="ns-ticker__dot">◆</span>
+    <span>MODA</span><span class="ns-ticker__dot">◆</span>
+    <span>PREMIUM</span><span class="ns-ticker__dot">◆</span>
+    <span>ESTILO</span><span class="ns-ticker__dot">◆</span>
+    <span>GLAMOUR</span><span class="ns-ticker__dot">◆</span>
+    <span>NUEVOS ESTILOS</span><span class="ns-ticker__dot">◆</span>
+    <span>SOFISTICACIÓN</span><span class="ns-ticker__dot">◆</span>
+    <span>TENDENCIA</span><span class="ns-ticker__dot">◆</span>
+    <!-- Set 2 (copia exacta) -->
+    <span>LUJO</span><span class="ns-ticker__dot">◆</span>
+    <span>BELLEZA</span><span class="ns-ticker__dot">◆</span>
+    <span>ELEGANCIA</span><span class="ns-ticker__dot">◆</span>
+    <span>MODA</span><span class="ns-ticker__dot">◆</span>
+    <span>PREMIUM</span><span class="ns-ticker__dot">◆</span>
+    <span>ESTILO</span><span class="ns-ticker__dot">◆</span>
+    <span>GLAMOUR</span><span class="ns-ticker__dot">◆</span>
+    <span>NUEVOS ESTILOS</span><span class="ns-ticker__dot">◆</span>
+    <span>SOFISTICACIÓN</span><span class="ns-ticker__dot">◆</span>
+    <span>TENDENCIA</span><span class="ns-ticker__dot">◆</span>
+  </div>
+</div>
 
-  <app-piedepagina></app-piedepagina>
+<!-- ══════════════════════════════════════════════════════════════
+     FEATURES — POR QUÉ ELEGIRNOS
+══════════════════════════════════════════════════════════════ -->
+<section class="ns-features">
+  <div class="container">
 
+    <div class="ns-section-head ns-section-head--center ns-reveal">
+      <p class="ns-section-label ns-section-label--center">Por qué elegirnos</p>
+      <h2 class="ns-section-title">La Excelencia<br>Como Estándar</h2>
+      <div class="ns-divider ns-divider--center"></div>
+    </div>
 
+    <div class="row g-4 mt-2">
+      <div class="col-md-6 col-lg-3">
+        <div class="ns-feature-card ns-reveal" style="transition-delay:0.05s">
+          <span class="ns-feature-num" aria-hidden="true">01</span>
+          <div class="ns-feature-icon"><i class="fas fa-crown"></i></div>
+          <h5>Calidad Premium</h5>
+          <p>Productos y servicios de la más alta calidad importados internacionalmente.</p>
+        </div>
+      </div>
+      <div class="col-md-6 col-lg-3">
+        <div class="ns-feature-card ns-reveal" style="transition-delay:0.15s">
+          <span class="ns-feature-num" aria-hidden="true">02</span>
+          <div class="ns-feature-icon"><i class="fas fa-user-tie"></i></div>
+          <h5>Profesionales</h5>
+          <p>Equipo altamente capacitado y certificado internacionalmente.</p>
+        </div>
+      </div>
+      <div class="col-md-6 col-lg-3">
+        <div class="ns-feature-card ns-reveal" style="transition-delay:0.25s">
+          <span class="ns-feature-num" aria-hidden="true">03</span>
+          <div class="ns-feature-icon"><i class="fas fa-heart"></i></div>
+          <h5>Cuidado Personal</h5>
+          <p>Atención personalizada y dedicada a cada clienta especial.</p>
+        </div>
+      </div>
+      <div class="col-md-6 col-lg-3">
+        <div class="ns-feature-card ns-reveal" style="transition-delay:0.35s">
+          <span class="ns-feature-num" aria-hidden="true">04</span>
+          <div class="ns-feature-icon"><i class="fas fa-gem"></i></div>
+          <h5>Garantía Total</h5>
+          <p>Satisfacción garantizada en cada uno de nuestros servicios.</p>
+        </div>
+      </div>
+    </div>
 
+  </div>
+</section>
 
-</body>
+<!-- ══════════════════════════════════════════════════════════════
+     SERVICES — NUESTROS SERVICIOS PREMIUM
+══════════════════════════════════════════════════════════════ -->
+<section class="ns-services" id="services">
+  <div class="container">
 
-</html>
+    <div class="ns-section-head ns-section-head--center ns-reveal">
+      <p class="ns-section-label ns-section-label--center">Servicios exclusivos</p>
+      <h2 class="ns-section-title">Nuestros Servicios<br><em class="ns-gold-text">Premium</em></h2>
+      <div class="ns-divider ns-divider--center"></div>
+      <p class="ns-section-sub">Descubre todos nuestros servicios de belleza exclusiva</p>
+    </div>
+
+    <div class="row g-4 mt-3 justify-content-center">
+
+      <div class="col-md-6 col-lg-4">
+        <div class="ns-service-card">
+          <div class="ns-service-icon ns-service-icon--1"><i class="fas fa-wind"></i></div>
+          <h5>Peinados</h5>
+          <p>Diseños exclusivos y tendencias modernas para cualquier ocasión especial.</p>
+          <a routerLink="/peinados" class="ns-service-link">Explorar <i class="fas fa-arrow-right"></i></a>
+        </div>
+      </div>
+
+      <div class="col-md-6 col-lg-4">
+        <div class="ns-service-card">
+          <div class="ns-service-icon ns-service-icon--2"><i class="fas fa-cut"></i></div>
+          <h5>Cortes</h5>
+          <p>Cortes personalizados que realzan tu belleza natural única.</p>
+          <a routerLink="/cortes" class="ns-service-link">Explorar <i class="fas fa-arrow-right"></i></a>
+        </div>
+      </div>
+
+      <div class="col-md-6 col-lg-4">
+        <div class="ns-service-card">
+          <div class="ns-service-icon ns-service-icon--3"><i class="fas fa-palette"></i></div>
+          <h5>Tintes</h5>
+          <p>Coloración profesional con productos de calidad superior.</p>
+          <a routerLink="/tintes" class="ns-service-link">Explorar <i class="fas fa-arrow-right"></i></a>
+        </div>
+      </div>
+
+      <div class="col-md-6 col-lg-4">
+        <div class="ns-service-card">
+          <div class="ns-service-icon ns-service-icon--4"><i class="fas fa-spa"></i></div>
+          <h5>Cuidados</h5>
+          <p>Tratamientos especializados para la salud y vitalidad de tu cabello.</p>
+          <a routerLink="/cuidados" class="ns-service-link">Explorar <i class="fas fa-arrow-right"></i></a>
+        </div>
+      </div>
+
+      <div class="col-md-6 col-lg-4">
+        <div class="ns-service-card">
+          <div class="ns-service-icon ns-service-icon--5"><i class="fas fa-magic"></i></div>
+          <h5>Maquillaje</h5>
+          <p>Maquillaje profesional para eventos y ocasiones especiales.</p>
+          <a routerLink="/maquillaje" class="ns-service-link">Explorar <i class="fas fa-arrow-right"></i></a>
+        </div>
+      </div>
+
+      <div class="col-md-6 col-lg-4">
+        <div class="ns-service-card ns-service-card--gold">
+          <div class="ns-service-icon ns-service-icon--6"><i class="fas fa-gift"></i></div>
+          <h5>Paquetes</h5>
+          <p>Combina servicios y obtén descuentos y beneficios exclusivos.</p>
+          <a href="#" class="ns-service-link">Consultar <i class="fas fa-arrow-right"></i></a>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ══════════════════════════════════════════════════════════════
+     GALERÍA — NUESTROS RESULTADOS
+══════════════════════════════════════════════════════════════ -->
+<section class="ns-gallery">
+  <div class="container">
+    <div class="ns-section-head ns-section-head--center ns-reveal">
+      <p class="ns-section-label ns-section-label--center">Galería de resultados</p>
+      <h2 class="ns-section-title">Nuestro Trabajo<br><em class="ns-gold-text">Habla Solo</em></h2>
+      <div class="ns-divider ns-divider--center"></div>
+      <p class="ns-section-sub">Cada cliente es una obra de arte. Mira algunas de nuestras transformaciones.</p>
+    </div>
+  </div>
+
+  <div class="ns-gallery__strip mt-4 ns-reveal">
+    <div class="ns-gallery__item" (click)="openLightbox('assets/img/boda.jpg')">
+      <img src="assets/img/boda.jpg" alt="Peinado de boda">
+      <div class="ns-gallery__overlay"><span>Bodas</span></div>
+    </div>
+    <div class="ns-gallery__item" (click)="openLightbox('assets/img/bucles.jpg')">
+      <img src="assets/img/bucles.jpg" alt="Bucles perfectos">
+      <div class="ns-gallery__overlay"><span>Rizos</span></div>
+    </div>
+    <div class="ns-gallery__item" (click)="openLightbox('assets/img/trenzas.jpg')">
+      <img src="assets/img/trenzas.jpg" alt="Trenzas profesionales">
+      <div class="ns-gallery__overlay"><span>Trenzas</span></div>
+    </div>
+    <div class="ns-gallery__item" (click)="openLightbox('assets/img/coletas.jpg')">
+      <img src="assets/img/coletas.jpg" alt="Coletas elegantes">
+      <div class="ns-gallery__overlay"><span>Coletas</span></div>
+    </div>
+    <div class="ns-gallery__item" (click)="openLightbox('assets/img/natural.jpg')">
+      <img src="assets/img/natural.jpg" alt="Look natural">
+      <div class="ns-gallery__overlay"><span>Natural</span></div>
+    </div>
+    <div class="ns-gallery__item" (click)="openLightbox('assets/img/mediano.jpg')">
+      <img src="assets/img/mediano.jpg" alt="Largo mediano">
+      <div class="ns-gallery__overlay"><span>Largo Mediano</span></div>
+    </div>
+    <div class="ns-gallery__item" (click)="openLightbox('assets/img/corto.jpg')">
+      <img src="assets/img/corto.jpg" alt="Corte corto moderno">
+      <div class="ns-gallery__overlay"><span>Corte Corto</span></div>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════════════════════════════════════════════════════════
+     BOOKING — RESERVA TU CITA
+══════════════════════════════════════════════════════════════ -->
+<section class="ns-booking" id="booking">
+  <div class="container">
+    <div class="row align-items-center g-5">
+
+      <!-- Texto informativo -->
+      <div class="col-lg-5 ns-booking__info ns-reveal">
+        <p class="ns-section-label">Agenda tu cita</p>
+        <h2 class="ns-section-title">Reserva Tu<br>Experiencia <em class="ns-gold-text">Premium</em></h2>
+        <div class="ns-divider"></div>
+        <p class="ns-booking__desc">
+          Agenda tu cita de belleza en el mejor salón premium de Bogotá.
+          Experiencia de lujo garantizada.
+        </p>
+
+        <ul class="ns-benefit-list">
+          <li>
+            <span class="ns-benefit-icon"><i class="fas fa-check"></i></span>
+            <div>
+              <strong>Atención Personalizada</strong>
+              <span>Cada clienta es especial para nosotros</span>
+            </div>
+          </li>
+          <li>
+            <span class="ns-benefit-icon"><i class="fas fa-check"></i></span>
+            <div>
+              <strong>Resultados Garantizados</strong>
+              <span>Satisfacción 100% asegurada</span>
+            </div>
+          </li>
+          <li>
+            <span class="ns-benefit-icon"><i class="fas fa-check"></i></span>
+            <div>
+              <strong>Ambiente Lujoso</strong>
+              <span>Relájate en nuestro espacio premium</span>
+            </div>
+          </li>
+        </ul>
+      </div>
+
+      <!-- Formulario -->
+      <div class="col-lg-7 ns-reveal" style="transition-delay:0.15s">
+        <div class="ns-form-card">
+
+          <div class="ns-form-header">
+            <div class="ns-form-icon"><i class="fas fa-calendar-check"></i></div>
+            <h3>Agenda Tu Cita</h3>
+            <p>Con New Styles en 3 sencillos pasos</p>
+          </div>
+
+          <form [formGroup]="citaForm" (ngSubmit)="agrecita()">
+
+            <div class="ns-field">
+              <label><i class="fas fa-user"></i> Nombre Completo</label>
+              <input formControlName="citaNombre" type="text"
+                     placeholder="Tu nombre completo" class="ns-input"
+                     [class.ns-input--invalid]="citaForm.get('citaNombre')?.invalid && citaForm.get('citaNombre')?.touched">
+              <div class="ns-error-box"
+                   *ngIf="citaForm.get('citaNombre')?.hasError('required') && citaForm.get('citaNombre')?.touched">
+                <i class="fas fa-exclamation-circle"></i> Tu nombre es obligatorio
+              </div>
+            </div>
+
+            <div class="row g-3">
+              <div class="col-md-6">
+                <div class="ns-field">
+                  <label><i class="fas fa-calendar"></i> Fecha</label>
+                  <input formControlName="citaFecha" type="date" class="ns-input"
+                         [class.ns-input--invalid]="citaForm.get('citaFecha')?.invalid && citaForm.get('citaFecha')?.touched">
+                  <div class="ns-error-box"
+                       *ngIf="citaForm.get('citaFecha')?.hasError('required') && citaForm.get('citaFecha')?.touched">
+                    <i class="fas fa-exclamation-circle"></i> Selecciona una fecha
+                  </div>
+                </div>
+              </div>
+              <div class="col-md-6">
+                <div class="ns-field">
+                  <label><i class="fas fa-clock"></i> Hora</label>
+                  <input formControlName="citaHora" type="time" class="ns-input"
+                         [class.ns-input--invalid]="citaForm.get('citaHora')?.invalid && citaForm.get('citaHora')?.touched">
+                  <div class="ns-error-box"
+                       *ngIf="citaForm.get('citaHora')?.hasError('required') && citaForm.get('citaHora')?.touched">
+                    <i class="fas fa-exclamation-circle"></i> Selecciona una hora
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div class="ns-field">
+              <label><i class="fas fa-star"></i> Tipo de Servicio</label>
+              <div class="ns-select-wrap">
+                <select formControlName="citaMotivo" class="ns-input ns-select"
+                        [class.ns-input--invalid]="citaForm.get('citaMotivo')?.invalid && citaForm.get('citaMotivo')?.touched">
+                  <option value="" disabled selected>Elige tu servicio...</option>
+                  <option value="peinados">✦ Peinados</option>
+                  <option value="cortes">✦ Cortes</option>
+                  <option value="tintes">✦ Tintes & Color</option>
+                  <option value="cuidados">✦ Tratamientos & Cuidados</option>
+                  <option value="maquillaje">✦ Maquillaje</option>
+                </select>
+                <i class="fas fa-chevron-down ns-select-arrow"></i>
+              </div>
+              <div class="ns-error-box"
+                   *ngIf="citaForm.get('citaMotivo')?.invalid && citaForm.get('citaMotivo')?.touched">
+                <i class="fas fa-exclamation-circle"></i> Selecciona un tipo de servicio
+              </div>
+            </div>
+
+            <button type="submit" class="ns-btn ns-btn--gold ns-btn--full"
+                    [disabled]="citaForm.invalid">
+              <i class="fas fa-check-circle"></i>
+              Reservar Mi Cita Premium
+            </button>
+
+          </form>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ══════════════════════════════════════════════════════════════
+     TESTIMONIALS
+══════════════════════════════════════════════════════════════ -->
+<section class="ns-testimonials">
+  <div class="container">
+
+    <div class="ns-section-head ns-section-head--center ns-reveal">
+      <p class="ns-section-label ns-section-label--center">Testimonios</p>
+      <h2 class="ns-section-title">Lo Que Dicen<br>Nuestras <em class="ns-gold-text">Clientas</em></h2>
+      <div class="ns-divider ns-divider--center"></div>
+    </div>
+
+    <div class="row g-4 mt-2">
+
+      <div class="col-md-4">
+        <div class="ns-testimonial">
+          <div class="ns-testimonial__quote" aria-hidden="true">"</div>
+          <div class="ns-testimonial__stars">
+            <i class="fas fa-star"></i><i class="fas fa-star"></i>
+            <i class="fas fa-star"></i><i class="fas fa-star"></i>
+            <i class="fas fa-star"></i>
+          </div>
+          <p>Excelente atención, las chicas son muy profesionales. Mi cabello nunca se ha visto tan bien.</p>
+          <div class="ns-testimonial__author">
+            <div class="ns-testimonial__avatar">MG</div>
+            <div>
+              <strong>María González</strong>
+              <span>Clienta Premium</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="col-md-4">
+        <div class="ns-testimonial">
+          <div class="ns-testimonial__quote" aria-hidden="true">"</div>
+          <div class="ns-testimonial__stars">
+            <i class="fas fa-star"></i><i class="fas fa-star"></i>
+            <i class="fas fa-star"></i><i class="fas fa-star"></i>
+            <i class="fas fa-star"></i>
+          </div>
+          <p>El ambiente es muy relajante y los resultados superan cualquier expectativa. Vuelvo cada mes.</p>
+          <div class="ns-testimonial__author">
+            <div class="ns-testimonial__avatar">AR</div>
+            <div>
+              <strong>Ana Rodríguez</strong>
+              <span>Clienta Premium</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="col-md-4">
+        <div class="ns-testimonial">
+          <div class="ns-testimonial__quote" aria-hidden="true">"</div>
+          <div class="ns-testimonial__stars">
+            <i class="fas fa-star"></i><i class="fas fa-star"></i>
+            <i class="fas fa-star"></i><i class="fas fa-star"></i>
+            <i class="fas fa-star"></i>
+          </div>
+          <p>Recomiendo New Styles a todas mis amigas. Impecable en todo, superó mis expectativas.</p>
+          <div class="ns-testimonial__author">
+            <div class="ns-testimonial__avatar">LP</div>
+            <div>
+              <strong>Laura Pérez</strong>
+              <span>Clienta Premium</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ══════════════════════════════════════════════════════════════
+     CTA FINAL
+══════════════════════════════════════════════════════════════ -->
+<section class="ns-cta">
+  <div class="ns-cta__glow ns-cta__glow--1" aria-hidden="true"></div>
+  <div class="ns-cta__glow ns-cta__glow--2" aria-hidden="true"></div>
+  <div class="ns-cta__glow ns-cta__glow--3" aria-hidden="true"></div>
+
+  <div class="container ns-cta__inner ns-reveal">
+    <p class="ns-section-label ns-section-label--center">Una Nueva Experiencia Te Espera</p>
+    <h2 class="ns-cta__title">
+      ¿Lista Para Tu<br>
+      <em class="ns-gold-text">Transformación</em>?
+    </h2>
+    <p class="ns-cta__sub">
+      Contáctanos hoy y agenda tu cita para vivir la experiencia New Styles
+    </p>
+    <div class="ns-cta__actions">
+      <button class="ns-btn ns-btn--gold">
+        <i class="fas fa-phone"></i> Llamar Ahora
+      </button>
+      <button class="ns-btn ns-btn--ghost">
+        <i class="fab fa-whatsapp"></i> WhatsApp
+      </button>
+    </div>
+  </div>
+</section>
+
+<app-piedepagina></app-piedepagina>
+
+<!-- Botón volver arriba -->
+<button class="ns-back-top" [class.ns-back-top--visible]="scrollProgress > 18" (click)="scrollToTop()" aria-label="Volver arriba">
+  <i class="fas fa-chevron-up"></i>
+</button>

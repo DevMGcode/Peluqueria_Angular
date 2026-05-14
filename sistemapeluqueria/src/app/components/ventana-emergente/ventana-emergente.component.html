@@ -1,27 +1,71 @@
-<div class="ventana-emergente">
-  <div class="btn-cerrar" (click)="close()">X</div>
+<!-- Backdrop semitransparente -->
+<div class="ve-backdrop" (click)="close()"></div>
 
-  <h3>Carrito de compras</h3>
-  <ul>
-    <li *ngFor="let producto of carrito">
+<!-- Panel lateral deslizante desde la derecha -->
+<div class="ve-panel">
+
+  <!-- Header del panel -->
+  <div class="ve-panel__header">
+    <div class="ve-panel__title-area">
+      <i class="fas fa-shopping-bag ve-panel__icon"></i>
       <div>
-        {{ producto.nombre }}
+        <span class="ve-panel__title">Tu Carrito</span>
+        <span class="ve-panel__count">{{ carrito.length }} {{ carrito.length === 1 ? 'producto' : 'productos' }}</span>
       </div>
-      <div>
-        $ {{ formatearPrecioProducto(producto.precio) }}
-      </div>
-    </li>
-  </ul>
-  <p>Total: $ {{ calcularTotal() | number: '1.0-0' }}</p>
-
-  <!-- Botón para realizar la compra -->
-  <button (click)="realizarCompra()">Pagar</button>
-  <button (click)="cerrar()">Cancelar</button>
-
-  <!-- Mensaje de compra realizada -->
-  <br><br>
-  <div *ngIf="compraRealizada" class="mensaje-compra">
-    <img src="assets/img/cheque.png" alt="Chulito"> Compra realizada
+    </div>
+    <button class="ve-panel__close" (click)="close()" aria-label="Cerrar">
+      <i class="fas fa-times"></i>
+    </button>
   </div>
-</div>
 
+  <!-- Estado vacío -->
+  <div class="ve-empty" *ngIf="carrito.length === 0 && !compraRealizada && !isLoading">
+    <i class="fas fa-shopping-bag ve-empty__icon"></i>
+    <p class="ve-empty__text">Tu carrito está vacío</p>
+    <span class="ve-empty__sub">Añade productos desde la tienda</span>
+  </div>
+
+  <!-- Lista de items -->
+  <div class="ve-items" *ngIf="carrito.length > 0 && !isLoading && !compraRealizada">
+    <div class="ve-item" *ngFor="let producto of carrito; let i = index">
+      <span class="ve-item__num">{{ i + 1 }}</span>
+      <div class="ve-item__info">
+        <span class="ve-item__name">{{ producto.nombre }}</span>
+      </div>
+      <span class="ve-item__price">$ {{ formatearPrecioProducto(producto.precio) }}</span>
+    </div>
+  </div>
+
+  <!-- Total + acciones -->
+  <div class="ve-footer" *ngIf="carrito.length > 0 && !isLoading && !compraRealizada">
+    <div class="ve-total">
+      <div class="ve-total__line"></div>
+      <div class="ve-total__row">
+        <span class="ve-total__label">Total</span>
+        <span class="ve-total__amount">$ {{ calcularTotal() | number: '1.0-0' }}</span>
+      </div>
+    </div>
+    <button class="ve-btn ve-btn--pay" (click)="realizarCompra()">
+      <i class="fas fa-credit-card"></i> Confirmar Compra
+    </button>
+    <button class="ve-btn ve-btn--cancel" (click)="cerrar()">
+      <i class="fas fa-trash-alt"></i> Cancelar y Vaciar
+    </button>
+  </div>
+
+  <!-- Loader durante el proceso de pago -->
+  <div class="ve-loading" *ngIf="isLoading">
+    <div class="ve-loading__ring"></div>
+    <p class="ve-loading__text">Procesando tu compra…</p>
+  </div>
+
+  <!-- Compra exitosa -->
+  <div class="ve-success" *ngIf="compraRealizada">
+    <div class="ve-success__circle">
+      <i class="fas fa-check ve-success__check"></i>
+    </div>
+    <h4 class="ve-success__title">¡Compra Exitosa!</h4>
+    <p class="ve-success__sub">Tu pedido ha sido confirmado.<br>Nos pondremos en contacto contigo.</p>
+  </div>
+
+</div>

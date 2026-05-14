@@ -2,14 +2,14 @@ import { HttpClient} from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { Tinte } from '../models/tinte';
-//mandar las peticiones a la api y dar respuesta a la misma
+import { environment } from 'src/environments/environment';
 
 @Injectable({
   providedIn: 'root'
 })
 export class TinteService {
 
-  url = 'http://localhost:4000/api/tinte/';
+  url = `${environment.apiUrl}/api/tinte/`;
 
 
   constructor(private http:HttpClient) {

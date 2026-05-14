@@ -1,159 +1,281 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Document</title>
-</head>
-<body>
+<!-- ══════════════════════════════════════════════════════════════
+     PEINADOS PAGE
+══════════════════════════════════════════════════════════════ -->
+<div class="ns-cursor-dot"></div>
 
+<!-- Dots de navegación lateral -->
+<nav class="pn-sidenav" aria-label="Secciones">
+  <button class="pn-sidenav__dot" [class.pn-sidenav__dot--active]="activeSection==='hero'"    (click)="scrollTo('pn-top')"    aria-label="Inicio"></button>
+  <button class="pn-sidenav__dot" [class.pn-sidenav__dot--active]="activeSection==='trenzas'" (click)="scrollTo('trenzas')"  aria-label="Trenzas"></button>
+  <button class="pn-sidenav__dot" [class.pn-sidenav__dot--active]="activeSection==='bucles'"  (click)="scrollTo('bucles')"   aria-label="Bucles"></button>
+  <button class="pn-sidenav__dot" [class.pn-sidenav__dot--active]="activeSection==='coletas'" (click)="scrollTo('coletas')"  aria-label="Coletas"></button>
+</nav>
 
-<!-- cortes.component.html -->
 <app-barradenavegacion></app-barradenavegacion>
 
+<!-- ── Hero Banner ── -->
+<section class="pn-hero" id="pn-top">
+  <div class="pn-hero__bg"></div>
+  <div class="pn-hero__particles" aria-hidden="true">
+    <span *ngFor="let p of particles" class="pn-particle"
+          [style.left]="p.x + '%'"
+          [style.top]="p.y + '%'"
+          [style.width]="p.size + 'px'"
+          [style.height]="p.size + 'px'"
+          [style.animation-delay]="p.delay + 's'"
+          [style.animation-duration]="p.dur + 's'">
+    </span>
+  </div>
 
+  <div class="pn-hero__inner">
+    <!-- Texto -->
+    <div class="pn-hero__text pn-slide-up">
+      <span class="pn-hero__eyebrow">
+        <i class="fas fa-wind"></i>
+        <span>{{ eyebrowText }}</span><span class="pn-blink">|</span>
+      </span>
+      <h1 class="pn-hero__title">
+        Arte en<br><span class="pn-hero__accent">Peinados</span>
+      </h1>
+      <p class="pn-hero__sub">
+        Desde trenzas elegantes hasta ondas naturales, cada peinado es una obra de arte diseñada para ti.
+      </p>
 
+      <!-- Stats -->
+      <div class="pn-hero__stats">
+        <div class="pn-stat">
+          <strong>{{ statTutorials }}+</strong>
+          <span>Tutoriales</span>
+        </div>
+        <div class="pn-stat-sep"></div>
+        <div class="pn-stat">
+          <strong>{{ statStyles }}</strong>
+          <span>Estilos</span>
+        </div>
+        <div class="pn-stat-sep"></div>
+        <div class="pn-stat">
+          <strong>{{ statClients }}+</strong>
+          <span>Clientas felices</span>
+        </div>
+      </div>
 
-  <div class="container mt-5 mb-5">
-    <div class=" col-12 row">
-      <div class="col-4">
-        <img src="assets/img/trenzas.jpg"  alt="">
-          <div class="fondo">
-            <div class="titulo"> Trenzas</div>
-            <p> Elegantes para cualquier ocasion </p>
+      <!-- Chips -->
+      <div class="pn-hero__chips">
+        <span class="pn-chip" [class.pn-chip--active]="activeSection==='trenzas'" (click)="scrollTo('trenzas')">
+          <i class="fas fa-star"></i> Trenzas
+        </span>
+        <span class="pn-chip" [class.pn-chip--active]="activeSection==='bucles'"  (click)="scrollTo('bucles')">
+          <i class="fas fa-circle-notch"></i> Bucles
+        </span>
+        <span class="pn-chip" [class.pn-chip--active]="activeSection==='coletas'" (click)="scrollTo('coletas')">
+          <i class="fas fa-leaf"></i> Coletas
+        </span>
+      </div>
+    </div>
+
+    <!-- Mosaico con parallax -->
+    <div class="pn-hero__mosaic" [ngStyle]="mosaicParallax">
+      <div class="pn-hero__img-main">
+        <img src="assets/img/trenzas.jpg" alt="Trenzas">
+        <div class="pn-hero__img-badge"><i class="fas fa-crown"></i> Premium</div>
+        <div class="pn-hero__img-shine" aria-hidden="true"></div>
+      </div>
+      <div class="pn-hero__img-stack">
+        <div class="pn-hero__img-wrap">
+          <img src="assets/img/bucles.jpg" alt="Bucles">
+          <span class="pn-hero__img-tag">Bucles</span>
+        </div>
+        <div class="pn-hero__img-wrap">
+          <img src="assets/img/coletas.jpg" alt="Coletas">
+          <span class="pn-hero__img-tag">Coletas</span>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="pn-hero__scroll-hint">
+    <span></span><span></span><span></span>
+  </div>
+</section>
+
+<!-- ── Ticker ── -->
+<div class="pn-ticker" aria-hidden="true">
+  <div class="pn-ticker__track">
+    <span *ngFor="let w of tickerWords" class="pn-ticker__item"><i class="fas fa-star"></i> {{ w }}</span>
+    <span *ngFor="let w of tickerWords" class="pn-ticker__item" aria-hidden="true"><i class="fas fa-star"></i> {{ w }}</span>
+    <span *ngFor="let w of tickerWords" class="pn-ticker__item" aria-hidden="true"><i class="fas fa-star"></i> {{ w }}</span>
+    <span *ngFor="let w of tickerWords" class="pn-ticker__item" aria-hidden="true"><i class="fas fa-star"></i> {{ w }}</span>
+  </div>
+</div>
+
+<!-- ── Sección: Trenzas ── -->
+<section class="pn-section" id="trenzas">
+  <div class="pn-section__inner">
+    <div class="pn-section__header ns-reveal">
+      <span class="pn-section__num">01</span>
+      <div class="pn-section__heading">
+        <h2 class="pn-section__title">Trenzas</h2>
+        <p class="pn-section__desc">Elegantes para cualquier ocasión</p>
+      </div>
+      <span class="pn-section__count"><i class="fas fa-play-circle"></i> 4 tutoriales</span>
+      <div class="pn-section__line"></div>
+    </div>
+
+    <div class="pn-grid">
+      <div class="pn-feature-img ns-reveal" style="transition-delay:.1s">
+        <img src="assets/img/trenzas.jpg" alt="Trenzas">
+        <div class="pn-feature-img__overlay"><span><i class="fas fa-star"></i> Trenzas Premium</span></div>
+        <div class="pn-feature-img__border" aria-hidden="true"></div>
+      </div>
+      <div class="pn-videos">
+        <div class="pn-video-card ns-reveal" style="transition-delay:.12s">
+          <div class="pn-video-card__frame">
+            <iframe src="https://www.youtube.com/embed/ToHXepeky20" title="Trenzas tutorial 1" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
           </div>
-      </div>
-
-   <!--  <div class="d-flex  row"> -->
-      <div class="col-4"><iframe width="400" height="300" src="https://www.youtube.com/embed/ToHXepeky20"
-        title="YouTube video player"
-        frameborder="0"
-        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-        allowfullscreen></iframe>
-
-
-
-        <div class="col-4"><iframe width="400" height="300" src="https://www.youtube.com/embed/rpBb_A-NMRI"
-          title="YouTube video player" frameborder="0"
-          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-          allowfullscreen></iframe></div>
-
-      </div>
-
-        <div class="col-4"><iframe width="400" height="300" src="https://www.youtube.com/embed/9k4CPA19z_A"
-          title="YouTube video player" frameborder="0"
-          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-          allowfullscreen></iframe>
-
-          <div class="col-4">
-            <iframe width="400" height="300" src="https://www.youtube.com/embed/5F47cNITbLc"
-            title="YouTube video player" frameborder="0"
-            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-            allowfullscreen></iframe></div>
+          <div class="pn-video-card__info"><i class="fas fa-play-circle"></i> Tutorial trenza elegante</div>
         </div>
-
-      </div>
-    </div>
-
-
-
-   <!--  </div> -->
-
-
-   <div class="container mt-5 mb-5">
-    <div class=" col-12 row">
-      <div class="col-4">
-        <img src="assets/img/bucles.jpg"  >
-        <div class="fondo">
-          <div class="titulo"> Blucles </div>
-          <p>ideales para lucir joven y fresca</p>
-        </div>
-      </div>
-
-
-      <div class="col-4"><iframe width="400" height="300" src="https://www.youtube.com/embed/HHwIWc2ptnQ"
-        title="YouTube video player" frameborder="0"
-        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-        allowfullscreen></iframe>
-
-
-
-        <div class="col-4"><iframe width="400" height="300" src="https://www.youtube.com/embed/jSTwu5xpd_s"
-          title="YouTube video player" frameborder="0"
-          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-          allowfullscreen></iframe></div>
-
-      </div>
-
-        <div class="col-4"><iframe width="400" height="300" src="https://www.youtube.com/embed/sZPpBiCbBnU"
-          title="YouTube video player" frameborder="0"
-          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-          allowfullscreen></iframe>
-
-          <div class="col-4">
-            <iframe width="400" height="300" src="https://www.youtube.com/embed/mTdxLt49LgI"
-            title="YouTube video player" frameborder="0"
-            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-            allowfullscreen></iframe></div>
-        </div>
-
-      </div>
-    </div>
-
-
-   <!--  </div> -->
-
-
-  <div class="container mt-5 mb-5">
-    <div class=" col-12 row">
-      <div class="col-4">
-        <img src="assets/img/coletas.jpg" >
-      <div class="fondo">
-        <div class="titulo"> Coletas </div>
-          <p>Un look fresco y natural </p>
-      </div>
-      </div>
-
-   <!--  <div class="d-flex  row"> -->
-      <div class="col-4"><iframe width="400" height="300" src="https://www.youtube.com/embed/NMiQh75eaHs"
-        title="YouTube video player" frameborder="0"
-        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-        allowfullscreen></iframe>
-
-
-
-        <div class="col-4"><iframe width="400" height="300" src="https://www.youtube.com/embed/gz5-AJj3uzo"
-          title="YouTube video player" frameborder="0"
-          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-          allowfullscreen></iframe>
-        </div>
-
-      </div>
-
-        <div class="col-4"><iframe width="400" height="300" src="https://www.youtube.com/embed/MCRq7czurUE"
-          title="YouTube video player" frameborder="0"
-          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-          allowfullscreen></iframe>
-
-          <div class="col-4">
-            <iframe width="400" height="300" src="https://www.youtube.com/embed/h6ioY6n_dWg"
-            title="YouTube video player" frameborder="0"
-            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-            allowfullscreen></iframe>
+        <div class="pn-video-card ns-reveal" style="transition-delay:.2s">
+          <div class="pn-video-card__frame">
+            <iframe src="https://www.youtube.com/embed/rpBb_A-NMRI" title="Trenzas tutorial 2" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
           </div>
+          <div class="pn-video-card__info"><i class="fas fa-play-circle"></i> Trenza francesa paso a paso</div>
         </div>
-
+        <div class="pn-video-card ns-reveal" style="transition-delay:.28s">
+          <div class="pn-video-card__frame">
+            <iframe src="https://www.youtube.com/embed/9k4CPA19z_A" title="Trenzas tutorial 3" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+          </div>
+          <div class="pn-video-card__info"><i class="fas fa-play-circle"></i> Trenza para ocasión especial</div>
+        </div>
+        <div class="pn-video-card ns-reveal" style="transition-delay:.36s">
+          <div class="pn-video-card__frame">
+            <iframe src="https://www.youtube.com/embed/5F47cNITbLc" title="Trenzas tutorial 4" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+          </div>
+          <div class="pn-video-card__info"><i class="fas fa-play-circle"></i> Trenza de boda</div>
+        </div>
       </div>
     </div>
+  </div>
+</section>
 
+<!-- ── Separador diagonal ── -->
+<div class="pn-sep" aria-hidden="true">
+  <svg viewBox="0 0 1440 40" preserveAspectRatio="none"><path d="M0,40 L1440,0 L1440,40 Z" fill="rgba(255,255,255,0.018)"/></svg>
+</div>
 
+<!-- ── Sección: Bucles ── -->
+<section class="pn-section pn-section--alt" id="bucles">
+  <div class="pn-section__inner">
+    <div class="pn-section__header ns-reveal">
+      <span class="pn-section__num">02</span>
+      <div class="pn-section__heading">
+        <h2 class="pn-section__title">Bucles</h2>
+        <p class="pn-section__desc">Ideales para lucir joven y fresca</p>
+      </div>
+      <span class="pn-section__count"><i class="fas fa-play-circle"></i> 4 tutoriales</span>
+      <div class="pn-section__line"></div>
+    </div>
 
-    <app-piedepagina></app-piedepagina>
+    <div class="pn-grid pn-grid--reverse">
+      <div class="pn-feature-img ns-reveal" style="transition-delay:.1s">
+        <img src="assets/img/bucles.jpg" alt="Bucles">
+        <div class="pn-feature-img__overlay"><span><i class="fas fa-circle-notch"></i> Bucles Premium</span></div>
+        <div class="pn-feature-img__border" aria-hidden="true"></div>
+      </div>
+      <div class="pn-videos">
+        <div class="pn-video-card ns-reveal" style="transition-delay:.12s">
+          <div class="pn-video-card__frame">
+            <iframe src="https://www.youtube.com/embed/HHwIWc2ptnQ" title="Bucles tutorial 1" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+          </div>
+          <div class="pn-video-card__info"><i class="fas fa-play-circle"></i> Bucles naturales</div>
+        </div>
+        <div class="pn-video-card ns-reveal" style="transition-delay:.2s">
+          <div class="pn-video-card__frame">
+            <iframe src="https://www.youtube.com/embed/jSTwu5xpd_s" title="Bucles tutorial 2" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+          </div>
+          <div class="pn-video-card__info"><i class="fas fa-play-circle"></i> Ondas perfectas</div>
+        </div>
+        <div class="pn-video-card ns-reveal" style="transition-delay:.28s">
+          <div class="pn-video-card__frame">
+            <iframe src="https://www.youtube.com/embed/sZPpBiCbBnU" title="Bucles tutorial 3" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+          </div>
+          <div class="pn-video-card__info"><i class="fas fa-play-circle"></i> Rizos con plancha</div>
+        </div>
+        <div class="pn-video-card ns-reveal" style="transition-delay:.36s">
+          <div class="pn-video-card__frame">
+            <iframe src="https://www.youtube.com/embed/mTdxLt49LgI" title="Bucles tutorial 4" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+          </div>
+          <div class="pn-video-card__info"><i class="fas fa-play-circle"></i> Bucles de fiesta</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
 
+<div class="pn-sep pn-sep--flip" aria-hidden="true">
+  <svg viewBox="0 0 1440 40" preserveAspectRatio="none"><path d="M0,0 L1440,40 L0,40 Z" fill="rgba(255,255,255,0.018)"/></svg>
+</div>
 
+<!-- ── Sección: Coletas ── -->
+<section class="pn-section" id="coletas">
+  <div class="pn-section__inner">
+    <div class="pn-section__header ns-reveal">
+      <span class="pn-section__num">03</span>
+      <div class="pn-section__heading">
+        <h2 class="pn-section__title">Coletas</h2>
+        <p class="pn-section__desc">Un look fresco y natural</p>
+      </div>
+      <span class="pn-section__count"><i class="fas fa-play-circle"></i> 4 tutoriales</span>
+      <div class="pn-section__line"></div>
+    </div>
 
+    <div class="pn-grid">
+      <div class="pn-feature-img ns-reveal" style="transition-delay:.1s">
+        <img src="assets/img/coletas.jpg" alt="Coletas">
+        <div class="pn-feature-img__overlay"><span><i class="fas fa-leaf"></i> Coletas Premium</span></div>
+        <div class="pn-feature-img__border" aria-hidden="true"></div>
+      </div>
+      <div class="pn-videos">
+        <div class="pn-video-card ns-reveal" style="transition-delay:.12s">
+          <div class="pn-video-card__frame">
+            <iframe src="https://www.youtube.com/embed/NMiQh75eaHs" title="Coletas tutorial 1" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+          </div>
+          <div class="pn-video-card__info"><i class="fas fa-play-circle"></i> Coleta elegante</div>
+        </div>
+        <div class="pn-video-card ns-reveal" style="transition-delay:.2s">
+          <div class="pn-video-card__frame">
+            <iframe src="https://www.youtube.com/embed/gz5-AJj3uzo" title="Coletas tutorial 2" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+          </div>
+          <div class="pn-video-card__info"><i class="fas fa-play-circle"></i> Cola alta glamurosa</div>
+        </div>
+        <div class="pn-video-card ns-reveal" style="transition-delay:.28s">
+          <div class="pn-video-card__frame">
+            <iframe src="https://www.youtube.com/embed/MCRq7czurUE" title="Coletas tutorial 3" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+          </div>
+          <div class="pn-video-card__info"><i class="fas fa-play-circle"></i> Coleta de novia</div>
+        </div>
+        <div class="pn-video-card ns-reveal" style="transition-delay:.36s">
+          <div class="pn-video-card__frame">
+            <iframe src="https://www.youtube.com/embed/h6ioY6n_dWg" title="Coletas tutorial 4" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+          </div>
+          <div class="pn-video-card__info"><i class="fas fa-play-circle"></i> Coleta casual chic</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
 
+<!-- ── CTA Final ── -->
+<section class="pn-cta ns-reveal">
+  <div class="pn-cta__glow pn-cta__glow--1"></div>
+  <div class="pn-cta__glow pn-cta__glow--2"></div>
+  <div class="pn-cta__inner">
+    <span class="pn-cta__eyebrow"><i class="fas fa-crown"></i> Experiencia Premium</span>
+    <h2 class="pn-cta__title">¿Lista para tu nuevo look?</h2>
+    <p class="pn-cta__sub">Agenda tu cita y déjanos crear el peinado de tus sueños</p>
+    <a [routerLink]="['/']" fragment="booking" class="pn-cta__btn">
+      <i class="fas fa-calendar-check"></i> Reservar Mi Cita
+    </a>
+  </div>
+</section>
 
-</body>
-</html>
+<app-piedepagina></app-piedepagina>

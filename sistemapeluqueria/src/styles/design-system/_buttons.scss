@@ -1,0 +1,160 @@
+// ============================================================================
+// Design System - Botones
+// Estilos para botones premium del salón de belleza
+// ============================================================================
+
+@import './variables';
+
+// BOTÓN BASE
+.btn-luxury {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: $space-sm;
+  padding: $space-md $space-2xl;
+  
+  font-family: $font-family-display;
+  font-size: $font-size-base;
+  font-weight: $font-weight-semibold;
+  text-decoration: none;
+  text-align: center;
+  
+  border: none;
+  border-radius: $border-radius-xl;
+  cursor: pointer;
+  
+  transition: all $transition-base;
+  
+  &:disabled {
+    opacity: 0.6;
+    cursor: not-allowed;
+  }
+  
+  // Efecto hover
+  &:not(:disabled) {
+    &:hover {
+      transform: translateY(-2px);
+    }
+    
+    &:active {
+      transform: translateY(0);
+    }
+  }
+}
+
+// PRIMARIO
+.btn-primary {
+  @extend .btn-luxury;
+  
+  background: $gradient-luxury;
+  color: #ffffff;
+  box-shadow: $shadow-luxury-md;
+  
+  &:not(:disabled):hover {
+    box-shadow: $shadow-luxury-lg;
+    transform: translateY(-3px);
+  }
+}
+
+// SECUNDARIO
+.btn-secondary {
+  @extend .btn-luxury;
+  
+  background: rgba($color-soft-blush, 0.2);
+  color: $color-powder-petal;
+  border: 2px solid $color-soft-blush;
+  
+  &:not(:disabled):hover {
+    background: rgba($color-soft-blush, 0.3);
+  }
+}
+
+// OUTLINE
+.btn-outline {
+  @extend .btn-luxury;
+  
+  background: transparent;
+  color: $color-neutral-900;
+  border: 2px solid $color-neutral-300;
+  
+  &:not(:disabled):hover {
+    background: $color-neutral-100;
+    border-color: $color-neutral-400;
+  }
+}
+
+// GHOST
+.btn-ghost {
+  @extend .btn-luxury;
+  
+  background: transparent;
+  color: $color-neutral-700;
+  
+  &:not(:disabled):hover {
+    background: $color-neutral-100;
+  }
+}
+
+// DANGER
+.btn-danger {
+  @extend .btn-luxury;
+  
+  background: linear-gradient(135deg, #ef4444 0%, #dc2626 100%);
+  color: white;
+  box-shadow: 0 4px 15px rgba(239, 68, 68, 0.4);
+  
+  &:not(:disabled):hover {
+    box-shadow: 0 8px 25px rgba(239, 68, 68, 0.6);
+  }
+}
+
+// SUCCESS
+.btn-success {
+  @extend .btn-luxury;
+  
+  background: linear-gradient(135deg, #10b981 0%, #059669 100%);
+  color: white;
+  box-shadow: 0 4px 15px rgba(16, 185, 129, 0.4);
+  
+  &:not(:disabled):hover {
+    box-shadow: 0 8px 25px rgba(16, 185, 129, 0.6);
+  }
+}
+
+// TAMAÑOS
+.btn-sm {
+  padding: $space-sm $space-lg;
+  font-size: $font-size-sm;
+}
+
+.btn-lg {
+  padding: $space-lg $space-3xl;
+  font-size: $font-size-lg;
+  border-radius: $border-radius-2xl;
+}
+
+.btn-xl {
+  padding: $space-xl $space-4xl;
+  font-size: $font-size-lg;
+  border-radius: $border-radius-2xl;
+}
+
+// FULL WIDTH
+.btn-block {
+  width: 100%;
+}
+
+// CON ICONO
+.btn-icon {
+  padding: $space-md;
+  
+  svg {
+    width: 1.25rem;
+    height: 1.25rem;
+  }
+}
+
+// ANIMACIÓN GLOW
+.btn-glow {
+  animation: pulseLuxury 2s ease-in-out infinite;
+}
