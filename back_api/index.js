@@ -1,30 +1,18 @@
-//console.log("texto de prueba con nodemon")
-
-/* metodo requiere vamos a llamar cualquier herramienta de express */
-const express = require('express'); //para guardarlos - llamada de servicio de express
+const express    = require('express');
 const conectarDB = require('./config/db');
-const cors = require('cors');
+const cors       = require('cors');
 
-const aplicacion = express() // incializarlos con los parametros a esa variable - Implementa servicio en la aplicacion
+const aplicacion = express();
 
+conectarDB();
 
-conectarDB(); //conexion al cluster -db.js
-aplicacion.use(cors({ origin: 'http://localhost:4200' }));
-//aplicacion.get('/',(req,res)=>{
-//
-//    res.send("hola")
-//})
+aplicacion.use(cors({ origin: '*' }));
 aplicacion.use(express.json());
-//cambio agregartinte por tintes
-aplicacion.use('/api/tinte',require('./routes/tinte'));
-aplicacion.use('/api/cita',require('./routes/cita')); /* hay q realizarlo */
 
-//aplicacion.use('/api/cita',require('./routes/cita'));
-/* /api/agregartinte */
-//localhost:4000 - 127.0.0.1:4000
+aplicacion.use('/api/tinte', require('./routes/tinte'));
+aplicacion.use('/api/cita',  require('./routes/cita'));
 
-aplicacion.listen(4000,()=>{
-
-    console.log("el servidor esta funcionando");
-})
-
+const PORT = process.env.PORT || 4000;
+aplicacion.listen(PORT, () => {
+  console.log(`✅ Servidor corriendo en puerto ${PORT}`);
+});
