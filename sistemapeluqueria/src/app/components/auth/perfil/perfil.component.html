@@ -1,0 +1,73 @@
+<div class="perfil-page">
+  <app-barradenavegacion></app-barradenavegacion>
+
+  <div class="perfil-hero">
+    <div class="perfil-avatar">
+      <mat-icon class="perfil-avatar__icon">account_circle</mat-icon>
+    </div>
+    <h1 class="perfil-nombre">{{ usuario?.nombre }}</h1>
+    <span class="perfil-rol-badge">{{ getRolLabel() }}</span>
+    <p class="perfil-email">{{ usuario?.email }}</p>
+  </div>
+
+  <div class="perfil-content">
+    <div class="perfil-info-card">
+      <h2 class="card-title">
+        <mat-icon>info</mat-icon> Información de cuenta
+      </h2>
+      <div class="info-grid">
+        <div class="info-item">
+          <span class="info-label">Nombre</span>
+          <span class="info-value">{{ usuario?.nombre }}</span>
+        </div>
+        <div class="info-item">
+          <span class="info-label">Email</span>
+          <span class="info-value">{{ usuario?.email }}</span>
+        </div>
+        <div class="info-item">
+          <span class="info-label">Teléfono</span>
+          <span class="info-value">{{ usuario?.telefono || 'No registrado' }}</span>
+        </div>
+        <div class="info-item">
+          <span class="info-label">Rol</span>
+          <span class="info-value">{{ getRolLabel() }}</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="perfil-citas-card">
+      <h2 class="card-title">
+        <mat-icon>event</mat-icon> Historial de citas
+      </h2>
+
+      <div class="loading-citas" *ngIf="cargandoCitas">
+        <mat-spinner diameter="32"></mat-spinner>
+      </div>
+
+      <div class="citas-vacio" *ngIf="!cargandoCitas && citas.length === 0">
+        <mat-icon>event_busy</mat-icon>
+        <p>No hay citas registradas aún</p>
+        <a routerLink="/" class="btn-agendar">Agendar mi primera cita</a>
+      </div>
+
+      <div class="citas-list" *ngIf="!cargandoCitas && citas.length > 0">
+        <div class="cita-item" *ngFor="let cita of citas">
+          <div class="cita-dot" [style.background]="getEstadoColor(cita.estado || 'pendiente')"></div>
+          <div class="cita-info">
+            <span class="cita-motivo">{{ cita.motivo }}</span>
+            <span class="cita-fecha">{{ cita.fecha }} a las {{ cita.hora }}</span>
+          </div>
+          <span class="cita-estado" [style.color]="getEstadoColor(cita.estado || 'pendiente')">
+            {{ cita.estado || 'pendiente' }}
+          </span>
+        </div>
+      </div>
+    </div>
+
+    <button mat-stroked-button color="warn" class="btn-logout" (click)="cerrarSesion()">
+      <mat-icon>logout</mat-icon> Cerrar sesión
+    </button>
+  </div>
+
+  <app-piedepagina></app-piedepagina>
+</div>

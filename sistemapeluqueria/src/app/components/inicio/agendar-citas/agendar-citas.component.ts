@@ -4,9 +4,10 @@ import { CitaService } from 'src/app/services/cita.service';
 import Swal from 'sweetalert2';
 
 @Component({
-  selector: 'app-agendar-citas',
-  templateUrl: './agendar-citas.component.html',
-  styleUrls: ['./agendar-citas.component.css']
+    selector: 'app-agendar-citas',
+    templateUrl: './agendar-citas.component.html',
+    styleUrls: ['./agendar-citas.component.css'],
+    standalone: false
 })
 export class AgendarCitasComponent implements OnInit {
 

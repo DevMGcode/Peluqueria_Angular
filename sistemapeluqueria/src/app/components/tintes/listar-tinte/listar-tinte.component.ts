@@ -4,9 +4,10 @@ import { TinteService } from 'src/app/services/tinte.service';
 import Swal from 'sweetalert2';
 
 @Component({
-  selector: 'app-listar-tinte',
-  templateUrl: './listar-tinte.component.html',
-  styleUrls: ['./listar-tinte.component.css']
+    selector: 'app-listar-tinte',
+    templateUrl: './listar-tinte.component.html',
+    styleUrls: ['./listar-tinte.component.css'],
+    standalone: false
 })
 export class ListarTinteComponent implements OnInit {
 //llamar los metodos para hacer las respectiva funcionalidad

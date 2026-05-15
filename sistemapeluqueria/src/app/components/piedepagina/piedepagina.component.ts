@@ -1,9 +1,10 @@
 import { Component, OnInit } from '@angular/core';
 
 @Component({
-  selector: 'app-piedepagina',
-  templateUrl: './piedepagina.component.html',
-  styleUrls: ['./piedepagina.component.css']
+    selector: 'app-piedepagina',
+    templateUrl: './piedepagina.component.html',
+    styleUrls: ['./piedepagina.component.css'],
+    standalone: false
 })
 export class PiedepaginaComponent implements OnInit {
 

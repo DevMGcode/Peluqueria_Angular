@@ -1,6 +1,6 @@
 const mongoose = require('mongoose');// llamado del servicio de mongo
 
-require('dotenv').config({path:'config.env'});//llamado del archivo de variables importantes
+require('dotenv').config({ path: '.env' });
 
 const conectarDB = async()=>{
 

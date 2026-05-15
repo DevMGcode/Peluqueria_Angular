@@ -1,0 +1,49 @@
+/* Reutiliza los estilos del login */
+.auth-page {
+  min-height: 100vh;
+  background: linear-gradient(135deg, #1a1a1a 0%, #2d1b3d 50%, #1a1a1a 100%);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 2rem;
+}
+
+.auth-card {
+  background: rgba(255, 255, 255, 0.05);
+  backdrop-filter: blur(20px);
+  border: 1px solid rgba(212, 175, 55, 0.2);
+  border-radius: 24px;
+  padding: 3rem 2.5rem;
+  width: 100%;
+  max-width: 440px;
+  box-shadow: 0 25px 50px rgba(0,0,0,0.5);
+}
+
+.auth-logo { text-align: center; margin-bottom: 1.5rem; }
+.auth-logo__icon { font-size: 2.5rem; color: #d4af37; }
+.auth-logo__title { font-family: 'Playfair Display', serif; color: #d4af37; font-size: 1.6rem; margin: 0.25rem 0 0; }
+
+.auth-card__title { color: #fff; font-size: 1.4rem; font-weight: 600; margin: 0 0 0.25rem; text-align: center; }
+.auth-card__sub { color: rgba(255,255,255,0.5); text-align: center; margin: 0 0 2rem; font-size: 0.9rem; }
+
+.auth-form { display: flex; flex-direction: column; gap: 0.5rem; }
+.auth-field { width: 100%; }
+
+::ng-deep .auth-field .mdc-notched-outline__notch,
+::ng-deep .auth-field .mdc-notched-outline__leading,
+::ng-deep .auth-field .mdc-notched-outline__trailing { border-color: rgba(212, 175, 55, 0.4) !important; }
+::ng-deep .auth-field .mat-mdc-input-element { color: #fff !important; }
+::ng-deep .auth-field .mat-mdc-floating-label { color: rgba(255,255,255,0.6) !important; }
+
+.auth-error { display: flex; align-items: center; gap: 0.5rem; color: #ff6b6b; font-size: 0.85rem; padding: 0.5rem 0; }
+
+.auth-btn {
+  width: 100%; padding: 0.8rem; margin-top: 0.5rem;
+  background: linear-gradient(135deg, #d4af37, #b8962e) !important;
+  color: #1a1a1a !important; font-weight: 700; font-size: 1rem;
+  border-radius: 8px !important; display: flex; align-items: center; justify-content: center; gap: 0.5rem;
+}
+
+.auth-footer { text-align: center; margin-top: 1.25rem; color: rgba(255,255,255,0.5); font-size: 0.9rem; }
+.auth-link { color: #d4af37; text-decoration: none; font-weight: 600; margin-left: 0.25rem; }
+.auth-link:hover { text-decoration: underline; }

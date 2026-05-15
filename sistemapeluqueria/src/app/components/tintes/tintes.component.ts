@@ -1,9 +1,10 @@
 import { Component, OnInit, AfterViewInit, OnDestroy, ElementRef, HostListener } from '@angular/core';
 
 @Component({
-  selector: 'app-tintes',
-  templateUrl: './tintes.component.html',
-  styleUrls: ['./tintes.component.css']
+    selector: 'app-tintes',
+    templateUrl: './tintes.component.html',
+    styleUrls: ['./tintes.component.css'],
+    standalone: false
 })
 export class TintesComponent implements OnInit, AfterViewInit, OnDestroy {
 

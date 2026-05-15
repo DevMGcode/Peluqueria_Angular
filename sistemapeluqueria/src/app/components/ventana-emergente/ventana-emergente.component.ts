@@ -2,9 +2,10 @@ import { Component, Input, Output, EventEmitter } from '@angular/core';
 import { Producto } from '../cuidados/cuidados.component';
 
 @Component({
-  selector: 'app-ventana-emergente',
-  templateUrl: './ventana-emergente.component.html',
-  styleUrls: ['./ventana-emergente.component.css']
+    selector: 'app-ventana-emergente',
+    templateUrl: './ventana-emergente.component.html',
+    styleUrls: ['./ventana-emergente.component.css'],
+    standalone: false
 })
 export class VentanaEmergenteComponent {
   compraRealizada = false;

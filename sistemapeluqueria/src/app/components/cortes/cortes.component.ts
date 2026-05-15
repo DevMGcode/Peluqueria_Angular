@@ -1,9 +1,10 @@
 import { Component, OnInit, AfterViewInit, OnDestroy, ElementRef, HostListener } from '@angular/core';
 
 @Component({
-  selector: 'app-cortes',
-  templateUrl: './cortes.component.html',
-  styleUrls: ['./cortes.component.css']
+    selector: 'app-cortes',
+    templateUrl: './cortes.component.html',
+    styleUrls: ['./cortes.component.css'],
+    standalone: false
 })
 export class CortesComponent implements OnInit, AfterViewInit, OnDestroy {
 

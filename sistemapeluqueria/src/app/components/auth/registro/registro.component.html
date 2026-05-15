@@ -1,0 +1,64 @@
+<div class="auth-page">
+  <div class="auth-card">
+    <div class="auth-logo">
+      <span class="auth-logo__icon">✂</span>
+      <h1 class="auth-logo__title">New Styles</h1>
+    </div>
+
+    <h2 class="auth-card__title">Crear cuenta</h2>
+    <p class="auth-card__sub">Únete y disfruta de nuestros servicios</p>
+
+    <form [formGroup]="registroForm" (ngSubmit)="onSubmit()" class="auth-form">
+
+      <mat-form-field appearance="outline" class="auth-field">
+        <mat-label>Nombre completo</mat-label>
+        <input matInput type="text" formControlName="nombre" placeholder="Tu nombre">
+        <mat-icon matSuffix>person</mat-icon>
+        <mat-error *ngIf="nombre?.hasError('required')">El nombre es obligatorio</mat-error>
+        <mat-error *ngIf="nombre?.hasError('minlength')">Mínimo 2 caracteres</mat-error>
+      </mat-form-field>
+
+      <mat-form-field appearance="outline" class="auth-field">
+        <mat-label>Email</mat-label>
+        <input matInput type="email" formControlName="email" placeholder="tu@email.com">
+        <mat-icon matSuffix>email</mat-icon>
+        <mat-error *ngIf="email?.hasError('required')">El email es obligatorio</mat-error>
+        <mat-error *ngIf="email?.hasError('email')">Ingresa un email válido</mat-error>
+      </mat-form-field>
+
+      <mat-form-field appearance="outline" class="auth-field">
+        <mat-label>Teléfono (opcional)</mat-label>
+        <input matInput type="tel" formControlName="telefono" placeholder="300 000 0000">
+        <mat-icon matSuffix>phone</mat-icon>
+      </mat-form-field>
+
+      <mat-form-field appearance="outline" class="auth-field">
+        <mat-label>Contraseña</mat-label>
+        <input matInput [type]="mostrarPassword ? 'text' : 'password'" formControlName="password">
+        <mat-icon matSuffix style="cursor:pointer" (click)="mostrarPassword = !mostrarPassword">
+          {{ mostrarPassword ? 'visibility_off' : 'visibility' }}
+        </mat-icon>
+        <mat-error *ngIf="password?.hasError('required')">La contraseña es obligatoria</mat-error>
+        <mat-error *ngIf="password?.hasError('minlength')">Mínimo 6 caracteres</mat-error>
+      </mat-form-field>
+
+      <div class="auth-error" *ngIf="errorMsg">
+        <mat-icon>error_outline</mat-icon>
+        {{ errorMsg }}
+      </div>
+
+      <button mat-raised-button type="submit" class="auth-btn" [disabled]="cargando">
+        <mat-spinner diameter="20" *ngIf="cargando"></mat-spinner>
+        <span *ngIf="!cargando">Crear cuenta</span>
+      </button>
+    </form>
+
+    <div class="auth-footer">
+      ¿Ya tienes cuenta?
+      <a routerLink="/login" class="auth-link">Inicia sesión</a>
+    </div>
+    <div class="auth-footer">
+      <a routerLink="/" class="auth-link">← Volver al inicio</a>
+    </div>
+  </div>
+</div>

@@ -1,18 +1,16 @@
-//rutas para la gestion de tintes
+const express = require('express');
+const tinteControllers = require('../controllers/tinteControllers');
+const { proteger, autorizar } = require('../middleware/auth');
 
-const express = require ('express');
-const tinteControllers  = require('../controllers/tinteControllers');
 const router_app = express.Router();
 
-// el path al que accedera el usuario para ejecutar este metodo [/api/agregartinte]
+// Ver tintes: público
+router_app.get('/', tinteControllers.consultarTintes);
+router_app.get('/:id', tinteControllers.encontrarTinte);
 
-//router_app.post('/', ()=>{
-//    console.log('agregando tinte...');
-//})
+// Crear, editar y eliminar: solo admin y empleado
+router_app.post('/', proteger, autorizar('admin', 'empleado'), tinteControllers.agregarTinte);
+router_app.put('/:id', proteger, autorizar('admin', 'empleado'), tinteControllers.actualizarTinte);
+router_app.delete('/:id', proteger, autorizar('admin', 'empleado'), tinteControllers.eliminarTinte);
 
-router_app.post('/',tinteControllers.agregarTinte);
-router_app.get('/',tinteControllers.consultarTintes);
-router_app.put('/:id',tinteControllers.actualizarTinte);
-router_app.delete('/:id',tinteControllers.eliminarTinte);
-router_app.get('/:id',tinteControllers.encontrarTinte);
-module.exports= router_app;
+module.exports = router_app;

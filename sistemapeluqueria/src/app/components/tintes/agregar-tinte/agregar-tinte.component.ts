@@ -6,9 +6,10 @@ import { Tinte } from 'src/app/models/tinte';
 import { TinteService } from 'src/app/services/tinte.service';
 
 @Component({
-  selector: 'app-agregar-tinte',
-  templateUrl: './agregar-tinte.component.html',
-  styleUrls: ['./agregar-tinte.component.css'],
+    selector: 'app-agregar-tinte',
+    templateUrl: './agregar-tinte.component.html',
+    styleUrls: ['./agregar-tinte.component.css'],
+    standalone: false
 })
 export class AgregarTinteComponent implements OnInit {
   tinteForm: UntypedFormGroup;

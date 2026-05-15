@@ -1,9 +1,10 @@
 import { Component, OnInit, AfterViewInit, OnDestroy, ElementRef, HostListener } from '@angular/core';
 
 @Component({
-  selector: 'app-maquillaje',
-  templateUrl: './maquillaje.component.html',
-  styleUrls: ['./maquillaje.component.css']
+    selector: 'app-maquillaje',
+    templateUrl: './maquillaje.component.html',
+    styleUrls: ['./maquillaje.component.css'],
+    standalone: false
 })
 export class MaquillajeComponent implements OnInit, AfterViewInit, OnDestroy {
 

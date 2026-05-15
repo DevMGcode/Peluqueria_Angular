@@ -10,9 +10,10 @@ export interface Producto {
 }
 
 @Component({
-  selector: 'app-cuidados',
-  templateUrl: './cuidados.component.html',
-  styleUrls: ['./cuidados.component.css']
+    selector: 'app-cuidados',
+    templateUrl: './cuidados.component.html',
+    styleUrls: ['./cuidados.component.css'],
+    standalone: false
 })
 export class CuidadosComponent implements OnInit, AfterViewInit, OnDestroy {
 

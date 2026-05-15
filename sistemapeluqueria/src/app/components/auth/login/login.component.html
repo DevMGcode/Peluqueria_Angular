@@ -1,0 +1,132 @@
+<div class="auth-bg">
+
+  <!-- Glows de fondo -->
+  <div class="auth-glow auth-glow--1"></div>
+  <div class="auth-glow auth-glow--2"></div>
+  <div class="auth-glow auth-glow--3"></div>
+
+  <!-- Partículas flotantes decorativas -->
+  <div class="auth-orbs">
+    <span class="auth-orb" *ngFor="let o of orbs"
+          [style.width]="o.size"
+          [style.height]="o.size"
+          [style.left]="o.x"
+          [style.top]="o.y"
+          [style.animationDuration]="o.dur"
+          [style.animationDelay]="o.delay">
+    </span>
+  </div>
+
+  <div class="auth-wrap">
+
+    <!-- Panel izquierdo decorativo (solo desktop) -->
+    <div class="auth-side">
+      <div class="auth-side__inner">
+        <div class="auth-side__logo">
+          <i class="fas fa-cut"></i>
+        </div>
+        <h2 class="auth-side__brand">New Styles</h2>
+        <p class="auth-side__sub">Luxury Salon</p>
+        <div class="auth-side__divider"></div>
+        <p class="auth-side__claim">
+          "Donde cada detalle<br>cuenta tu historia"
+        </p>
+        <ul class="auth-side__features">
+          <li><i class="fas fa-check-circle"></i> Agenda tus citas fácilmente</li>
+          <li><i class="fas fa-check-circle"></i> Historial de servicios</li>
+          <li><i class="fas fa-check-circle"></i> Notificaciones por email</li>
+          <li><i class="fas fa-check-circle"></i> Acceso exclusivo a ofertas</li>
+        </ul>
+      </div>
+      <div class="auth-side__shimmer"></div>
+    </div>
+
+    <!-- Card del formulario -->
+    <div class="auth-card" [class.auth-card--shake]="shake">
+
+      <div class="auth-card__header">
+        <div class="auth-card__icon">
+          <i class="fas fa-cut"></i>
+        </div>
+        <h1 class="auth-card__title">Iniciar sesión</h1>
+        <p class="auth-card__sub">Bienvenida de vuelta ✦</p>
+      </div>
+
+      <form [formGroup]="loginForm" (ngSubmit)="onSubmit()" class="auth-form" autocomplete="off">
+
+        <!-- Email -->
+        <div class="auth-field" [class.auth-field--error]="email?.invalid && email?.touched">
+          <label class="auth-label">
+            <i class="fas fa-envelope"></i> Email
+          </label>
+          <div class="auth-input-wrap">
+            <input class="auth-input"
+                   type="email"
+                   formControlName="email"
+                   placeholder="tu@email.com"
+                   autocomplete="email">
+            <span class="auth-input-line"></span>
+          </div>
+          <p class="auth-field-error" *ngIf="email?.hasError('required') && email?.touched">
+            El email es obligatorio
+          </p>
+          <p class="auth-field-error" *ngIf="email?.hasError('email') && email?.touched">
+            Ingresa un email válido
+          </p>
+        </div>
+
+        <!-- Contraseña -->
+        <div class="auth-field" [class.auth-field--error]="password?.invalid && password?.touched">
+          <label class="auth-label">
+            <i class="fas fa-lock"></i> Contraseña
+          </label>
+          <div class="auth-input-wrap">
+            <input class="auth-input"
+                   [type]="mostrarPassword ? 'text' : 'password'"
+                   formControlName="password"
+                   placeholder="••••••••"
+                   autocomplete="current-password">
+            <button type="button" class="auth-eye" (click)="mostrarPassword = !mostrarPassword" tabindex="-1">
+              <i [class]="mostrarPassword ? 'fas fa-eye-slash' : 'fas fa-eye'"></i>
+            </button>
+            <span class="auth-input-line"></span>
+          </div>
+          <p class="auth-field-error" *ngIf="password?.hasError('required') && password?.touched">
+            La contraseña es obligatoria
+          </p>
+          <p class="auth-field-error" *ngIf="password?.hasError('minlength') && password?.touched">
+            Mínimo 6 caracteres
+          </p>
+        </div>
+
+        <!-- Error global -->
+        <div class="auth-error-banner" *ngIf="errorMsg">
+          <i class="fas fa-exclamation-circle"></i>
+          {{ errorMsg }}
+        </div>
+
+        <!-- Submit -->
+        <button type="submit" class="auth-submit" [class.auth-submit--loading]="cargando" [disabled]="cargando">
+          <span class="auth-submit__shimmer"></span>
+          <span class="auth-submit__text" *ngIf="!cargando">
+            <i class="fas fa-sign-in-alt"></i> Ingresar
+          </span>
+          <span class="auth-submit__loader" *ngIf="cargando">
+            <span class="auth-dot"></span>
+            <span class="auth-dot"></span>
+            <span class="auth-dot"></span>
+          </span>
+        </button>
+
+      </form>
+
+      <div class="auth-footer">
+        <p>¿No tienes cuenta? <a routerLink="/registro" class="auth-link">Regístrate gratis</a></p>
+        <a routerLink="/" class="auth-back">
+          <i class="fas fa-arrow-left"></i> Volver al inicio
+        </a>
+      </div>
+
+    </div>
+  </div>
+</div>

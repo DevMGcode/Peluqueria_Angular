@@ -4,9 +4,10 @@ import {
 } from '@angular/core';
 
 @Component({
-  selector: 'app-peinados',
-  templateUrl: './peinados.component.html',
-  styleUrls: ['./peinados.component.css']
+    selector: 'app-peinados',
+    templateUrl: './peinados.component.html',
+    styleUrls: ['./peinados.component.css'],
+    standalone: false
 })
 export class PeinadosComponent implements OnInit, AfterViewInit, OnDestroy {
 

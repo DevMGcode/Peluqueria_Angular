@@ -9,9 +9,10 @@ import { cita } from 'src/app/models/cita';
 import { CitaService } from 'src/app/services/cita.service';
 
 @Component({
-  selector: 'app-inicio',
-  templateUrl: './inicio.component.html',
-  styleUrls: ['./inicio.component.css'],
+    selector: 'app-inicio',
+    templateUrl: './inicio.component.html',
+    styleUrls: ['./inicio.component.css'],
+    standalone: false
 })
 export class InicioComponent implements OnInit, AfterViewInit, OnDestroy {
 
