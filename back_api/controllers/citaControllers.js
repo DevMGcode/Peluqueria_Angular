@@ -17,6 +17,47 @@ exports.reservarCita = async(req, res) =>{
     }
 }
 
+exports.misCitas = async(req, res) =>{
+    try {
+        const citas = await Cita.find({ email: req.usuario.email });
+        res.json(citas)
+    } catch (error) {
+        console.log(error)
+        res.status(500).send('no se puede consultar la informacion')
+    }
+}
+
+exports.cancelarCita = async(req, res) =>{
+    try {
+        const cita = await Cita.findById(req.params.id);
+
+        if(!cita){
+            return res.status(404).json({msg:'La cita no existe.'});
+        }
+
+        // Un cliente solo puede cancelar sus propias citas
+        const esStaff = ['admin', 'empleado'].includes(req.usuario.rol);
+        if(!esStaff && cita.email !== req.usuario.email){
+            return res.status(403).json({msg:'No puedes cancelar una cita que no es tuya.'});
+        }
+
+        if(cita.estado === 'cancelada'){
+            return res.status(400).json({msg:'La cita ya está cancelada.'});
+        }
+        if(cita.estado === 'completada'){
+            return res.status(400).json({msg:'No se puede cancelar una cita completada.'});
+        }
+
+        cita.estado = 'cancelada';
+        await cita.save();
+        res.json(cita);
+
+    } catch (error) {
+        console.log(error)
+        res.status(500).send('no se pudo cancelar la cita')
+    }
+}
+
 exports.consultarCitas = async(req, res) =>{
     try {
         const mis_citas= await Cita.find();
@@ -33,15 +74,21 @@ exports.consultarCitas = async(req, res) =>{
 
 exports.actualizarCita = async(req,res) =>{
     try {
-       
-        console.log(req.body)
+
         const {nombre,fecha,hora,motivo} = req.body
         let data_cita= await Cita.findById(req.params.id); //busca algun doc en la collecion por medio del id
-        console.log(data_cita)
 
         if(!data_cita){
+          return res.status(404).json({msg:'NO existe la cita solicitada; no se realiza ninguna actualizacion'})
+        }
 
-          res.status(404 ).json({msg:'NO existe la cita solicitada; nose realiza ninguna actualizacion'})
+        // Un cliente solo puede reagendar sus propias citas activas
+        const esStaff = ['admin', 'empleado'].includes(req.usuario.rol);
+        if(!esStaff && data_cita.email !== req.usuario.email){
+            return res.status(403).json({msg:'No puedes modificar una cita que no es tuya.'});
+        }
+        if(!esStaff && ['cancelada', 'completada'].includes(data_cita.estado)){
+            return res.status(400).json({msg:'Esta cita ya no se puede reagendar.'});
         }
 
         data_cita.nombre = nombre;
@@ -49,8 +96,7 @@ exports.actualizarCita = async(req,res) =>{
         data_cita.hora = hora;
         data_cita.motivo = motivo;
 
-
-        data_cita = await Cita.findOneAndUpdate({_id:req.params.id}, data_cita,{new:true})
+        await data_cita.save();
         res.json(data_cita);
 
     } catch (error) {
@@ -81,16 +127,22 @@ exports.eliminarCita = async(req,res)=> {
     exports.encontrarCita = async(req,res)=>{
         try {
           let data_cita= await Cita.findById(req.params.id);
-    
+
           if(!data_cita){
-            res.status(404).json({msj:'la cita no existe BD'})
+            return res.status(404).json({msj:'la cita no existe BD'})
           }
-    
+
+          // Un cliente solo puede consultar sus propias citas
+          const esStaff = ['admin', 'empleado'].includes(req.usuario.rol);
+          if(!esStaff && data_cita.email !== req.usuario.email){
+            return res.status(403).json({msg:'No puedes ver una cita que no es tuya.'});
+          }
+
           res.json(data_cita);
-    
+
         } catch (error) {
         console.log(error);
         res.status(500).send('no se puede hacer la consulta');
         }
-    
+
       }

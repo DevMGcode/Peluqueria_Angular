@@ -111,3 +111,58 @@
 @media (max-width: 600px) {
   .info-grid { grid-template-columns: 1fr; }
 }
+
+/* ── BOTÓN CANCELAR CITA ── */
+.btn-cancelar-cita {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.3rem;
+  margin-left: 0.75rem;
+  padding: 0.3rem 0.75rem;
+  background: transparent;
+  border: 1px solid rgba(239, 68, 68, 0.4);
+  border-radius: 999px;
+  color: #ef4444;
+  font-size: 0.78rem;
+  font-family: inherit;
+  cursor: pointer;
+  transition: all 0.25s ease;
+  flex-shrink: 0;
+}
+.btn-cancelar-cita mat-icon {
+  font-size: 1rem;
+  width: 1rem;
+  height: 1rem;
+}
+.btn-cancelar-cita:hover {
+  background: rgba(239, 68, 68, 0.12);
+  border-color: #ef4444;
+}
+
+/* ── BOTÓN REAGENDAR CITA ── */
+.btn-reagendar-cita {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.3rem;
+  margin-left: 0.75rem;
+  padding: 0.3rem 0.75rem;
+  background: transparent;
+  border: 1px solid rgba(212, 175, 55, 0.4);
+  border-radius: 999px;
+  color: #d4af37;
+  font-size: 0.78rem;
+  font-family: inherit;
+  text-decoration: none;
+  cursor: pointer;
+  transition: all 0.25s ease;
+  flex-shrink: 0;
+}
+.btn-reagendar-cita mat-icon {
+  font-size: 1rem;
+  width: 1rem;
+  height: 1rem;
+}
+.btn-reagendar-cita:hover {
+  background: rgba(212, 175, 55, 0.12);
+  border-color: #d4af37;
+}

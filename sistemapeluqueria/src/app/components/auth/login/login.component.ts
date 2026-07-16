@@ -34,9 +34,11 @@ export class LoginComponent implements OnInit {
         if (this.authService.isAuthenticated()) {
             this.router.navigate(['/']);
         }
+        const emailGuardado = localStorage.getItem('login_email') ?? '';
         this.loginForm = this.fb.group({
-            email:    ['', [Validators.required, Validators.email]],
-            password: ['', [Validators.required, Validators.minLength(6)]]
+            email:    [emailGuardado, [Validators.required, Validators.email]],
+            password: ['', [Validators.required, Validators.minLength(6)]],
+            recordar: [!!emailGuardado]
         });
     }
 
@@ -49,11 +51,16 @@ export class LoginComponent implements OnInit {
         this.cargando = true;
         this.errorMsg = '';
 
-        const { email, password } = this.loginForm.value;
+        const { email, password, recordar } = this.loginForm.value;
 
         this.authService.login(email, password).subscribe({
             next: () => {
                 this.cargando = false;
+                if (recordar) {
+                    localStorage.setItem('login_email', email);
+                } else {
+                    localStorage.removeItem('login_email');
+                }
                 const rol = this.authService.getRol();
                 if (rol === 'admin' || rol === 'empleado') {
                     this.router.navigate(['/agendar-citas']);

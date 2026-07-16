@@ -18,6 +18,14 @@ export class CitaService {
     return this.http.get(this.url);
   }
 
+  getMisCitas():Observable<any>{
+    return this.http.get(this.url + 'mias');
+  }
+
+  cancelarCita(id:string):Observable<any>{
+    return this.http.put(this.url + id + '/cancelar', {});
+  }
+
   deleteCita(id:string):Observable<any>{
 
     return this.http.delete(this.url+id);

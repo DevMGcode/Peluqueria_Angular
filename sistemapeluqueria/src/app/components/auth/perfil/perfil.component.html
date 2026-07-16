@@ -60,6 +60,14 @@
           <span class="cita-estado" [style.color]="getEstadoColor(cita.estado || 'pendiente')">
             {{ cita.estado || 'pendiente' }}
           </span>
+          <a class="btn-reagendar-cita" *ngIf="puedeCancelar(cita)"
+             [routerLink]="['/reagendarse', cita._id]" title="Reagendar cita">
+            <mat-icon>edit_calendar</mat-icon> Reagendar
+          </a>
+          <button type="button" class="btn-cancelar-cita" *ngIf="puedeCancelar(cita)"
+                  (click)="cancelarCita(cita)" title="Cancelar cita">
+            <mat-icon>event_busy</mat-icon> Cancelar
+          </button>
         </div>
       </div>
     </div>

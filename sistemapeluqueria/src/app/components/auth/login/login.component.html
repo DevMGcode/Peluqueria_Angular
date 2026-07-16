@@ -52,7 +52,7 @@
         <p class="auth-card__sub">Bienvenida de vuelta ✦</p>
       </div>
 
-      <form [formGroup]="loginForm" (ngSubmit)="onSubmit()" class="auth-form" autocomplete="off">
+      <form [formGroup]="loginForm" (ngSubmit)="onSubmit()" class="auth-form" autocomplete="on">
 
         <!-- Email -->
         <div class="auth-field" [class.auth-field--error]="email?.invalid && email?.touched">
@@ -98,6 +98,12 @@
             Mínimo 6 caracteres
           </p>
         </div>
+
+        <!-- Recordar email -->
+        <label class="auth-remember">
+          <input type="checkbox" formControlName="recordar">
+          <span>Recordar mi email</span>
+        </label>
 
         <!-- Error global -->
         <div class="auth-error-banner" *ngIf="errorMsg">

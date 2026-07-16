@@ -7,6 +7,7 @@ import { ActivatedRoute, Router } from '@angular/router';
 import Swal from 'sweetalert2';
 import { cita } from 'src/app/models/cita';
 import { CitaService } from 'src/app/services/cita.service';
+import { AuthService } from 'src/app/services/auth.service';
 
 @Component({
     selector: 'app-inicio',
@@ -56,6 +57,7 @@ export class InicioComponent implements OnInit, AfterViewInit, OnDestroy {
     private fb: UntypedFormBuilder,
     private router: Router,
     private _citaService: CitaService,
+    private authService: AuthService,
     private idRoute: ActivatedRoute,
     private el: ElementRef
   ) {
@@ -316,6 +318,7 @@ export class InicioComponent implements OnInit, AfterViewInit, OnDestroy {
       fecha:  this.citaForm.get('citaFecha')?.value,
       hora:   this.citaForm.get('citaHora')?.value,
       motivo: this.citaForm.get('citaMotivo')?.value,
+      email:  this.authService.getUsuario()?.email ?? '',
     };
     if (this.id !== null) {
       this._citaService.putCita(this.id, CITA).subscribe(
@@ -331,7 +334,7 @@ export class InicioComponent implements OnInit, AfterViewInit, OnDestroy {
             timer: 2600,
             showConfirmButton: false,
             timerProgressBar: true
-          }).then(() => this.router.navigate(['agendar-citas']));
+          }).then(() => this.router.navigate([this.destinoPostCita()]));
         },
         (error) => console.log(error)
       );
@@ -349,11 +352,17 @@ export class InicioComponent implements OnInit, AfterViewInit, OnDestroy {
             timer: 2600,
             showConfirmButton: false,
             timerProgressBar: true
-          }).then(() => this.router.navigate(['agendar-citas']));
+          }).then(() => this.router.navigate([this.destinoPostCita()]));
         },
         (error) => console.log(error)
       );
     }
+  }
+
+  // Tras guardar una cita: staff va al panel, cliente a su perfil, visitante al inicio
+  private destinoPostCita(): string {
+    if (this.authService.tieneRol('admin', 'empleado')) return 'agendar-citas';
+    return this.authService.isAuthenticated() ? 'perfil' : '/';
   }
 
   accionSolicity() {

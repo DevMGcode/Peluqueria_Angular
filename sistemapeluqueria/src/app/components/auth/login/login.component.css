@@ -476,3 +476,22 @@
   .auth-bg { padding: 1rem; }
   .auth-card { padding: 2rem 1.25rem; }
 }
+
+/* ── RECORDAR EMAIL ── */
+.auth-remember {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  cursor: pointer;
+  font-size: 0.85rem;
+  color: rgba(250, 248, 246, 0.6);
+  user-select: none;
+  margin-top: -0.25rem;
+}
+.auth-remember input[type="checkbox"] {
+  accent-color: var(--gold, #d4af37);
+  width: 15px;
+  height: 15px;
+  cursor: pointer;
+}
+.auth-remember:hover { color: rgba(250, 248, 246, 0.85); }

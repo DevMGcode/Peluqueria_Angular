@@ -4,6 +4,7 @@ nombre:string;
 fecha:string;
 hora:string;
 motivo:string;
+email?:string;
 
 
 /* el metodo contructor se va ejecutar automaticamente cuando se llama dicha clase en algun
