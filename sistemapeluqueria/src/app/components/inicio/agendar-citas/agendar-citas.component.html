@@ -26,7 +26,7 @@
   <!-- Stats -->
   <div class="ag-stats">
     <div class="ag-stat">
-      <span class="ag-stat__num">{{ agendadoCitas.length }}</span>
+      <span class="ag-stat__num">{{ citasActivas }}</span>
       <span class="ag-stat__label">Citas Activas</span>
     </div>
     <div class="ag-stat-sep"></div>
@@ -54,6 +54,7 @@
           <th class="ag-th">Fecha</th>
           <th class="ag-th">Hora</th>
           <th class="ag-th">Servicio</th>
+          <th class="ag-th">Estado</th>
           <th class="ag-th ag-th--actions">Acciones</th>
         </tr>
       </thead>
@@ -78,6 +79,14 @@
             <span class="ag-servicio">
               <i [class]="getIconoServicio(cita.motivo)"></i>
               {{ cita.motivo }}
+            </span>
+          </td>
+          <td class="ag-td">
+            <span class="ag-estado"
+                  [style.color]="getEstadoColor(getEstado(cita))"
+                  [style.borderColor]="getEstadoColor(getEstado(cita))">
+              <span class="ag-estado__dot" [style.background]="getEstadoColor(getEstado(cita))"></span>
+              {{ getEstado(cita) }}
             </span>
           </td>
           <td class="ag-td ag-td--actions">

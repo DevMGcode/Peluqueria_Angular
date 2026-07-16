@@ -321,3 +321,24 @@
   .ag-cliente__avatar { width: 28px; height: 28px; font-size: 0.75rem; }
   .ag-btn { padding: 8px 16px; font-size: 0.72rem; }
 }
+
+/* ── BADGE ESTADO ── */
+.ag-estado {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  padding: 0.25rem 0.7rem;
+  border: 1px solid;
+  border-radius: 999px;
+  font-size: 0.72rem;
+  font-weight: 600;
+  letter-spacing: 0.5px;
+  text-transform: capitalize;
+  white-space: nowrap;
+}
+.ag-estado__dot {
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  flex-shrink: 0;
+}

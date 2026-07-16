@@ -41,6 +41,27 @@ export class AgendarCitasComponent implements OnInit {
     return `${parseInt(d)} ${meses[parseInt(m) - 1]} ${y}`;
   }
 
+  get citasActivas(): number {
+    return this.agendadoCitas.filter(c => {
+      const estado = (c as any).estado || 'pendiente';
+      return estado === 'pendiente' || estado === 'confirmada';
+    }).length;
+  }
+
+  getEstado(cita: any): string {
+    return cita.estado || 'pendiente';
+  }
+
+  getEstadoColor(estado: string): string {
+    const colores: Record<string, string> = {
+      pendiente:  '#f59e0b',
+      confirmada: '#10b981',
+      cancelada:  '#ef4444',
+      completada: '#6b7280'
+    };
+    return colores[estado] ?? '#6b7280';
+  }
+
   getIconoServicio(motivo: string): string {
     if (!motivo) return 'fas fa-spa';
     const m = motivo.toLowerCase();

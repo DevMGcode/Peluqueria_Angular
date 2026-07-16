@@ -8,6 +8,10 @@ const conectarDB = require('./config/db');
 
 const aplicacion = express();
 
+// Render corre detrás de un proxy: necesario para que express-rate-limit
+// identifique la IP real del cliente (evita ERR_ERL_UNEXPECTED_X_FORWARDED_FOR)
+aplicacion.set('trust proxy', 1);
+
 conectarDB();
 
 // Seguridad HTTP headers
